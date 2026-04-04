@@ -20,72 +20,54 @@
 
         header {
             background: linear-gradient(135deg, #004e5f 0%, #00758f 100%);
-            color: white;
-            padding: 80px 20px 120px;
-            text-align: center;
+            color: white; padding: 80px 20px 120px; text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
         .profile-pic {
-            width: 160px; height: 160px;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.2);
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: var(--shadow);
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2); margin-bottom: 20px;
+            object-fit: cover; box-shadow: var(--shadow);
         }
 
         header h1 { font-size: 2.6rem; margin-bottom: 10px; }
-        header p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; }
-
         .container { max-width: 1100px; margin: -60px auto 60px; padding: 0 20px; }
 
         .card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 35px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-            border-top: 5px solid var(--oracle-blue);
+            background: var(--white); border-radius: 12px; padding: 35px;
+            margin-bottom: 30px; box-shadow: var(--shadow); border-top: 5px solid var(--oracle-blue);
         }
 
         h2 { color: var(--oracle-blue); margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 10px; display: flex; align-items: center; gap: 12px; }
         h2 i { color: var(--oracle-red); }
 
-        /* Experience Timeline */
+        /* Experience & Education Styling */
         .timeline { border-left: 2px solid #e9ecef; padding-left: 20px; }
-        .timeline-item { position: relative; margin-bottom: 35px; }
+        .timeline-item { position: relative; margin-bottom: 30px; }
         .timeline-item::before {
             content: ""; position: absolute; left: -29px; top: 5px;
             width: 16px; height: 16px; background: white;
             border: 3px solid var(--oracle-blue); border-radius: 50%;
         }
 
-        .job-title { font-size: 1.25rem; font-weight: bold; color: var(--dark); }
-        .company { color: var(--oracle-red); font-weight: 600; display: block; }
-        .date { font-size: 0.85rem; color: #6c757d; font-weight: bold; }
+        .item-title { font-size: 1.25rem; font-weight: bold; color: var(--dark); }
+        .item-sub { color: var(--oracle-red); font-weight: 600; display: block; }
+        .date { font-size: 0.85rem; color: #6c757d; font-weight: bold; background: #eee; padding: 2px 8px; border-radius: 4px; }
 
-        /* Grid Layout */
+        /* Modules & Certs Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .grid-item { 
-            background: #fbfcfc; border: 1px solid #edf2f7; padding: 20px; border-radius: 10px;
-            transition: 0.3s;
-        }
-        .grid-item:hover { transform: translateY(-5px); border-color: var(--oracle-blue); }
-        .grid-item h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--oracle-blue); }
+        .grid-item { background: #fbfcfc; border: 1px solid #edf2f7; padding: 20px; border-radius: 10px; transition: 0.3s; }
+        .grid-item h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--oracle-blue); }
 
-        /* Certifications List */
-        .cert-list { list-style: none; }
-        .cert-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; padding: 10px; background: #f0f7f9; border-radius: 8px; }
-        .cert-list i { color: #f39c12; font-size: 1.2rem; }
+        .cert-badge { display: flex; align-items: center; gap: 10px; padding: 10px; background: #f0f7f9; border-radius: 8px; margin-bottom: 10px; }
+        .cert-badge i { color: #f39c12; }
 
         .tag { background: #e0f2f1; color: #00695c; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin: 4px; }
 
         footer { background: #1a1a1a; color: white; text-align: center; padding: 50px 20px; margin-top: 60px; }
-        .social-link { color: white; font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
-        .social-link:hover { color: var(--oracle-blue); }
+        .social-link { color: white; font-size: 1.8rem; margin: 0 15px; }
 
-        @media (max-width: 768px) { header h1 { font-size: 2rem; } .container { margin-top: -40px; } }
+        @media (max-width: 768px) { header h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
@@ -93,7 +75,7 @@
 <header>
     <img src="113479.PNG" alt="Muhammad Yaseen Khan" class="profile-pic">
     <h1>Muhammad Yaseen Khan</h1>
-    <p>Senior Oracle APEX Developer | PL/SQL Specialist | ERP Architect</p>
+    <p>Senior Oracle APEX Developer | PL/SQL Expert | ERP Architect</p>
 </header>
 
 <div class="container">
@@ -103,72 +85,66 @@
         <div class="timeline">
             <div class="timeline-item">
                 <span class="date">Nov 2024 - Present</span>
-                <p class="job-title">Oracle Apex Developer</p>
-                <span class="company">BZ Softech, Faisalabad</span>
+                <p class="item-title">Oracle Apex Developer</p>
+                <span class="item-sub">BZ Softech, Faisalabad</span>
             </div>
             <div class="timeline-item">
                 <span class="date">Dec 2023 - Oct 2024</span>
-                <p class="job-title">Software Engineer</p>
-                <span class="company">Albarka Fabrics Ltd</span>
+                <p class="item-title">Software Engineer</p>
+                <span class="item-sub">Albarka Fabrics Ltd</span>
             </div>
             <div class="timeline-item">
                 <span class="date">Jan 2019 - Nov 2023</span>
-                <p class="job-title">Assistant Programmer (Oracle Developer)</p>
-                <span class="company">Masood Textile Mills Limited (MTM)</span>
+                <p class="item-title">Assistant Programmer (Oracle Developer)</p>
+                <span class="item-sub">Masood Textile Mills Limited (MTM)</span>
             </div>
         </div>
     </div>
 
     <div class="card">
-        <h2><i class="fa-solid fa-cubes"></i> Expertise & Modules Developed</h2>
+        <h2><i class="fa-solid fa-graduation-cap"></i> Academic Qualification</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date">2017 - 2019</span>
+                <p class="item-title">MCS (Master of Computer Science)</p>
+                <span class="item-sub">The University of Faisalabad</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">2014 - 2016</span>
+                <p class="item-title">BCS (Bachelor of Computer Science)</p>
+                <span class="item-sub">The University of Faisalabad</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">2011 - 2013</span>
+                <p class="item-title">F.Sc (Pre-Engineering)</p>
+                <span class="item-sub">BISE Gujranwala</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fa-solid fa-cubes"></i> Major Modules Developed</h2>
         <div class="grid">
-            <div class="grid-item">
-                <h3><i class="fa-solid fa-users"></i> HRMS & Payroll</h3>
-                <p>Complete Human Resource Management, Attendance, and Payroll systems.</p>
-            </div>
-            <div class="grid-item">
-                <h3><i class="fa-solid fa-boxes-stacked"></i> IMS & CMS</h3>
-                <p>Inventory, Store, and Cutting Management Systems for textile operations.</p>
-            </div>
-            <div class="grid-item">
-                <h3><i class="fa-solid fa-file-invoice-dollar"></i> E-Invoicing</h3>
-                <p>ZATCA Fatoora (KSA/Dubai) and FBR Digital Invoicing integration.</p>
-            </div>
-            <div class="grid-item">
-                <h3><i class="fa-solid fa-hospital-user"></i> Healthcare HMS</h3>
-                <p>Hospital Management System including Pharmacy and Patient records.</p>
-            </div>
-            <div class="grid-item">
-                <h3><i class="fa-solid fa-calculator"></i> Accounts & POS</h3>
-                <p>Accounts Management and Point of Sale systems with real-time reporting.</p>
-            </div>
-            <div class="grid-item">
-                <h3><i class="fa-solid fa-robot"></i> AI Integration</h3>
-                <p>Connecting Oracle with Gemini AI, WhatsApp, and Google REST APIs.</p>
-            </div>
+            <div class="grid-item"><h3><i class="fa-solid fa-users"></i> HRMS & Payroll</h3><p>Complete Human Resource Management & Attendance systems.</p></div>
+            <div class="grid-item"><h3><i class="fa-solid fa-boxes-stacked"></i> IMS & CMS</h3><p>Inventory, Store, and Cutting Management for Textiles.</p></div>
+            <div class="grid-item"><h3><i class="fa-solid fa-file-invoice-dollar"></i> E-Invoicing</h3><p>ZATCA (KSA) and FBR (Pakistan) Digital Invoicing.</p></div>
+            <div class="grid-item"><h3><i class="fa-solid fa-hospital-user"></i> Healthcare HMS</h3><p>Hospital Management System including Pharmacy & Patient records.</p></div>
         </div>
     </div>
 
     <div class="card">
         <h2><i class="fa-solid fa-certificate"></i> Professional Certifications</h2>
-        <ul class="cert-list">
-            <li><i class="fa-solid fa-award"></i> <div><strong>Oracle Cloud Infrastructure 2024 Generative AI Professional</strong></div></li>
-            <li><i class="fa-solid fa-award"></i> <div><strong>Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate</strong></div></li>
-            <li><i class="fa-solid fa-award"></i> <div><strong>Career Essentials in Generative AI (Microsoft & LinkedIn)</strong></div></li>
-        </ul>
+        <div class="cert-badge"><i class="fa-solid fa-award"></i> <div><strong>Oracle Cloud Infrastructure 2024 Generative AI Professional</strong></div></div>
+        <div class="cert-badge"><i class="fa-solid fa-award"></i> <div><strong>Oracle Cloud Infrastructure 2023 AI Foundations Associate</strong></div></div>
+        <div class="cert-badge"><i class="fa-solid fa-award"></i> <div><strong>Microsoft & LinkedIn: Career Essentials in Generative AI</strong></div></div>
     </div>
 
     <div class="card">
         <h2><i class="fa-solid fa-code"></i> Technical Stack</h2>
         <div>
-            <span class="tag">Oracle APEX 23ai</span>
-            <span class="tag">Oracle SQL & PL/SQL</span>
-            <span class="tag">Oracle Database 19c</span>
-            <span class="tag">ORDS (REST Services)</span>
-            <span class="tag">Oracle Wallet & SSL</span>
-            <span class="tag">JavaScript/CSS3</span>
-            <span class="tag">Oracle Forms 6i</span>
-            <span class="tag">JSON/XML</span>
+            <span class="tag">Oracle APEX 23ai</span> <span class="tag">Oracle SQL/PL-SQL</span>
+            <span class="tag">ORDS (REST APIs)</span> <span class="tag">Oracle Wallet & SSL</span>
+            <span class="tag">JSON/XML</span> <span class="tag">Oracle Forms 6i</span>
         </div>
     </div>
 
@@ -179,7 +155,7 @@
         <a href="https://www.linkedin.com/in/muhammadyaseenkhan94" class="social-link" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://github.com/muhammadyaseenkhan94" class="social-link" target="_blank"><i class="fa-brands fa-github"></i></a>
     </div>
-    <p>Muhammad Yaseen Khan &copy; 2026 | Developed for Excellence</p>
+    <p>Muhammad Yaseen Khan &copy; 2026 | Oracle Portfolio</p>
 </footer>
 
 </body>
