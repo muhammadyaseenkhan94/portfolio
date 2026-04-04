@@ -7,19 +7,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --oracle-blue: #00758f;
-            --oracle-red: #f80000;
-            --dark-navy: #004e5f;
-            --glass: rgba(255, 255, 255, 0.95);
+            --primary: #00758f;
+            --secondary: #f80000;
+            --bg: #f4f7f9;
+            --white: #ffffff;
             --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #f0f4f7; color: #333; line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg); color: #333; line-height: 1.6; }
 
-        /* Header Section */
         header {
-            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--oracle-blue) 100%);
+            background: linear-gradient(135deg, #004e5f 0%, #00758f 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -34,62 +33,39 @@
             margin-bottom: 20px;
             object-fit: cover;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
         }
-        .profile-pic:hover { transform: scale(1.05); }
 
-        header h1 { font-size: 2.8rem; margin-bottom: 10px; }
-        header p { font-size: 1.3rem; opacity: 0.9; font-weight: 300; }
+        .container { max-width: 1000px; margin: -50px auto 50px; padding: 0 20px; }
 
-        .container { max-width: 1100px; margin: -50px auto 50px; padding: 0 20px; }
-
-        /* Experience & Info Cards */
         .card {
-            background: var(--glass);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: 15px;
             padding: 35px;
             margin-bottom: 25px;
             box-shadow: var(--shadow);
-            border-left: 5px solid var(--oracle-blue);
+            border-left: 5px solid var(--primary);
         }
 
-        h2 { color: var(--oracle-blue); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        h3 { color: #444; margin-bottom: 5px; }
+        h2 { color: var(--primary); margin-bottom: 25px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        h3 { color: #2c3e50; font-size: 1.2rem; }
 
-        .job-meta { color: var(--oracle-red); font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .job-entry { margin-bottom: 30px; position: relative; padding-left: 20px; border-left: 2px solid #e0e0e0; }
+        .job-entry:last-child { margin-bottom: 0; }
+        .company { color: var(--secondary); font-weight: bold; font-size: 1rem; }
+        .duration { color: #666; font-size: 0.85rem; font-weight: bold; display: block; margin-bottom: 8px; }
 
-        /* Skills Tags */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { 
-            background: #eef7f9; 
-            color: var(--oracle-blue); 
-            padding: 6px 15px; 
-            border-radius: 20px; 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            border: 1px solid #d1e6eb;
-        }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-badge { background: #e8f4f7; color: var(--primary); padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
 
-        /* Portfolio Grid */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .project-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border-top: 4px solid var(--oracle-blue);
-            transition: 0.3s;
-        }
-        .project-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .project-item i { font-size: 1.5rem; color: var(--oracle-blue); margin-bottom: 10px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .project-box { background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid #eee; transition: 0.3s; }
+        .project-box:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-        footer { text-align: center; padding: 40px; background: #222; color: white; margin-top: 50px; }
-        .social-link { color: white; font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
-        .social-link:hover { color: var(--oracle-blue); }
+        footer { text-align: center; padding: 40px; background: #1a1a1a; color: white; margin-top: 50px; }
+        .social-link { color: white; font-size: 1.8rem; margin: 0 15px; text-decoration: none; }
+        .social-link:hover { color: var(--primary); }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            header { padding: 50px 10px; }
-        }
+        @media (max-width: 768px) { header h1 { font-size: 1.8rem; } .container { margin-top: -30px; } }
     </style>
 </head>
 <body>
@@ -97,64 +73,68 @@
 <header>
     <img src="113479.PNG" alt="Muhammad Yaseen Khan" class="profile-pic">
     <h1>Muhammad Yaseen Khan</h1>
-    <p>Oracle APEX Developer | PL/SQL Expert | ERP Solutions Architect</p>
+    <p>Oracle APEX Developer | PL/SQL Expert | ERP Specialist</p>
 </header>
 
 <div class="container">
 
     <div class="card">
-        <h2><i class="fa-solid fa-user-gear"></i> Professional Summary</h2>
-        <p>Expert <b>Oracle APEX Developer</b> with extensive experience in designing and deploying complex database-driven applications. Specialized in <b>ZATCA (Phase 2)</b> e-invoicing integration, <b>FBR Digital Invoicing</b>, and enterprise-level <b>Hospital Management Systems (HMS)</b>. Proficient in Oracle 11g, 19c, and 23ai environments.</p>
-    </div>
-
-    <div class="card">
         <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
         
-        <div style="margin-bottom: 25px;">
-            <h3>Oracle APEX Developer</h3>
-            <span class="job-meta">2023 - Present | Software Solutions</span>
-            <p>Directing the architecture and development of full-stack APEX applications. Key achievements include the successful integration of Saudi ZATCA Phase 2 and Pakistan FBR tax systems via REST APIs.</p>
+        <div class="job-entry">
+            <h3>Oracle Apex Developer</h3>
+            <span class="company">BZ Softech</span>
+            <span class="duration">Nov 2024 - Present (Full-time)</span>
+            <p>Leading Oracle APEX development, focusing on high-performance database applications and complex business logic.</p>
         </div>
 
-        <div>
-            <h3>Database & ERP Developer</h3>
-            <span class="job-meta">2021 - 2023</span>
-            <p>Managed legacy Oracle Forms 6i systems and led their transition to modern web-based Oracle APEX. Developed robust modules for pharmacy inventory and clinical governance.</p>
+        <div class="job-entry">
+            <h3>Software Engineer</h3>
+            <span class="company">Albarka Fabrics Ltd</span>
+            <span class="duration">Dec 2023 - Oct 2024 (11 months)</span>
+            <p>Developed and maintained enterprise software solutions and database systems.</p>
+        </div>
+
+        <div class="job-entry">
+            <h3>Oracle Developer</h3>
+            <span class="company">Masood Textile Mills Limited</span>
+            <span class="duration">Oct 2019 - Nov 2023 (4 years 2 months)</span>
+            <p>Extensive work on Oracle Database development, PL/SQL optimization, and legacy system support.</p>
         </div>
     </div>
 
     <div class="card">
-        <h2><i class="fa-solid fa-layer-group"></i> Technical Expertise</h2>
+        <h2><i class="fa-solid fa-code"></i> Key Projects & Expertise</h2>
         <div class="project-grid">
-            <div class="project-item">
-                <i class="fa-solid fa-file-invoice"></i>
-                <h3>E-Invoicing Expert</h3>
-                <p>Full implementation of ZATCA (KSA) and FBR (Pakistan) digital invoicing using JSON, XML signing, and secure RESTful services.</p>
+            <div class="project-box">
+                <i class="fa-solid fa-file-invoice-dollar" style="color: var(--primary); font-size: 1.5rem;"></i>
+                <h3>ZATCA & FBR Integration</h3>
+                <p>Expert in Digital Invoicing for Saudi Arabia (ZATCA Phase 2) and Pakistan (FBR).</p>
             </div>
-            <div class="project-item">
-                <i class="fa-solid fa-hospital-user"></i>
-                <h3>HMS Specialist</h3>
-                <p>Developed Pharmacy Management, Formulary Registry, and Ward Management modules for healthcare providers.</p>
+            <div class="project-box">
+                <i class="fa-solid fa-hospital" style="color: var(--primary); font-size: 1.5rem;"></i>
+                <h3>Healthcare (HMS)</h3>
+                <p>Complete Pharmacy, Ward Management, and Clinical Governance modules.</p>
             </div>
-            <div class="project-item">
-                <i class="fa-solid fa-shield-halved"></i>
+            <div class="project-box">
+                <i class="fa-solid fa-shield-halved" style="color: var(--primary); font-size: 1.5rem;"></i>
                 <h3>Security & APIs</h3>
-                <p>Advanced configuration of Oracle Wallets, SSL certificates, and ACLs for secure API integrations (Gemini, WhatsApp, Google).</p>
+                <p>Secure Oracle Wallet configuration and REST API integrations (WhatsApp, Gemini AI).</p>
             </div>
         </div>
     </div>
 
     <div class="card">
-        <h2><i class="fa-solid fa-laptop-code"></i> Skills & Tools</h2>
-        <div class="skills-grid">
-            <span class="skill-tag">Oracle APEX 23ai/24.x</span>
-            <span class="skill-tag">Oracle PL/SQL</span>
-            <span class="skill-tag">Oracle Database 19c/23ai</span>
-            <span class="skill-tag">RESTful APIs (ORDS)</span>
-            <span class="skill-tag">JavaScript / CSS3</span>
-            <span class="skill-tag">Oracle Forms 6i</span>
-            <span class="skill-tag">Postman & API Testing</span>
-            <span class="skill-tag">JSON & XML Processing</span>
+        <h2><i class="fa-solid fa-gears"></i> Skills & Stack</h2>
+        <div class="skills-container">
+            <span class="skill-badge">Oracle APEX 23ai</span>
+            <span class="skill-badge">Oracle Database 19c</span>
+            <span class="skill-badge">Advanced PL/SQL</span>
+            <span class="skill-badge">RESTful Services (ORDS)</span>
+            <span class="skill-badge">JSON/XML Processing</span>
+            <span class="skill-badge">Oracle Forms 6i</span>
+            <span class="skill-badge">HTML5 & CSS3</span>
+            <span class="skill-badge">API Integration</span>
         </div>
     </div>
 
@@ -164,9 +144,8 @@
     <div style="margin-bottom: 20px;">
         <a href="https://www.linkedin.com/in/muhammadyaseenkhan94" class="social-link" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://github.com/muhammadyaseenkhan94" class="social-link" target="_blank"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:your-email@example.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
     </div>
-    <p>Muhammad Yaseen Khan &copy; 2026 | Oracle APEX Developer Portfolio</p>
+    <p>Muhammad Yaseen Khan | Crafted with Excellence &copy; 2026</p>
 </footer>
 
 </body>
