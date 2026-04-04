@@ -3,143 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Yaseen Khan | Portfolio</title>
+    <title>Muhammad Yaseen Khan | Oracle APEX Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --oracle-red: #f80000;
-            --oracle-blue: #00758f;
-            --dark: #202124;
-            --light: #f8f9fa;
-            --border: #dadce0;
+            --primary: #00758f; /* Oracle Blue */
+            --secondary: #f80000; /* Oracle Red */
+            --accent: #ffcc00; /* Professional Gold */
+            --dark: #1a1a1b;
+            --light: #ffffff;
+            --bg: #f4f7f6;
+            --transition: all 0.3s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f0f2f5; color: var(--dark); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
 
-        /* Header & Navigation */
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Header & Hero Section */
         header {
             background: linear-gradient(135deg, #004e5f 0%, #00758f 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 100px 20px 140px;
             text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
+
+        .profile-container { position: relative; display: inline-block; }
 
         .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.2);
-            margin-bottom: 15px;
+            border: 6px solid rgba(255,255,255,0.3);
+            margin-bottom: 20px;
             object-fit: cover;
             background-color: #fff;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
+
+        .profile-pic:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: var(--accent);
+        }
+
+        header h1 { font-size: 3rem; letter-spacing: 1px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.2rem; opacity: 0.9; font-weight: 300; }
 
         /* Container */
-        .container { max-width: 1000px; margin: -40px auto 40px; padding: 0 15px; }
+        .container { max-width: 1100px; margin: -60px auto 60px; padding: 0 20px; }
 
+        /* Modern Card Style */
         .card {
             background: white;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        h2 { color: var(--oracle-blue); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
-        h3 { color: var(--oracle-red); margin-bottom: 5px; font-size: 1.2rem; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
-        /* Experience Items */
-        .exp-item { margin-bottom: 25px; padding-left: 15px; border-left: 3px solid var(--border); }
-        .date { font-size: 0.85rem; color: #666; font-weight: bold; }
+        h2 { 
+            color: var(--primary); 
+            font-size: 1.8rem; 
+            margin-bottom: 25px; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+        }
 
-        /* Module Tags */
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .tag { background: #e8f0fe; color: #1967d2; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; }
+        h2 i { color: var(--secondary); }
 
-        /* Grid for Modules */
-        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .module-card { border: 1px solid var(--border); padding: 15px; border-radius: 8px; }
+        /* Experience Timeline */
+        .exp-item { 
+            position: relative; 
+            padding-left: 30px; 
+            margin-bottom: 30px; 
+            border-left: 3px solid #e0e0e0; 
+            transition: var(--transition);
+        }
+        
+        .exp-item:hover { border-left-color: var(--primary); }
 
-        footer { text-align: center; padding: 20px; color: #777; font-size: 0.9rem; }
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
 
-        @media (max-width: 600px) { header { padding: 40px 10px; } }
+        .date { 
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* Skills Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .tag { 
+            background: #f0f4f8; 
+            color: var(--primary); 
+            padding: 6px 16px; 
+            border-radius: 50px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .tag:hover { 
+            background: var(--primary); 
+            color: white; 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,117,143,0.3);
+        }
+
+        /* Projects Grid */
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .module-card { 
+            background: #fafafa;
+            padding: 25px; 
+            border-radius: 12px; 
+            border-bottom: 4px solid #eee;
+            transition: var(--transition);
+        }
+
+        .module-card:hover { 
+            background: white;
+            border-bottom-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .module-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; }
+
+        /* Footer */
+        footer { 
+            background: var(--dark); 
+            color: white; 
+            text-align: center; 
+            padding: 50px 20px; 
+            margin-top: 50px; 
+        }
+
+        .social-links { margin-bottom: 20px; }
+        .social-links a { 
+            color: white; 
+            font-size: 1.5rem; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            transition: var(--transition); 
+        }
+        .social-links a:hover { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .container { margin-top: -30px; }
+            .card { padding: 25px; }
+        }
+
+        /* Background Animation Detail */
+        .card::after {
+            content: 'ORACLE';
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 5rem;
+            font-weight: 900;
+            opacity: 0.02;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="113479.PNG" alt="Muhammad Yaseen Khan" class="profile-pic">
+    <div class="profile-container">
+        <img src="113479.PNG" alt="Muhammad Yaseen Khan" class="profile-pic">
+    </div>
     <h1>Muhammad Yaseen Khan</h1>
-    <p>Senior Oracle APEX Developer | PL/SQL Expert | Database Management</p>
+    <p><i class="fa-solid fa-code"></i> Senior Oracle APEX Developer | PL/SQL Expert | Solution Architect</p>
 </header>
 
 <div class="container">
     
     <div class="card">
-        <h2>Professional Profile</h2>
-        <p>Expert Oracle APEX Developer with a strong focus on <b>Enterprise Solutions</b>, <b>Digital Invoicing</b>, and <b>Hospital Management Systems</b>. Specialized in architecting database solutions on Oracle 11g, 19c, and 23ai.</p>
+        <h2><i class="fa-solid fa-user-tie"></i> Professional Profile</h2>
+        <p>Expert Oracle APEX Developer with a proven track record in building <b>Scalable Enterprise Solutions</b>. Specialized in modernizing legacy systems and implementing critical digital infrastructures like <b>ZATCA Phase 2</b> and <b>FBR Invoicing</b>. I bridge the gap between complex database logic and seamless user experiences.</p>
         <div class="tags">
-            <span class="tag">Oracle APEX</span> <span class="tag">PL/SQL</span> <span class="tag">ZATCA</span> <span class="tag">FBR</span> <span class="tag">REST APIs</span>
+            <span class="tag">Oracle APEX 23.x</span>
+            <span class="tag">Advanced PL/SQL</span>
+            <span class="tag">REST Data Services</span>
+            <span class="tag">Database Security</span>
+            <span class="tag">ZATCA/FBR Expert</span>
         </div>
     </div>
 
     <div class="card">
-        <h2>Work Experience</h2>
+        <h2><i class="fa-solid fa-briefcase"></i> Professional Journey</h2>
         
         <div class="exp-item">
-            <p class="date">2023 - PRESENT</p>
+            <span class="date">2023 - PRESENT</span>
             <h3>Senior Software Developer</h3>
-            <p>Leading the development of complex modules for Hospital Management Systems (HMS) and integrating international tax compliance systems (ZATCA Phase 2 & FBR).</p>
+            <p>Leading high-impact projects including international tax compliance systems (ZATCA) and comprehensive Hospital Management Systems (HMS). Architecting secure API integrations using Oracle Wallets and SSL.</p>
         </div>
 
         <div class="exp-item">
-            <p class="date">2021 - 2023</p>
+            <span class="date">2021 - 2023</span>
             <h3>Oracle Database Developer</h3>
-            <p>Focused on PL/SQL optimization, Oracle Forms 6i support, and migrating legacy systems to modern Oracle APEX web environments.</p>
+            <p>Focused on mission-critical database operations, PL/SQL performance tuning, and the transformation of legacy <b>Oracle Forms 6i</b> applications into modern, web-based APEX solutions.</p>
         </div>
     </div>
 
     <div class="card">
-        <h2>Major Projects & Modules</h2>
+        <h2><i class="fa-solid fa-rocket"></i> Key Projects & Expertise</h2>
         <div class="module-grid">
             
             <div class="module-card">
-                <h3>Digital Tax Integration</h3>
-                <p>Implementation of <b>ZATCA Phase 2</b> and <b>FBR Digital Invoicing</b> using REST APIs and JSON signed structures.</p>
+                <h3><i class="fa-solid fa-file-invoice-dollar"></i> Digital Tax</h3>
+                <p>Seamless integration of <b>ZATCA (KSA)</b> and <b>FBR (PK)</b> digital invoicing with complex JSON signing.</p>
             </div>
 
             <div class="module-card">
-                <h3>Healthcare (HMS)</h3>
-                <p>Pharmacy Management, Formulary Registry, Ward Management, and Patient Clinical Governance modules.</p>
+                <h3><i class="fa-solid fa-hospital"></i> Healthcare IT</h3>
+                <p>Pharmacy Management, Ward Systems, and Clinical Governance modules for enterprise hospitals.</p>
             </div>
 
             <div class="module-card">
-                <h3>Legacy Modernization</h3>
-                <p>Troubleshooting <b>Oracle Forms 6i</b> and converting report layouts to modern HTP.P/CSS web formats.</p>
+                <h3><i class="fa-solid fa-microchip"></i> AI & Automation</h3>
+                <p>Integrating <b>Gemini AI</b> and WhatsApp APIs directly into Oracle Database via secure web services.</p>
             </div>
 
             <div class="module-card">
-                <h3>AI & Connectivity</h3>
-                <p>Secure communication with <b>Gemini/AI APIs</b> and WhatsApp Business APIs via Oracle Wallets and SSL certificates.</p>
+                <h3><i class="fa-solid fa-shield-halved"></i> Legacy Migration</h3>
+                <p>Solving complex <b>Forms 6i</b> compatibility issues and modernizing report layouts with CSS3.</p>
             </div>
 
         </div>
     </div>
 
     <div class="card">
-        <h2>Technical Stack</h2>
+        <h2><i class="fa-solid fa-layer-group"></i> Technical Stack</h2>
         <div class="module-grid">
             <div>
-                <b>Database:</b>
-                <p>Oracle 11g, 12c, 19c, 23ai (SQL, PL/SQL)</p>
+                <strong><i class="fa-solid fa-database"></i> Database</strong>
+                <p>Oracle 11g, 19c, 23ai, SQL, PL/SQL tuning</p>
             </div>
             <div>
-                <b>Tools:</b>
-                <p>SQL Developer, Postman, ORDS, Pi Cube, GitHub</p>
+                <strong><i class="fa-solid fa-wrench"></i> Ecosystem</strong>
+                <p>ORDS, Postman, Oracle Wallet, SQL Developer</p>
             </div>
             <div>
-                <b>Web:</b>
-                <p>HTML5, CSS3, JavaScript, JSON, RESTful Services</p>
+                <strong><i class="fa-solid fa-laptop-code"></i> Frontend</strong>
+                <p>HTML5, CSS3, JavaScript, Oracle APEX Components</p>
             </div>
         </div>
     </div>
@@ -147,7 +281,13 @@
 </div>
 
 <footer>
-    <p>Muhammad Yaseen Khan | Oracle APEX Developer Portfolio &copy; 2026</p>
+    <div class="social-links">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:yaseen@example.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p>Muhammad Yaseen Khan | Crafted for Excellence</p>
+    <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">&copy; 2026 Professional Oracle Portfolio</p>
 </footer>
 
 </body>
