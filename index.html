@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Muhammad Yaseen Khan | Oracle APEX Developer | Portfolio</title>
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Swiper CSS for modern slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         * {
             margin: 0;
@@ -163,7 +159,6 @@
         .exp-company { font-weight: 600; color: var(--accent-red); display: block; margin: 0.2rem 0 0.4rem; }
         .exp-date { font-size: 0.75rem; background: #eef2ff; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 30px; margin-bottom: 0.6rem; font-weight: 600; }
 
-        /* badge style */
         .badge-tech {
             display: inline-block;
             background: white;
@@ -178,43 +173,6 @@
             transition: 0.2s;
         }
         .badge-tech:hover { background: #e0f2f1; transform: translateY(-2px); }
-
-        /* certificate slider / swiper */
-        .swiper {
-            width: 100%;
-            padding: 20px 0 30px;
-        }
-        .swiper-slide {
-            background: #fef9e6;
-            border-radius: 1.2rem;
-            padding: 1.4rem;
-            text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 1px solid #ffe6c7;
-        }
-        .swiper-slide i {
-            font-size: 2.5rem;
-            color: #e67e22;
-            margin-bottom: 0.6rem;
-            display: inline-block;
-        }
-        .swiper-slide h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e4663; }
-        .swiper-slide p { font-size: 0.8rem; color: #4a627a; margin-bottom: 1rem; }
-        .cert-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #00758f10;
-            padding: 6px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--primary-deep);
-            transition: 0.2s;
-        }
-        .cert-link:hover { background: var(--primary-deep); color: white; }
 
         .contact-bar {
             display: flex;
@@ -272,7 +230,6 @@
 
 <div class="main-container">
 
-    <!-- About + Summary -->
     <div class="card">
         <div class="section-title"><i class="fas fa-user-astronaut"></i><span>About Me & Professional Summary</span></div>
         <p style="margin-bottom: 1rem;">🎯 A bright, ambitious, self-motivated <strong>Oracle developer</strong> with strong technical background. Quick learner, excellent communicator, seeking dynamic company to forge career as first-class Software developer.</p>
@@ -280,7 +237,6 @@
         <div style="margin-top: 1rem;"><span class="badge-tech"><i class="fas fa-check-circle"></i> Oracle 23ai</span><span class="badge-tech">APEX 24.1+</span><span class="badge-tech">PL/SQL Tuning</span><span class="badge-tech">ORDS REST</span></div>
     </div>
 
-    <!-- Work Experience -->
     <div class="card">
         <div class="section-title"><i class="fas fa-briefcase"></i><span>Work Experience</span></div>
         <div class="timeline">
@@ -290,32 +246,23 @@
         </div>
     </div>
 
-    <!-- Education & Certifications with SLIDER (badges + links) -->
     <div class="card">
-        <div class="section-title"><i class="fas fa-graduation-cap"></i><span>Education & Certifications (with interactive slider)</span></div>
-        <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; margin-bottom: 2rem;">
-            <div style="flex:1;"><h3 style="color:var(--primary-deep);"><i class="fas fa-university"></i> Academic</h3>
-                <ul style="list-style: none;"><li>📘 MATRIC (2012) - BISE Lahore</li><li>📖 FA (2015) - AIOU Islamabad</li><li>🎓 BA (2017) - AIOU Islamabad</li><li>💻 Computer Office Application (2018)</li><li>🔧 Oracle Database & PL/SQL (2017/2019) - IDEAL/ORBIT College</li><li>⚡ Oracle APEX (2024/2025) - ORBIT & Sylani Welfare</li><li>☁️ Oracle APEX Cloud Developer Professional (2025) - Oracle University</li></ul>
-            </div>
-            <div style="flex:1.5;"><h3 style="color:var(--primary-deep);"><i class="fas fa-certificate"></i> Certifications (Slide to explore)</h3>
-                <!-- Swiper Slider -->
-                <div class="swiper certSwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><i class="fab fa-oracle"></i><h4>OCI Generative AI Professional 2024</h4><p>Oracle Cloud Infrastructure</p><a href="#" class="cert-link" target="_blank"><i class="fas fa-link"></i> Verify Credential</a></div>
-                        <div class="swiper-slide"><i class="fab fa-oracle"></i><h4>OCI AI Foundations Associate 2023</h4><p>Oracle Cloud Infrastructure</p><a href="#" class="cert-link" target="_blank"><i class="fas fa-link"></i> View Badge</a></div>
-                        <div class="swiper-slide"><i class="fab fa-microsoft"></i><h4>Career Essentials in Generative AI</h4><p>Microsoft & LinkedIn</p><a href="#" class="cert-link" target="_blank"><i class="fas fa-link"></i> Badge Link</a></div>
-                        <div class="swiper-slide"><i class="fas fa-cloud-upload-alt"></i><h4>Oracle APEX Cloud Developer Professional</h4><p>Oracle University 2025</p><a href="#" class="cert-link" target="_blank"><i class="fas fa-link"></i> Credential</a></div>
-                        <div class="swiper-slide"><i class="fas fa-database"></i><h4>Oracle APEX Workshop</h4><p>Sylani Welfare 2025</p><a href="#" class="cert-link" target="_blank"><i class="fas fa-link"></i> Certificate</a></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
+        <div class="section-title"><i class="fas fa-graduation-cap"></i><span>Education & Certifications</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; margin-bottom: 1rem;">
+            <div style="flex:1;"><h3 style="color:var(--primary-deep); margin-bottom: 1rem;"><i class="fas fa-university"></i> Academic & Technical Credentials</h3>
+                <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px;">
+                    <li>📘 MATRIC (2012) - BISE Lahore</li>
+                    <li>📖 FA (2015) - AIOU Islamabad</li>
+                    <li>🎓 BA (2017) - AIOU Islamabad</li>
+                    <li>💻 Computer Office Application (2018)</li>
+                    <li>🔧 Oracle Database & PL/SQL (2017/2019) - IDEAL/ORBIT College</li>
+                    <li>⚡ Oracle APEX (2024/2025) - ORBIT & Sylani Welfare</li>
+                    <li>☁️ Oracle APEX Cloud Developer Professional (2025) - Oracle University</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- Modules Developed (grid) -->
     <div class="card">
         <div class="section-title"><i class="fas fa-cubes"></i><span>Major ERP Modules Delivered</span></div>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1rem;">
@@ -330,26 +277,23 @@
         </div>
     </div>
 
-    <!-- Technical Skills -->
     <div class="card">
         <div class="section-title"><i class="fas fa-laptop-code"></i><span>Technical Stack & Tools</span></div>
-        <div><h3>Databases</h3><span class="badge-tech">Oracle 10g/11g/12c/19c/23ai</span><span class="badge-tech">Oracle Enterprise Edition</span><span class="badge-tech">SQL*Plus</span></div>
-        <div><h3>IDE & Tools</h3><span class="badge-tech">Oracle Developer Suite 6i/10g/11g/12c</span><span class="badge-tech">Oracle APEX</span><span class="badge-tech">SQL Developer</span><span class="badge-tech">TOAD</span></div>
-        <div><h3>Languages</h3><span class="badge-tech">SQL, PL/SQL</span><span class="badge-tech">Procedures/Functions/Packages</span><span class="badge-tech">Triggers</span><span class="badge-tech">Bulk Collect</span></div>
+        <div style="margin-bottom: 0.8rem;"><h3>Databases</h3><span class="badge-tech">Oracle 10g/11g/12c/19c/23ai</span><span class="badge-tech">Oracle Enterprise Edition</span><span class="badge-tech">SQL*Plus</span></div>
+        <div style="margin-bottom: 0.8rem;"><h3>IDE & Tools</h3><span class="badge-tech">Oracle Developer Suite 6i/10g/11g/12c</span><span class="badge-tech">Oracle APEX</span><span class="badge-tech">SQL Developer</span><span class="badge-tech">TOAD</span></div>
+        <div style="margin-bottom: 0.8rem;"><h3>Languages</h3><span class="badge-tech">SQL, PL/SQL</span><span class="badge-tech">Procedures/Functions/Packages</span><span class="badge-tech">Triggers</span><span class="badge-tech">Bulk Collect</span></div>
         <div><h3>Reporting & APIs</h3><span class="badge-tech">Oracle Forms/Reports</span><span class="badge-tech">APEX Interactive Grids</span><span class="badge-tech">ORDS REST APIs</span></div>
     </div>
 
-    <!-- Hobbies & Personal -->
     <div class="card">
         <div class="section-title"><i class="fas fa-heart"></i><span>Hobbies & Interests</span></div>
         <div><span class="badge-tech"><i class="fas fa-eye"></i> Computer Vision</span><span class="badge-tech"><i class="fas fa-brain"></i> Machine Learning</span><span class="badge-tech"><i class="fas fa-search"></i> Internet Searching</span><span class="badge-tech"><i class="fas fa-download"></i> New Software</span><span class="badge-tech"><i class="fas fa-chart-simple"></i> Data Organizing</span><span class="badge-tech"><i class="fas fa-code"></i> Programming</span></div>
     </div>
 
-    <!-- Personal Details -->
     <div class="card">
         <div class="section-title"><i class="fas fa-id-card"></i><span>Personal Information</span></div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 8px;">
-            <div><i class="fas fa-father"></i> Father: Muhammad Naseer Khan</div>
+            <div><i class="fas fa-user"></i> Father: Muhammad Naseer Khan</div>
             <div><i class="fas fa-calendar-alt"></i> DOB: 18-Apr-1995</div>
             <div><i class="fas fa-map-pin"></i> Domicile: Sheikhupura, Punjab</div>
             <div><i class="fas fa-heart"></i> Married</div>
@@ -359,7 +303,6 @@
         <div style="margin-top: 1rem;"><i class="fas fa-location-dot"></i> Address: Tibi Pathana Mananwala, Teh & Dist Sheikhupura, Pakistan</div>
     </div>
 
-    <!-- CONTACT BAR with all emails (gmail, hotmail, yahoo) and phones -->
     <div class="contact-bar">
         <div class="contact-info">
             <a href="tel:+923027001918"><i class="fas fa-phone-alt"></i> 0302-7001918</a>
@@ -370,43 +313,21 @@
         </div>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/muhammadyaseenkhan94" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </div>
 
-    <!-- Referees -->
     <div class="card">
         <div class="section-title"><i class="fas fa-users"></i><span>Referees</span></div>
         <p>Professional references available upon request (BZ Softech, Albarka Fabrics, Masood Textile Mills). Contact via email or LinkedIn for detailed reference letters.</p>
     </div>
 
     <footer>
-        <p>© 2026 Muhammad Yaseen Khan – Senior Oracle APEX Developer | Modern Portfolio with Hover Effects & Certification Slider</p>
+        <p>© 2026 Muhammad Yaseen Khan – Senior Oracle APEX Developer</p>
         <p><i class="fas fa-code"></i> Oracle 23ai | APEX Cloud | PL/SQL Expert | ZATCA Integration</p>
     </footer>
 </div>
 
-<!-- Swiper JS and initialization -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper(".certSwiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            1024: { slidesPerView: 3, spaceBetween: 25 },
-        }
-    });
-    // add extra hover effect on cards
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.transition = 'all 0.25s ease';
