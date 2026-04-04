@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Yaseen | Portfolio</title>
+    <style>
+        :root {
+            --oracle-red: #f80000;
+            --oracle-blue: #00758f;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --border: #dadce0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f0f2f5; color: var(--dark); line-height: 1.6; }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #004e5f 0%, #00758f 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            margin-bottom: 15px;
+            object-fit: cover;
+            background-color: #fff;
+        }
+
+        /* Container */
+        .container { max-width: 1000px; margin: -40px auto 40px; padding: 0 15px; }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 { color: var(--oracle-blue); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
+        h3 { color: var(--oracle-red); margin-bottom: 5px; font-size: 1.2rem; }
+
+        /* Experience Items */
+        .exp-item { margin-bottom: 25px; padding-left: 15px; border-left: 3px solid var(--border); }
+        .date { font-size: 0.85rem; color: #666; font-weight: bold; }
+
+        /* Module Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .tag { background: #e8f0fe; color: #1967d2; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; }
+
+        /* Grid for Modules */
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .module-card { border: 1px solid var(--border); padding: 15px; border-radius: 8px; }
+
+        footer { text-align: center; padding: 20px; color: #777; font-size: 0.9rem; }
+
+        @media (max-width: 600px) { header { padding: 40px 10px; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="data:image/png;base64,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" alt="Muhammad Yaseen" class="profile-pic">
+    <h1>Muhammad Yaseen</h1>
+    <p>Software Engineer | Oracle Developer (APEX, PL/SQL, Database)</p>
+</header>
+
+<div class="container">
+    
+    <div class="card">
+        <h2>Professional Profile</h2>
+        <p>Expert Oracle APEX Developer with a strong focus on <b>Enterprise Solutions</b>, <b>Digital Invoicing</b>, and <b>Hospital Management Systems</b>. Specialized in architecting database solutions on Oracle 11g, 19c, and 23ai.</p>
+        <div class="tags">
+            <span class="tag">Oracle APEX</span> <span class="tag">PL/SQL</span> <span class="tag">ZATCA</span> <span class="tag">FBR</span> <span class="tag">REST APIs</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Work Experience</h2>
+        
+        <div class="exp-item">
+            <p class="date">2023 - PRESENT</p>
+            <h3>Senior Software Developer</h3>
+            <p>Leading the development of complex modules for Hospital Management Systems (HMS) and integrating international tax compliance systems.</p>
+        </div>
+
+        <div class="exp-item">
+            <p class="date">2021 - 2023</p>
+            <h3>Oracle Database Developer</h3>
+            <p>Focused on PL/SQL optimization, Oracle Forms 6i support, and migrating legacy systems to Oracle APEX web-based environments.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Major Projects & Modules</h2>
+        <div class="module-grid">
+            
+            <div class="module-card">
+                <h3>Digital Tax Integration</h3>
+                <p>Full implementation of <b>ZATCA Phase 2</b> (Saudi Arabia) and <b>FBR Digital Invoicing</b> (Pakistan) via REST APIs and JSON signed structures.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>Healthcare (HMS)</h3>
+                <p>End-to-end Pharmacy Management, Formulary Registry, Ward Management, and Patient Clinical Governance modules.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>Legacy Modernization</h3>
+                <p>Transitioning <b>Oracle Forms 6i</b> systems to modern Windows environments and converting report layouts to HTP.P/CSS web formats.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>Security & Connectivity</h3>
+                <p>Configuration of <b>Oracle Wallets</b>, SSL certificates, and ACLs for secure communication with <b>Gemini/AI APIs</b> and WhatsApp Business APIs.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Technical Stack</h2>
+        <div class="module-grid">
+            <div>
+                <b>Database:</b>
+                <p>Oracle 11g, 12c, 19c, 23ai (SQL, PL/SQL)</p>
+            </div>
+            <div>
+                <b>Tools:</b>
+                <p>SQL Developer, Postman, ORDS, Pi Cube, CMD Utilities</p>
+            </div>
+            <div>
+                <b>Web:</b>
+                <p>HTML5, CSS3, JavaScript, JSON, RESTful Services</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Muhammad Yaseen | Oracle APEX Developer Portfolio &copy; 2026</p>
+</footer>
+
+</body>
+</html>
