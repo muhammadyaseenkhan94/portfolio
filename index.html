@@ -316,7 +316,7 @@ button,input,textarea{font:inherit;color:inherit}
 .contact{position:relative;overflow:hidden;isolation:isolate;background:var(--navy);color:#fff;padding:96px 0}
 .contact::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(0deg,#000,transparent 85%);mask-image:linear-gradient(0deg,#000,transparent 85%)}
 .contact::after{content:"";position:absolute;z-index:-1;width:640px;height:640px;left:-220px;bottom:-280px;background:radial-gradient(closest-side,rgba(199,70,52,.22),transparent 70%)}
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.contact-grid{display:grid;grid-template-columns:minmax(0,760px);gap:48px;align-items:start}
 .contact .eyebrow{color:var(--coral-light)}
 .contact .section-title{color:#fff}
 .contact .section-intro{color:rgba(255,255,255,.74)}
@@ -981,23 +981,6 @@ button,input,textarea{font:inherit;color:inherit}
           </li>
         </ul>
       </div>
-
-      <div class="form-card reveal">
-        <h3>Send a message</h3>
-        <p>Your message opens in your email app, ready to send.</p>
-        <form id="contactForm" action="mailto:muhammadyaseenkhan94@gmail.com" method="post" enctype="text/plain">
-          <div class="form-row">
-            <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
-          </div>
-          <div class="field"><label for="cf-subject">Subject</label><input id="cf-subject" name="subject" type="text" placeholder="Job opportunity, project or collaboration"></div>
-          <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required></textarea></div>
-          <div class="form-actions">
-            <span class="form-note">Prefer a call? +92 302 7001918</span>
-            <button class="btn btn-primary" type="submit"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-send"/></svg>Send message</button>
-          </div>
-        </form>
-      </div>
     </div>
   </section>
 </main>
@@ -1221,24 +1204,6 @@ button,input,textarea{font:inherit;color:inherit}
       } else { legacyCopy(text); done(); }
     });
   });
-
-  /* ---------- Contact form: opens the visitor's email app ---------- */
-  var form = document.getElementById('contactForm');
-  if (form) {
-    form.setAttribute('novalidate', '');
-    form.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      if (!form.checkValidity()) { if (form.reportValidity) form.reportValidity(); return; }
-      var name = document.getElementById('cf-name').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var subject = document.getElementById('cf-subject').value.trim() || 'Portfolio enquiry';
-      var message = document.getElementById('cf-message').value.trim();
-      var body = message + '\n\n' + name + '\n' + email;
-      window.location.href = 'mailto:muhammadyaseenkhan94@gmail.com?subject=' +
-        encodeURIComponent(subject + ' (from ' + name + ')') + '&body=' + encodeURIComponent(body);
-      toast('Opening your email app');
-    });
-  }
 
   /* ---------- Certification image lightbox ---------- */
   var certDialog = document.getElementById('certDialog');
