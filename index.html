@@ -191,26 +191,43 @@ button,input,textarea{font:inherit;color:inherit}
 .tag{padding:4px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--line-soft);color:var(--chip-text);font-size:.78rem;font-weight:500}
 
 /* ---------- About + personal information ---------- */
-.about-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:start}
-.about-copy p{margin-top:16px;font-size:1.02rem;line-height:1.78}
+.about-copy{margin-top:64px}
+.about-copy p{margin-top:16px;font-size:1.02rem;line-height:1.78;max-width:78ch}
 .about-copy p:first-of-type{margin-top:22px}
 .about-copy strong{color:var(--ink);font-weight:600}
-.highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+.highlights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:32px}
 .hl{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .hl-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .hl-value{margin-top:2px;color:var(--ink);font-weight:600;font-size:.93rem;line-height:1.4}
-.personal{padding:28px}
-.card-head{display:flex;align-items:center;gap:14px}
-.card-head h3{font-size:1.2rem}
-.card-head p{font-size:.86rem;color:var(--muted)}
-.pi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;margin:16px 0 0}
-.pi{padding:13px 0;border-bottom:1px dashed var(--line);min-width:0}
+.personal{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+.pi-head{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:26px 32px;background:var(--navy);color:#fff}
+.pi-head::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:20px 20px;-webkit-mask-image:linear-gradient(120deg,transparent 35%,#000);mask-image:linear-gradient(120deg,transparent 35%,#000)}
+.pi-head::after{content:"";position:absolute;z-index:-1;width:320px;height:320px;right:-100px;top:-160px;background:radial-gradient(closest-side,rgba(199,70,52,.35),transparent 70%)}
+.pi-title{display:flex;align-items:center;gap:16px}
+.pi-title .icon-tile{background:#C74634;color:#fff;width:52px;height:52px;border-radius:14px}
+.pi-title .eyebrow{color:var(--coral-light)}
+.pi-title h2{margin-top:4px;color:#fff;font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.2;letter-spacing:-.01em}
+.pi-exp{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font-size:.88rem;color:rgba(255,255,255,.72)}
+.pi-exp .icon{color:var(--coral-light)}
+.pi-exp strong{color:#fff;font-weight:600}
+.pi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0;padding:24px 32px 30px}
+.pi{display:flex;gap:12px;align-items:flex-start;min-width:0;padding:14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line-soft);transition:border-color .2s ease,transform .2s ease}
+.pi:hover{border-color:var(--coral-line);transform:translateY(-1px)}
+.pi.wide{grid-column:span 2}
 .pi.full{grid-column:1/-1}
-.pi:last-child{border-bottom:0;padding-bottom:0}
+.pi-links{display:flex;flex-wrap:wrap;gap:2px 18px}
+.pi > div{min-width:0}
 .pi dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.pi dd{margin:4px 0 0;color:var(--ink);font-weight:500;font-size:.96rem;line-height:1.45;overflow-wrap:anywhere}
-.pi dd a{display:inline-block;line-height:26px;color:var(--ink);border-bottom:1px solid var(--coral-line);transition:color .2s ease,border-color .2s ease}
+.pi dd{margin:4px 0 0;color:var(--ink);font-weight:600;font-size:.95rem;line-height:1.45;overflow-wrap:anywhere}
+.pi dd a{display:inline-block;line-height:24px;color:var(--ink);border-bottom:1px solid var(--coral-line);transition:color .2s ease,border-color .2s ease}
 .pi dd a:hover{color:var(--coral);border-color:var(--coral)}
+@media (max-width:1060px){.pi-grid,.highlights{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .pi-head{padding:22px 20px}
+  .pi-grid{grid-template-columns:1fr;padding:18px 20px 22px}
+  .pi.wide,.pi.full{grid-column:auto}
+  .about-copy{margin-top:48px}
+}
 
 /* ---------- Expertise ---------- */
 .x-card{position:relative;padding:26px;overflow:hidden}
@@ -381,7 +398,7 @@ button,input,textarea{font:inherit;color:inherit}
   .hero-grid{grid-template-columns:1fr;gap:48px}
   .hero-photo{order:-1}
   .avatar-wrap{width:min(260px,70vw)}
-  .about-grid,.cred-grid,.contact-grid,.cert-feature{grid-template-columns:1fr}
+  .cred-grid,.contact-grid,.cert-feature{grid-template-columns:1fr}
   .cert-id{max-width:none}
   .stats-card{grid-template-columns:repeat(2,minmax(0,1fr))}
   .stat:nth-child(3){border-left:0}
@@ -394,11 +411,9 @@ button,input,textarea{font:inherit;color:inherit}
   .brand-role{display:none}
   .contact-cta{display:none}
   .grid-2,.grid-3,.highlights,.form-row{grid-template-columns:1fr}
-  .pi-grid{grid-template-columns:1fr}
-  .pi.full{border-bottom:0}
   .hero h1{margin-top:18px}
   .stat{padding:20px 18px}
-  .personal,.x-card,.job-card,.p-card,.m-card,.s-card,.more-card,.form-card,.cert-feature{padding:22px 20px}
+  .x-card,.job-card,.p-card,.m-card,.s-card,.more-card,.form-card,.cert-feature{padding:22px 20px}
   .timeline{padding-left:26px}
   .timeline::before{left:6px}
   .job::before{left:-26px}
@@ -555,8 +570,31 @@ button,input,textarea{font:inherit;color:inherit}
   </div>
 
   <!-- ===================== ABOUT + PERSONAL INFORMATION ===================== -->
-  <section class="section" id="about" aria-labelledby="about-title">
-    <div class="container about-grid">
+  <section class="section" id="about" aria-labelledby="pi-title">
+    <div class="container">
+      <aside class="personal reveal" aria-labelledby="pi-title">
+        <div class="pi-head">
+          <div class="pi-title">
+            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-id"/></svg></span>
+            <div><span class="eyebrow">Profile</span><h2 id="pi-title">Personal information</h2></div>
+          </div>
+          <div class="pi-exp"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chart"/></svg><span>Total experience</span><strong data-total-exp>7 years, 8 months, 24 days</strong></div>
+        </div>
+        <dl class="pi-grid">
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-profile"/></svg></span><div><dt>Full name</dt><dd>Muhammad Yaseen Khan</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-users"/></svg></span><div><dt>Father's name</dt><dd>Muhammad Naseer Khan</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-clock"/></svg></span><div><dt>Date of birth</dt><dd>18 April 1995</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-heart"/></svg></span><div><dt>Marital status</dt><dd>Married</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-id"/></svg></span><div><dt>Nationality</dt><dd>Pakistani</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-book"/></svg></span><div><dt>Religion</dt><dd>Islam</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-building"/></svg></span><div><dt>Domicile</dt><dd>Sheikhupura, Punjab</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-globe"/></svg></span><div><dt>Languages</dt><dd>Urdu, English</dd></div></div>
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg></span><div><dt>Phone</dt><dd class="pi-links"><a href="tel:+923027001918">+92 302 7001918</a><a href="tel:+923327001918">+92 332 7001918</a></dd></div></div>
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg></span><div><dt>Email</dt><dd><a href="mailto:muhammadyaseenkhan94@gmail.com">muhammadyaseenkhan94@gmail.com</a></dd></div></div>
+          <div class="pi full"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-pin"/></svg></span><div><dt>Address</dt><dd>Tibi Pathana, Mananwala, Tehsil &amp; District Sheikhupura, Punjab, Pakistan</dd></div></div>
+        </dl>
+      </aside>
+
       <div class="about-copy reveal">
         <span class="eyebrow">About me</span>
         <h2 class="section-title" id="about-title">Turning business processes into reliable Oracle applications</h2>
@@ -570,27 +608,6 @@ button,input,textarea{font:inherit;color:inherit}
           <div class="hl"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-cap"/></svg></span><div><div class="hl-label">Education</div><div class="hl-value">Bachelor, Allama Iqbal Open University (2017)</div></div></div>
         </div>
       </div>
-
-      <aside class="card personal reveal" aria-labelledby="pi-title">
-        <div class="card-head">
-          <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-id"/></svg></span>
-          <div><h3 id="pi-title">Personal information</h3><p>Personal and contact details</p></div>
-        </div>
-        <dl class="pi-grid">
-          <div class="pi"><dt>Full name</dt><dd>Muhammad Yaseen Khan</dd></div>
-          <div class="pi"><dt>Father's name</dt><dd>Muhammad Naseer Khan</dd></div>
-          <div class="pi"><dt>Date of birth</dt><dd>18 April 1995</dd></div>
-          <div class="pi"><dt>Marital status</dt><dd>Married</dd></div>
-          <div class="pi"><dt>Nationality</dt><dd>Pakistani</dd></div>
-          <div class="pi"><dt>Religion</dt><dd>Islam</dd></div>
-          <div class="pi"><dt>Domicile</dt><dd>Sheikhupura, Punjab</dd></div>
-          <div class="pi"><dt>Languages</dt><dd>Urdu, English</dd></div>
-          <div class="pi"><dt>Phone</dt><dd><a href="tel:+923027001918">+92 302 7001918</a><br><a href="tel:+923327001918">+92 332 7001918</a></dd></div>
-          <div class="pi"><dt>Total experience</dt><dd data-total-exp>7 years, 8 months, 24 days</dd></div>
-          <div class="pi full"><dt>Email</dt><dd><a href="mailto:muhammadyaseenkhan94@gmail.com">muhammadyaseenkhan94@gmail.com</a></dd></div>
-          <div class="pi full"><dt>Address</dt><dd>Tibi Pathana, Mananwala, Tehsil &amp; District Sheikhupura, Punjab, Pakistan</dd></div>
-        </dl>
-      </aside>
     </div>
   </section>
 
