@@ -478,6 +478,9 @@ button,input,textarea{font:inherit;color:inherit}
 .flow-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--coral-line);background:var(--coral-soft);color:var(--coral);font-size:.8rem;font-weight:600;cursor:pointer;align-self:flex-start;transition:background-color .2s ease,color .2s ease}
 .flow-btn:hover{background:var(--coral-btn);border-color:var(--coral-btn);color:#fff}
 .flow{border:1px solid var(--line);padding:0;border-radius:16px;background:var(--surface);color:var(--text);width:min(620px,94vw);max-height:92vh;overflow:auto;box-shadow:var(--shadow-lg)}
+/* Keep scrolling inside an open dialog, not the page behind it */
+html.modal-open,html:has(dialog[open]){overflow:hidden}
+.flow,.cert-lightbox{overscroll-behavior:contain}
 .flow::backdrop{background:rgba(10,19,32,.85)}
 .sl-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line-soft);background:var(--surface)}
 .sl-head > div{flex:1;min-width:0}
@@ -1611,12 +1614,13 @@ button,input,textarea{font:inherit;color:inherit}
       document.getElementById('flowTitle').textContent = title;
       render(steps);
       if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      doc.classList.add('modal-open');
       dlg.scrollTop = 0;
     }
     function closeFlow() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
     document.getElementById('flowClose').addEventListener('click', closeFlow);
     dlg.addEventListener('click', function (ev) { if (ev.target === dlg) closeFlow(); });
-    dlg.addEventListener('close', function () { if (opener && opener.focus) opener.focus(); });
+    dlg.addEventListener('close', function () { doc.classList.remove('modal-open'); if (opener && opener.focus) opener.focus(); });
     each('#projects .p-card', function (card) {
       var h = card.querySelector('h3');
       var title = h ? h.textContent.trim() : '';
