@@ -163,15 +163,19 @@ button,input,textarea{font:inherit;color:inherit}
 .hero-cert-text{display:flex;flex-direction:column;gap:2px;font-size:.8rem;color:rgba(255,255,255,.7)}
 .hero-cert-text strong{font-size:.9rem;color:#fff}
 
-/* Personal information inside the hero */
-.pi-grid.hero-info{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:20px 0 0;padding:0}
-.hero-info .pi{padding:10px 12px;gap:10px;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
-.hero-info .pi:hover{border-color:rgba(240,130,108,.5)}
-.hero-info .icon-tile{background:rgba(240,130,108,.14);color:var(--coral-light)}
-.hero-info .pi dt{color:rgba(255,255,255,.55)}
-.hero-info .pi dd,.hero-info .pi dd a{color:#fff;font-size:.9rem}
-.hero-info .pi dd a{border-bottom-color:rgba(240,130,108,.45)}
+/* Personal information inside the hero: plain text lines */
+.pi-grid.hero-info{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 32px;margin:22px 0 0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.1)}
+.hero-info .pi{display:block;padding:0;background:none;border:0;border-radius:0}
+.hero-info .pi:hover{transform:none}
+.hero-info .icon-tile{display:none}
+.hero-info .pi > div{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.hero-info .pi dt{font-family:var(--font);font-size:.92rem;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.6)}
+.hero-info .pi dt::after{content:':'}
+.hero-info .pi dd{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 14px}
+.hero-info .pi dd,.hero-info .pi dd a{color:#fff;font-size:.95rem;font-weight:500;line-height:1.5}
+.hero-info .pi dd a{border-bottom:1px solid rgba(240,130,108,.45)}
 .hero-info .pi dd a:hover{color:#FFD9D0}
+.hero-info .pi dd a.mail-logo{border-bottom:0}
 @media (max-width:640px){.pi-grid.hero-info{grid-template-columns:1fr}}
 
 /* ---------- Stats ---------- */
