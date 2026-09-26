@@ -163,6 +163,17 @@ button,input,textarea{font:inherit;color:inherit}
 .hero-cert-text{display:flex;flex-direction:column;gap:2px;font-size:.8rem;color:rgba(255,255,255,.7)}
 .hero-cert-text strong{font-size:.9rem;color:#fff}
 
+/* Personal information inside the hero */
+.pi-grid.hero-info{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:20px 0 0;padding:0}
+.hero-info .pi{padding:10px 12px;gap:10px;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.hero-info .pi:hover{border-color:rgba(240,130,108,.5)}
+.hero-info .icon-tile{background:rgba(240,130,108,.14);color:var(--coral-light)}
+.hero-info .pi dt{color:rgba(255,255,255,.55)}
+.hero-info .pi dd,.hero-info .pi dd a{color:#fff;font-size:.9rem}
+.hero-info .pi dd a{border-bottom-color:rgba(240,130,108,.45)}
+.hero-info .pi dd a:hover{color:#FFD9D0}
+@media (max-width:640px){.pi-grid.hero-info{grid-template-columns:1fr}}
+
 /* ---------- Stats ---------- */
 .stats{position:relative;z-index:3;margin-top:-72px}
 .stats-card{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
@@ -201,7 +212,7 @@ button,input,textarea{font:inherit;color:inherit}
 .tag{padding:4px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--line-soft);color:var(--chip-text);font-size:.78rem;font-weight:500}
 
 /* ---------- About + personal information ---------- */
-.about-copy{margin-top:64px}
+.about-copy{margin-top:0}
 .about-copy p{margin-top:16px;font-size:1.02rem;line-height:1.78;max-width:78ch}
 .about-copy p:first-of-type{margin-top:22px}
 .about-copy strong{color:var(--ink);font-weight:600}
@@ -599,23 +610,31 @@ button,input,textarea{font:inherit;color:inherit}
         <span class="cert-chip"><span class="dot"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-award"/></svg></span>Oracle APEX Cloud Developer Certified Professional</span>
         <h1 id="hero-title">Muhammad Yaseen Khan</h1>
         <p class="title-line"><span>Oracle APEX Developer</span><span class="sep" aria-hidden="true"></span><span>Certified Professional</span></p>
+        <dl class="pi-grid hero-info" aria-label="Personal information">
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chart"/></svg></span><div><dt>Total experience</dt><dd data-total-exp>7 years, 8 months, 25 days</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-profile"/></svg></span><div><dt>Full name</dt><dd>Muhammad Yaseen Khan</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-users"/></svg></span><div><dt>Father's name</dt><dd>Muhammad Naseer Khan</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-clock"/></svg></span><div><dt>Date of birth</dt><dd>18 April 1995</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-heart"/></svg></span><div><dt>Marital status</dt><dd>Married</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-id"/></svg></span><div><dt>Nationality</dt><dd>Pakistani</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-book"/></svg></span><div><dt>Religion</dt><dd>Islam</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-building"/></svg></span><div><dt>Domicile</dt><dd>Sheikhupura, Punjab</dd></div></div>
+          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-globe"/></svg></span><div><dt>Languages</dt><dd>Urdu, English</dd></div></div>
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg></span><div><dt>Phone</dt><dd class="pi-links"><span class="mail-entry"><a class="mail-logo" href="https://wa.me/923027001918" target="_blank" rel="noopener" title="WhatsApp" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/><path fill="#fff" d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-1.5-.7-2.6-1.6-3.4-3-.1-.3 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.7 3.1.6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.6-.3Z"/></svg></a><a href="tel:+923027001918">+92 302 7001918</a></span><a href="tel:+923327001918">+92 332 7001918</a></dd></div></div>
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg></span><div><dt>Email</dt><dd><span class="mail-entry"><span class="mail-logo" title="Gmail"><svg viewBox="52 31 88 88" aria-hidden="true"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg></span><a href="mailto:muhammadyaseenkhan94@gmail.com">muhammadyaseenkhan94@gmail.com</a></span></dd></div></div>
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-profile"/></svg></span><div><dt>LinkedIn</dt><dd><span class="mail-entry"><span class="mail-logo" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0a66c2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span><a href="https://www.linkedin.com/in/muhammadyaseenkhan94" target="_blank" rel="noopener">linkedin.com/in/muhammadyaseenkhan94</a></span></dd></div></div>
+          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-facebook"/></svg></span><div><dt>Facebook</dt><dd><span class="mail-entry"><span class="mail-logo" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path fill="#fff" d="M16.67 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.87 1.96-1.87h1.51V4.92s-1.37-.23-2.69-.23c-2.74 0-4.53 1.66-4.53 4.66V12H7.08v3.47h3.04V24a12 12 0 0 0 3.75 0v-8.53Z"/></svg></span><a href="https://www.facebook.com/muhammadyaseenkhan95" target="_blank" rel="noopener">facebook.com/muhammadyaseenkhan95</a></span></dd></div></div>
+        </dl>
         <ul class="role-pills" aria-label="Roles">
           <li>Oracle Developer</li>
           <li>PL/SQL Developer</li>
           <li>PL/SQL Architect</li>
           <li>ERP Specialist</li>
         </ul>
-        <p class="total-exp"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-clock"/></svg>Total experience: <strong data-total-exp>7 years, 8 months, 24 days</strong></p>
         <p class="lead">I design, build and optimise secure, data-driven enterprise applications with Oracle APEX, SQL and PL/SQL. <span data-total-years>7</span>+ years of delivery across healthcare, textile, ERP, finance and e-invoicing, including projects for Nigeria, Dubai / KSA and Canada.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#contact"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-send"/></svg>Get in touch</a>
           <a class="btn btn-ghost" href="#projects">View projects<svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-        </div>
-        <div class="quick-contact">
-          <span class="mail-entry"><a class="mail-logo" href="https://wa.me/923027001918" target="_blank" rel="noopener" title="WhatsApp" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/><path fill="#fff" d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-1.5-.7-2.6-1.6-3.4-3-.1-.3 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.7 3.1.6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.6-.3Z"/></svg></a><a href="tel:+923027001918">+92 302 7001918</a></span>
-          <a href="mailto:muhammadyaseenkhan94@gmail.com"><span class="mail-logo" title="Gmail"><svg viewBox="52 31 88 88" aria-hidden="true"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg></span>muhammadyaseenkhan94@gmail.com</a>
-          <a href="https://www.linkedin.com/in/muhammadyaseenkhan94" target="_blank" rel="noopener"><span class="mail-logo" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0a66c2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>LinkedIn</a>
-          <span><svg class="icon icon-sm" aria-hidden="true"><use href="#i-pin"/></svg>Sheikhupura, Punjab, Pakistan</span>
         </div>
       </div>
       <div class="hero-photo">
@@ -645,32 +664,8 @@ button,input,textarea{font:inherit;color:inherit}
   </div>
 
   <!-- ===================== ABOUT + PERSONAL INFORMATION ===================== -->
-  <section class="section" id="about" aria-labelledby="pi-title">
+  <section class="section" id="about" aria-labelledby="about-title">
     <div class="container">
-      <aside class="personal reveal" aria-labelledby="pi-title">
-        <div class="pi-head">
-          <div class="pi-title">
-            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-id"/></svg></span>
-            <div><span class="eyebrow">Profile</span><h2 id="pi-title">Personal information</h2></div>
-          </div>
-          <div class="pi-exp"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chart"/></svg><span>Total experience</span><strong data-total-exp>7 years, 8 months, 24 days</strong></div>
-        </div>
-        <dl class="pi-grid">
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-profile"/></svg></span><div><dt>Full name</dt><dd>Muhammad Yaseen Khan</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-users"/></svg></span><div><dt>Father's name</dt><dd>Muhammad Naseer Khan</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-clock"/></svg></span><div><dt>Date of birth</dt><dd>18 April 1995</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-heart"/></svg></span><div><dt>Marital status</dt><dd>Married</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-id"/></svg></span><div><dt>Nationality</dt><dd>Pakistani</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-book"/></svg></span><div><dt>Religion</dt><dd>Islam</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-building"/></svg></span><div><dt>Domicile</dt><dd>Sheikhupura, Punjab</dd></div></div>
-          <div class="pi"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-globe"/></svg></span><div><dt>Languages</dt><dd>Urdu, English</dd></div></div>
-          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg></span><div><dt>Phone</dt><dd class="pi-links"><span class="mail-entry"><a class="mail-logo" href="https://wa.me/923027001918" target="_blank" rel="noopener" title="WhatsApp" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/><path fill="#fff" d="M16.9 14.2c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1-1.5-.7-2.6-1.6-3.4-3-.1-.3 0-.4.1-.5l.4-.5.3-.5v-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.7 3.1.6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.6-.3Z"/></svg></a><a href="tel:+923027001918">+92 302 7001918</a></span><a href="tel:+923327001918">+92 332 7001918</a></dd></div></div>
-          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg></span><div><dt>Email</dt><dd><span class="mail-entry"><span class="mail-logo" title="Gmail"><svg viewBox="52 31 88 88" aria-hidden="true"><path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg></span><a href="mailto:muhammadyaseenkhan94@gmail.com">muhammadyaseenkhan94@gmail.com</a></span></dd></div></div>
-          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-profile"/></svg></span><div><dt>LinkedIn</dt><dd><span class="mail-entry"><span class="mail-logo" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0a66c2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span><a href="https://www.linkedin.com/in/muhammadyaseenkhan94" target="_blank" rel="noopener">linkedin.com/in/muhammadyaseenkhan94</a></span></dd></div></div>
-          <div class="pi wide"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-facebook"/></svg></span><div><dt>Facebook</dt><dd><span class="mail-entry"><span class="mail-logo" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path fill="#fff" d="M16.67 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.87 1.96-1.87h1.51V4.92s-1.37-.23-2.69-.23c-2.74 0-4.53 1.66-4.53 4.66V12H7.08v3.47h3.04V24a12 12 0 0 0 3.75 0v-8.53Z"/></svg></span><a href="https://www.facebook.com/muhammadyaseenkhan95" target="_blank" rel="noopener">facebook.com/muhammadyaseenkhan95</a></span></dd></div></div>
-        </dl>
-      </aside>
-
       <div class="about-copy reveal">
         <span class="eyebrow">About me</span>
         <h2 class="section-title" id="about-title">Turning business processes into reliable Oracle applications</h2>
