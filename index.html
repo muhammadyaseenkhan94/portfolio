@@ -164,11 +164,12 @@ button,input,textarea{font:inherit;color:inherit}
 .hero-cert-text strong{font-size:.9rem;color:#fff}
 
 /* Personal information inside the hero: plain text lines */
-.pi-grid.hero-info{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 32px;margin:22px 0 0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.1)}
+.pi-grid.hero-info{grid-template-columns:1fr;gap:6px;margin:22px 0 0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.1)}
+.hero-info .pi.wide{grid-column:auto}
 .hero-info .pi{display:block;padding:0;background:none;border:0;border-radius:0}
 .hero-info .pi:hover{transform:none}
 .hero-info .icon-tile{display:none}
-.hero-info .pi > div{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.hero-info .pi > div{display:grid;grid-template-columns:140px minmax(0,1fr);align-items:baseline;gap:12px}
 .hero-info .pi dt{font-family:var(--font);font-size:.92rem;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.6)}
 .hero-info .pi dt::after{content:':'}
 .hero-info .pi dd{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 14px}
@@ -176,7 +177,7 @@ button,input,textarea{font:inherit;color:inherit}
 .hero-info .pi dd a{border-bottom:1px solid rgba(240,130,108,.45)}
 .hero-info .pi dd a:hover{color:#FFD9D0}
 .hero-info .pi dd a.mail-logo{border-bottom:0}
-@media (max-width:640px){.pi-grid.hero-info{grid-template-columns:1fr}}
+@media (max-width:640px){.hero-info .pi > div{grid-template-columns:112px minmax(0,1fr);gap:8px}}
 
 /* ---------- Stats ---------- */
 .stats{position:relative;z-index:3;margin-top:-72px}
