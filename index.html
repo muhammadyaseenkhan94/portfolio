@@ -316,6 +316,25 @@ button,input,textarea{font:inherit;color:inherit}
 .badge.now{background:var(--coral-btn);color:#fff}
 .job .bullets{margin-top:16px}
 
+/* Compact job cards */
+.job{margin-top:14px}
+.job::before{top:22px}
+.job-card{padding:18px 22px}
+.job-head{gap:6px 20px;align-items:flex-start}
+.job-title{font-size:1.05rem}
+.job-org{margin-top:3px;font-size:.9rem;gap:4px 8px}
+.job-org .kind{font-size:.82rem}
+.job-loc{margin-top:1px;font-size:.82rem}
+.job-when{gap:6px}
+.job-dates{font-size:.76rem}
+.job .badge{padding:3px 9px;font-size:.72rem}
+.job .bullets{margin-top:10px}
+.job .bullets li{margin-top:3px;font-size:.88rem;line-height:1.55;padding-left:18px}
+.job .bullets li::before{width:6px;height:6px;top:.6em}
+.job .tags{margin-top:12px;gap:6px}
+.job .tag{padding:2px 9px;font-size:.72rem}
+@media (max-width:640px){.job-card{padding:16px 16px}.job::before{left:-26px;top:20px}}
+
 /* ---------- Projects ---------- */
 .p-card{position:relative;padding:26px;border-top:3px solid var(--coral)}
 .p-country{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
