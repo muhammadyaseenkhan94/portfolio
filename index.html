@@ -383,8 +383,8 @@ button,input,textarea{font:inherit;color:inherit}
 #projects .p-card .tag{padding:1px 8px;font-size:.68rem}
 #projects .hover-lift:hover{transform:translateY(-3px);border-color:var(--coral-line)}
 #projects .grid-3{gap:14px}
-/* Module cards: small tiles, 5 per row */
-#projects .area-title + .grid-3{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+/* Module cards: small tiles, 4 per row */
+#projects .area-title + .grid-3{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 #projects .area-title + .grid-3 .p-card{padding-bottom:12px;border-radius:12px}
 #projects .area-title + .grid-3 .p-card > :not(.card-media){margin-left:12px;margin-right:12px}
 #projects .area-title + .grid-3 .card-media{aspect-ratio:2/1;margin-bottom:10px}
@@ -396,7 +396,6 @@ button,input,textarea{font:inherit;color:inherit}
 #projects .area-title + .grid-3 .media-badge .icon{width:12px;height:12px}
 #projects .area-title{margin:26px 0 12px;font-size:.98rem}
 #projects .area-title .icon-tile.sm{width:30px;height:30px;border-radius:8px}
-@media (max-width:1180px){#projects .area-title + .grid-3{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:900px){#projects .area-title + .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:640px){#projects .area-title + .grid-3{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
 
