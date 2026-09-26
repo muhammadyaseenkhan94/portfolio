@@ -261,6 +261,19 @@ button,input,textarea{font:inherit;color:inherit}
   .about-copy{margin-top:48px}
 }
 
+/* About: process steps and points */
+.about-sub{margin:44px 0 18px;font-size:1.2rem;font-weight:700;color:var(--ink)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 32px;counter-reset:none}
+.steps li{display:flex;gap:14px;align-items:flex-start;padding-top:16px;border-top:2px solid var(--line)}
+.steps li:hover{border-top-color:var(--coral)}
+.step-no{font-family:var(--mono);font-size:.95rem;font-weight:500;color:var(--coral);line-height:1.5}
+.steps strong{display:block;color:var(--ink);font-weight:600;font-size:1rem}
+.about-copy .steps p{margin-top:4px;font-size:.93rem;line-height:1.6;color:var(--muted)}
+.about-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 36px;max-width:1000px}
+.about-points li:first-child,.about-points li{margin-top:8px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.steps,.about-points{grid-template-columns:1fr}}
+
 /* ---------- Expertise ---------- */
 .x-card{position:relative;padding:26px;overflow:hidden}
 .x-card::after{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
@@ -673,7 +686,30 @@ button,input,textarea{font:inherit;color:inherit}
         <h2 class="section-title" id="about-title">Turning business processes into reliable Oracle applications</h2>
         <p>I develop Oracle and PL/SQL based applications across the full Oracle stack: database objects and complex PL/SQL, Oracle Forms &amp; Reports, and modern Oracle APEX applications with REST integrations.</p>
         <p>I have delivered systems for healthcare, textile and garments, ERP, finance and document workflows, along with international projects: a <strong>Hospital Management System for Nigeria</strong>, <strong>ZATCA Fatoora e-invoicing for Dubai / KSA</strong> and <strong>tax slip calculation for Canada</strong>.</p>
+        <p>Every application I build starts with the business process, not the screen. I sit with the people who do the work, whether that is a store keeper issuing fabric, an HR officer approving leave or an accountant closing the month, and map how data really moves: who enters it, who checks it, who approves it and which report the management needs at the end. That picture becomes the data model, and the data model becomes the application.</p>
+        <p>On the database side I design normalised tables with proper keys, constraints and indexes, and keep the business rules close to the data in PL/SQL packages, so the same logic serves APEX pages, Oracle Forms, scheduled jobs and REST APIs alike. On the front end I use Oracle APEX to turn that logic into clean, role-based screens: interactive grids for fast data entry, validations that stop mistakes before they are saved, approval workflows, dashboards and printable reports.</p>
+        <p>Reliability matters more than features. I test with real volumes of data, tune slow queries with Bulk Collect and proper indexing, handle exceptions so users see clear messages instead of error codes, and secure every page with authentication, authorization schemes and session state protection. When a legacy Oracle Forms system has reached its limits, I migrate it to APEX step by step so that daily operations keep running during the move.</p>
+
         <p>Talented, ambitious and self-motivated, I bring a strong technical background, sound self-discipline and the ability to deliver quality work with minimal supervision. A quick learner who readily absorbs new ideas and communicates clearly and effectively, I am seeking to join a dynamic and growing organisation to build a career as a first-class software developer.</p>
+        <h3 class="about-sub">How I turn a process into an application</h3>
+        <ol class="steps">
+          <li><span class="step-no">01</span><div><strong>Understand the process</strong><p>Meet the users, study current paper forms and spreadsheets, and agree on the exact flow, roles and approvals.</p></div></li>
+          <li><span class="step-no">02</span><div><strong>Design the data model</strong><p>Tables, relationships, constraints and codes that match the business, built to stay consistent as data grows.</p></div></li>
+          <li><span class="step-no">03</span><div><strong>Write the business logic</strong><p>PL/SQL packages, procedures and triggers for calculations, postings and validations, reusable across every screen.</p></div></li>
+          <li><span class="step-no">04</span><div><strong>Build the APEX application</strong><p>Forms, interactive grids, dashboards, reports and workflows with role-based access and a consistent Universal Theme UI.</p></div></li>
+          <li><span class="step-no">05</span><div><strong>Integrate and test</strong><p>REST APIs through ORDS, third-party services such as ZATCA, and testing with real data before go-live.</p></div></li>
+          <li><span class="step-no">06</span><div><strong>Deploy, train and support</strong><p>Smooth deployment, user training and ongoing enhancements as the business changes.</p></div></li>
+        </ol>
+
+        <h3 class="about-sub">What you can expect from me</h3>
+        <ul class="bullets about-points">
+          <li><strong>Business-first thinking:</strong> software that follows how your team actually works.</li>
+          <li><strong>Clean, maintainable code:</strong> logic organised in PL/SQL packages that other developers can pick up easily.</li>
+          <li><strong>Fast applications:</strong> tuned SQL, indexes and bulk processing so screens and reports stay quick.</li>
+          <li><strong>Secure by default:</strong> role-based access, validations and protected session state on every page.</li>
+          <li><strong>Accurate reports:</strong> figures that reconcile, from payslips and ledgers to production and stock reports.</li>
+          <li><strong>Clear communication:</strong> regular updates in plain language, in Urdu or English.</li>
+        </ul>
       </div>
     </div>
   </section>
