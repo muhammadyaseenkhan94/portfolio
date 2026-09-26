@@ -415,6 +415,11 @@ button,input,textarea{font:inherit;color:inherit}
 #skills .chips{gap:6px}
 #skills .chip{padding:4px 11px;border-radius:999px;font-size:.8rem;font-weight:500}
 #skills .s-note{grid-column:2;margin-top:0;font-size:.8rem}
+#skills .s-card{align-items:start}
+#skills .s-card .m-head{padding-top:2px}
+#skills .chip-sets{display:flex;flex-direction:column;gap:12px}
+#skills .chip-set{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+#skills .chip-label{flex-basis:100%;font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 #skills .sub-title{margin-bottom:16px}
 @media (max-width:760px){#skills .s-card{grid-template-columns:1fr;padding:16px 18px}#skills .s-note{grid-column:auto}}
 
@@ -805,7 +810,7 @@ button,input,textarea{font:inherit;color:inherit}
           <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-layout"/></svg></span>
           <h3>Oracle APEX development</h3>
           <ul class="bullets">
-            <li>Proficient in Oracle APEX application development: <strong>Interactive Reports, Interactive Grids, Forms, Pages, Regions, Dynamic Actions, Page Processes and Validations</strong>.</li>
+            <li>Building complete business applications in Oracle APEX, from <strong>fast data-entry screens to approval flows</strong>.</li>
             <li>Worked with APEX Application Builder to build <strong>custom workflows, reports, dashboards and charts</strong> using SQL and PL/SQL driven data sources.</li>
           </ul>
         </article>
@@ -814,7 +819,7 @@ button,input,textarea{font:inherit;color:inherit}
           <h3>SQL &amp; PL/SQL development</h3>
           <ul class="bullets">
             <li>Writing the business logic of an application in PL/SQL: calculations, postings, validations and batch processes that run inside the database.</li>
-                        <li>Using <strong>Oracle-supplied packages</strong> to extend applications without extra infrastructure.</li>
+                        <li>Keeping logic <strong>inside the database</strong>, so every screen, report and API uses the same rules.</li>
                       </ul>
         </article>
         <article class="card x-card hover-lift reveal">
@@ -837,8 +842,8 @@ button,input,textarea{font:inherit;color:inherit}
           <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
           <h3>APEX security &amp; UI/UX</h3>
           <ul class="bullets">
-            <li>APEX security and access control with <strong>Authentication Schemes, Authorization Schemes and Session State Management</strong>.</li>
-            <li>Custom look and feel with <strong>Universal Theme templates and plugins</strong>, so applications match the brand and work well on mobile.</li>
+            <li>Securing every page so each user <strong>sees and changes only what their role allows</strong>.</li>
+            <li>A <strong>custom look and feel</strong> that matches the brand and works well on mobile.</li>
           </ul>
         </article>
         <article class="card x-card hover-lift reveal">
@@ -1140,24 +1145,32 @@ button,input,textarea{font:inherit;color:inherit}
       </div>
       <div class="grid-3">
         <article class="card s-card reveal">
-          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-database"/></svg></span><h3>Databases</h3></div>
-          <div class="chips"><span class="chip accent">Oracle Database 10g</span><span class="chip accent">Oracle Database 11g</span><span class="chip">Oracle 12c</span><span class="chip">Oracle 19c</span><span class="chip">Oracle 23ai</span><span class="chip">Enterprise Edition</span></div>
-                  </article>
-        <article class="card s-card reveal">
-          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-code"/></svg></span><h3>Languages</h3></div>
-          <div class="chips"><span class="chip accent">SQL</span><span class="chip accent">PL/SQL</span><span class="chip">JavaScript</span><span class="chip">jQuery</span><span class="chip">CSS</span><span class="chip">JSON</span></div>
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-database"/></svg></span><h3>Oracle Database</h3></div>
+          <div class="chip-sets"><div class="chip-set"><span class="chip-label">Versions</span><span class="chip accent">Oracle Database 10g</span><span class="chip accent">Oracle Database 11g</span><span class="chip">Oracle 12c</span><span class="chip">Oracle 19c</span><span class="chip">Oracle 23ai</span><span class="chip">Enterprise Edition</span></div><div class="chip-set"><span class="chip-label">Objects</span><span class="chip">Tables</span><span class="chip">Views</span><span class="chip">Materialized Views</span><span class="chip">Indexes (B-tree, Bitmap, Function-based)</span><span class="chip">Sequences</span><span class="chip">Synonyms</span><span class="chip">Database Links</span><span class="chip">Global Temporary Tables</span><span class="chip">Partitioned Tables</span><span class="chip">Object Types</span></div><div class="chip-set"><span class="chip-label">Constraints</span><span class="chip">Primary Key</span><span class="chip">Foreign Key</span><span class="chip">Unique</span><span class="chip">Check</span><span class="chip">Not Null</span><span class="chip">Default Values</span></div><div class="chip-set"><span class="chip-label">Administration</span><span class="chip">Users &amp; Schemas</span><span class="chip">Roles &amp; Privileges</span><span class="chip">Tablespaces</span><span class="chip">Data Dictionary Views</span><span class="chip">Data Pump Export / Import</span><span class="chip">SQL*Loader</span></div></div>
         </article>
         <article class="card s-card reveal">
-          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-layers"/></svg></span><h3>PL/SQL toolkit</h3></div>
-          <div class="chips"><span class="chip">Stored Procedures</span><span class="chip">Functions</span><span class="chip">Table Functions</span><span class="chip">Packages</span><span class="chip">Triggers</span><span class="chip">Cursors</span><span class="chip">Records &amp; PL/SQL Tables</span><span class="chip">Exception Handling</span><span class="chip">Bulk Collect</span><span class="chip">Views</span><span class="chip">Indexes</span><span class="chip">Constraints</span><span class="chip">PL/SQL Tuning</span></div>
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-terminal"/></svg></span><h3>SQL</h3></div>
+          <div class="chip-sets"><div class="chip-set"><span class="chip-label">Commands</span><span class="chip">DDL</span><span class="chip">DML</span><span class="chip">DCL</span><span class="chip">TCL</span><span class="chip">MERGE</span></div><div class="chip-set"><span class="chip-label">Queries</span><span class="chip">Joins (Inner, Outer, Self, Cross)</span><span class="chip">Subqueries</span><span class="chip">Correlated Subqueries</span><span class="chip">Set Operators</span><span class="chip">WITH Clause (CTE)</span><span class="chip">Hierarchical Queries (CONNECT BY)</span><span class="chip">PIVOT / UNPIVOT</span></div><div class="chip-set"><span class="chip-label">Functions</span><span class="chip">Single-row Functions</span><span class="chip">Aggregate Functions</span><span class="chip">GROUP BY, ROLLUP &amp; CUBE</span><span class="chip">Analytic Functions (ROW_NUMBER, RANK, LAG, LEAD)</span><span class="chip">CASE &amp; DECODE</span><span class="chip">Date &amp; Conversion Functions</span><span class="chip">Regular Expressions</span><span class="chip">JSON_TABLE &amp; JSON Functions</span></div><div class="chip-set"><span class="chip-label">Performance</span><span class="chip">Explain Plan</span><span class="chip">Optimizer Hints</span><span class="chip">Index Tuning</span><span class="chip">Query Rewriting</span></div></div>
         </article>
         <article class="card s-card reveal">
-          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-terminal"/></svg></span><h3>Tools &amp; IDEs</h3></div>
-          <div class="chips"><span class="chip accent">Oracle APEX 24.1+</span><span class="chip">APEX Cloud</span><span class="chip">Oracle Developer Suite</span><span class="chip">Oracle Forms 6i / 10g / 11g / 12c</span><span class="chip">Oracle Reports 6i / 10g / 11g / 12c</span><span class="chip">SQL Developer</span><span class="chip">TOAD</span><span class="chip">SQL*Plus</span><span class="chip">iSQL*Plus</span></div>
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-layers"/></svg></span><h3>PL/SQL</h3></div>
+          <div class="chip-sets"><div class="chip-set"><span class="chip-label">Program units</span><span class="chip">Anonymous Blocks</span><span class="chip">Stored Procedures</span><span class="chip">Functions</span><span class="chip">Packages (Spec &amp; Body)</span><span class="chip">Table / Pipelined Functions</span><span class="chip">Triggers (Row, Statement, INSTEAD OF, Compound)</span></div><div class="chip-set"><span class="chip-label">Data handling</span><span class="chip">%TYPE &amp; %ROWTYPE</span><span class="chip">Records</span><span class="chip">Associative Arrays</span><span class="chip">Nested Tables</span><span class="chip">VARRAYs</span><span class="chip">Explicit &amp; Implicit Cursors</span><span class="chip">REF Cursors</span><span class="chip">Cursor FOR Loops</span></div><div class="chip-set"><span class="chip-label">Control &amp; errors</span><span class="chip">IF / CASE</span><span class="chip">Loops</span><span class="chip">Exception Handling</span><span class="chip">User-defined Exceptions</span><span class="chip">RAISE_APPLICATION_ERROR</span><span class="chip">Autonomous Transactions</span></div><div class="chip-set"><span class="chip-label">Advanced</span><span class="chip">Bulk Collect</span><span class="chip">FORALL</span><span class="chip">Dynamic SQL (EXECUTE IMMEDIATE, DBMS_SQL)</span><span class="chip">PL/SQL Tuning</span></div><div class="chip-set"><span class="chip-label">Oracle packages</span><span class="chip">DBMS_OUTPUT</span><span class="chip">DBMS_SCHEDULER</span><span class="chip">DBMS_LOB</span><span class="chip">DBMS_CRYPTO</span><span class="chip">UTL_FILE</span><span class="chip">UTL_HTTP</span></div></div>
+        </article>
+        <article class="card s-card reveal">
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Oracle Forms &amp; Reports</h3></div>
+          <div class="chip-sets"><div class="chip-set"><span class="chip-label">Forms</span><span class="chip">Data &amp; Control Blocks</span><span class="chip">Items</span><span class="chip">Canvases &amp; Windows</span><span class="chip">Form Triggers (WHEN-, PRE-, POST-, KEY-)</span><span class="chip">LOVs &amp; Record Groups</span><span class="chip">Alerts</span><span class="chip">Program Units</span><span class="chip">Libraries (PLL)</span><span class="chip">Menus</span><span class="chip">Master-Detail Relations</span><span class="chip">Parameters</span></div><div class="chip-set"><span class="chip-label">Reports</span><span class="chip">Data Model &amp; Queries</span><span class="chip">Groups &amp; Data Links</span><span class="chip">Formula, Summary &amp; Placeholder Columns</span><span class="chip">Tabular, Group-Above &amp; Matrix Layouts</span><span class="chip">Parameter Forms</span><span class="chip">Report Triggers</span><span class="chip">PDF &amp; Excel Output</span></div></div>
+        </article>
+        <article class="card s-card reveal">
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-globe"/></svg></span><h3>Web technologies</h3></div>
+          <div class="chips"><span class="chip accent">JavaScript</span><span class="chip">jQuery</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JSON</span><span class="chip">XML</span><span class="chip">AJAX</span></div>
         </article>
         <article class="card s-card reveal">
           <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-plug"/></svg></span><h3>Web services</h3></div>
-          <div class="chips"><span class="chip accent">RESTful APIs</span><span class="chip">ORDS RESTful Data Services</span><span class="chip">Third-Party API Integration</span></div>
+          <div class="chips"><span class="chip accent">RESTful APIs</span><span class="chip">ORDS Modules, Templates &amp; Handlers</span><span class="chip">GET / POST / PUT / DELETE</span><span class="chip">JSON Request &amp; Response</span><span class="chip">OAuth 2.0 &amp; Token Authentication</span><span class="chip">Basic Authentication</span><span class="chip">Third-Party API Integration</span><span class="chip">API Testing with Postman</span></div>
+        </article>
+        <article class="card s-card reveal">
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-branch"/></svg></span><h3>Tools &amp; IDEs</h3></div>
+          <div class="chips"><span class="chip accent">Oracle APEX 24.1+</span><span class="chip">APEX Cloud</span><span class="chip">Oracle Developer Suite</span><span class="chip">Forms Builder 6i / 10g / 11g / 12c</span><span class="chip">Reports Builder 6i / 10g / 11g / 12c</span><span class="chip">SQL Developer</span><span class="chip">SQL Developer Data Modeler</span><span class="chip">TOAD</span><span class="chip">SQL*Plus</span><span class="chip">iSQL*Plus</span></div>
         </article>
         <article class="card s-card reveal">
           <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-monitor"/></svg></span><h3>Operating systems</h3></div>
@@ -1169,20 +1182,32 @@ button,input,textarea{font:inherit;color:inherit}
       <h3 class="sub-title block-gap reveal">Oracle APEX expertise</h3>
       <div class="grid-2">
         <article class="card s-card reveal">
-          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-layout"/></svg></span><h3>UI &amp; components</h3></div>
-          <div class="chips"><span class="chip">Cards</span><span class="chip">Smart Filters</span><span class="chip">Faceted Search</span><span class="chip">Master-Detail Forms</span><span class="chip">Modal Dialogs</span><span class="chip">Calendar</span><span class="chip">Shared Components</span><span class="chip">LOVs &amp; Navigation Menus</span><span class="chip">Theme Roller</span></div>
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-layout"/></svg></span><h3>Pages &amp; reports</h3></div>
+          <div class="chips"><span class="chip">Interactive Reports</span><span class="chip">Interactive Grids</span><span class="chip">Classic Reports</span><span class="chip">Forms</span><span class="chip">Master-Detail Forms</span><span class="chip">Cards</span><span class="chip">Charts</span><span class="chip">Calendar</span><span class="chip">Maps</span><span class="chip">Trees</span><span class="chip">Faceted Search</span><span class="chip">Smart Filters</span><span class="chip">Modal Dialogs</span></div>
+        </article>
+        <article class="card s-card reveal">
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-refresh"/></svg></span><h3>Page logic</h3></div>
+          <div class="chips"><span class="chip">Page Items</span><span class="chip">Application Items</span><span class="chip">Dynamic Actions</span><span class="chip">Validations</span><span class="chip">Computations</span><span class="chip">Processes</span><span class="chip">Branches</span><span class="chip">Server-side Conditions</span><span class="chip">Session State</span><span class="chip">Substitution Strings</span></div>
+        </article>
+        <article class="card s-card reveal">
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-bulb"/></svg></span><h3>UI &amp; theming</h3></div>
+          <div class="chips"><span class="chip">Universal Theme</span><span class="chip">Theme Roller</span><span class="chip">Templates &amp; Template Options</span><span class="chip">Shared Components</span><span class="chip">LOVs</span><span class="chip">Navigation Menus</span><span class="chip">Breadcrumbs</span><span class="chip">Plugins</span><span class="chip">Custom CSS &amp; JavaScript</span></div>
         </article>
         <article class="card s-card reveal">
           <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-zap"/></svg></span><h3>Advanced features</h3></div>
           <div class="chips"><span class="chip">Progressive Web Apps (PWA)</span><span class="chip">Multilingual Apps</span><span class="chip">APEX Collections</span><span class="chip">AJAX Callbacks</span><span class="chip">APEX JavaScript APIs</span><span class="chip">Data Load Definitions</span><span class="chip">File Upload &amp; BLOB Storage</span><span class="chip">PDF &amp; Excel Reports</span></div>
         </article>
         <article class="card s-card reveal">
-          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Integration &amp; security</h3></div>
-          <div class="chips"><span class="chip">APEX_WEB_SERVICE &amp; APEX_JSON</span><span class="chip">REST Data Sources</span><span class="chip">Web Credentials</span><span class="chip">Oracle Wallet &amp; Network ACLs</span><span class="chip">Role-Based Access Control</span></div>
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Security</h3></div>
+          <div class="chips"><span class="chip">Authentication Schemes</span><span class="chip">Authorization Schemes</span><span class="chip">Role-Based Access Control</span><span class="chip">Session State Protection</span><span class="chip">Page &amp; Item Level Security</span><span class="chip">Web Credentials</span><span class="chip">Oracle Wallet &amp; Network ACLs</span></div>
+        </article>
+        <article class="card s-card reveal">
+          <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-send"/></svg></span><h3>Integration</h3></div>
+          <div class="chips"><span class="chip">APEX_WEB_SERVICE</span><span class="chip">APEX_JSON</span><span class="chip">REST Data Sources</span></div>
         </article>
         <article class="card s-card reveal">
           <div class="m-head"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-flow"/></svg></span><h3>Automation &amp; delivery</h3></div>
-          <div class="chips"><span class="chip">Approval Workflows</span><span class="chip">APEX_MAIL Notifications</span><span class="chip">Automations &amp; Scheduler Jobs</span><span class="chip">Deployment &amp; Export/Import</span><span class="chip">Debugging</span></div>
+          <div class="chips"><span class="chip">Approval Workflows</span><span class="chip">APEX_MAIL Notifications</span><span class="chip">Automations</span><span class="chip">Scheduler Jobs</span><span class="chip">Background Page Processing</span><span class="chip">Deployment &amp; Export / Import</span><span class="chip">Supporting Objects</span><span class="chip">Debugging</span></div>
         </article>
       </div>
     </div>
