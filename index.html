@@ -1638,11 +1638,12 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
       var title = h ? h.textContent.trim() : '';
       if (!FLOWS[title]) return;
       card.classList.add('has-flow');
-      var btn = el('button', 'flow-btn', 'View process flow');
-      btn.type = 'button';
-      btn.setAttribute('aria-label', 'View process flow for ' + title);
-      btn.addEventListener('click', function (ev) { ev.stopPropagation(); openFlow(title); });
-      card.appendChild(btn);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'View process flow for ' + title);
+      card.addEventListener('keydown', function (ev) {
+        if (ev.target === card && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); openFlow(title); }
+      });
       card.addEventListener('click', function (ev) {
         if (ev.target.closest('a, button')) return;
         openFlow(title);
