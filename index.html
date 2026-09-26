@@ -391,7 +391,7 @@ button,input,textarea{font:inherit;color:inherit}
 #projects .area-title + .grid-3 .p-country,#projects .area-title + .grid-3 .tags{display:none}
 #projects .area-title + .grid-3 h3{margin-top:0;font-size:.88rem}
 #projects .area-title + .grid-3 p{font-size:.76rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-#projects .area-title + .grid-3 .slides-btn{align-self:flex-start;margin-top:8px;padding:4px 9px;font-size:.72rem;border-radius:7px}
+#projects .area-title + .grid-3 .flow-btn{align-self:flex-start;margin-top:8px;padding:4px 9px;font-size:.72rem;border-radius:7px}
 #projects .area-title + .grid-3 .media-badge{top:6px;right:6px;padding:2px 7px;font-size:.64rem;gap:4px}
 #projects .area-title + .grid-3 .media-badge .icon{width:12px;height:12px}
 #projects .area-title{margin:26px 0 12px;font-size:.98rem}
@@ -471,35 +471,40 @@ button,input,textarea{font:inherit;color:inherit}
 .cert-lightbox{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%}
 .cert-lightbox::backdrop{background:rgba(10,19,32,.82)}
 .cert-lightbox img{display:block;width:100%;height:auto;border-radius:12px}
-/* Module slides (card badge, button and viewer) */
-.has-slides{cursor:pointer}
+/* Process flow chart (card badge, button and dialog) */
+.has-flow{cursor:pointer}
 .card-media{position:relative}
 .media-badge{position:absolute;top:12px;right:12px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(14,26,44,.78);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:.76rem;font-weight:600;backdrop-filter:blur(4px)}
-.slides-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 14px;border-radius:9px;border:1px solid var(--coral-line);background:var(--coral-soft);color:var(--coral);font-size:.86rem;font-weight:600;cursor:pointer;transition:background-color .2s ease,color .2s ease}
-.slides-btn:hover{background:var(--coral-btn);border-color:var(--coral-btn);color:#fff}
-.slides{border:1px solid var(--line);padding:0;border-radius:16px;background:var(--surface);color:var(--text);width:min(1100px,94vw);max-height:94vh;overflow:auto;box-shadow:var(--shadow-lg)}
-.slides::backdrop{background:rgba(10,19,32,.85)}
-.sl-head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line-soft)}
+.flow-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--coral-line);background:var(--coral-soft);color:var(--coral);font-size:.8rem;font-weight:600;cursor:pointer;align-self:flex-start;transition:background-color .2s ease,color .2s ease}
+.flow-btn:hover{background:var(--coral-btn);border-color:var(--coral-btn);color:#fff}
+.flow{border:1px solid var(--line);padding:0;border-radius:16px;background:var(--surface);color:var(--text);width:min(620px,94vw);max-height:92vh;overflow:auto;box-shadow:var(--shadow-lg)}
+.flow::backdrop{background:rgba(10,19,32,.85)}
+.sl-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line-soft);background:var(--surface)}
 .sl-head > div{flex:1;min-width:0}
 .sl-kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
 .sl-head h3{font-size:1.1rem}
-.sl-count{font-family:var(--mono);font-size:.8rem;color:var(--muted);white-space:nowrap}
 .sl-close{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .sl-close:hover{background:var(--chip)}
-.sl-stage{position:relative;background:#0E1A2C;touch-action:pan-y}
-.sl-stage img{display:block;width:100%;height:auto;aspect-ratio:12/7}
-.sl-nav{position:absolute;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(14,26,44,.7);color:#fff;cursor:pointer;transition:background-color .2s ease}
-.sl-nav:hover{background:var(--coral-btn)}
-.sl-nav.prev{left:12px}
-.sl-nav.prev .icon{transform:rotate(180deg)}
-.sl-nav.next{right:12px}
-.sl-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 18px}
-.sl-foot strong{color:var(--ink);font-size:1rem}
-.sl-foot p{margin-top:2px;font-size:.9rem;color:var(--muted)}
-.sl-dots{display:flex;gap:8px}
-.sl-dots button{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
-.sl-dots button[aria-current="true"]{background:var(--coral);width:26px;border-radius:5px}
-@media (max-width:640px){.sl-nav{width:36px;height:36px}.sl-nav.prev{left:6px}.sl-nav.next{right:6px}}
+.flow-body{display:flex;flex-direction:column;align-items:center;padding:22px 18px 26px}
+.fn{position:relative;width:min(100%,420px);text-align:center}
+.fn.term{width:auto;padding:8px 22px;border-radius:999px;background:var(--navy);color:#fff;font-size:.86rem;font-weight:600;border:1px solid rgba(255,255,255,.12)}
+.fn.term.end{background:var(--coral-btn)}
+.fn.step{padding:10px 14px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.fn.step strong{display:block;color:var(--ink);font-size:.92rem}
+.fn.step p{margin-top:2px;font-size:.8rem;color:var(--muted);line-height:1.45}
+.fn .who{display:inline-block;margin-bottom:4px;padding:1px 8px;border-radius:999px;background:var(--chip);color:var(--chip-text);font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase}
+.fn.dec{padding:12px 14px;border-radius:10px;border:1.5px dashed var(--coral);background:var(--coral-soft)}
+.fn.dec strong{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--ink);font-size:.92rem}
+.fn.dec strong::before{content:"?";display:grid;place-items:center;width:20px;height:20px;border-radius:5px;background:var(--coral);color:#fff;font-size:.75rem;transform:rotate(45deg)}
+.fn.dec .br{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;text-align:left}
+.fn.dec .br span{padding:6px 9px;border-radius:7px;background:var(--surface);border:1px solid var(--line-soft);font-size:.76rem;line-height:1.4;color:var(--text)}
+.fn.dec .br b{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}
+.fn.dec .br .yes b{color:#2E9E5B}
+.fn.dec .br .no b{color:var(--coral)}
+.fa{position:relative;width:2px;height:26px;background:var(--line)}
+.fa::after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border:6px solid transparent;border-top:7px solid var(--line);border-bottom:0}
+.flow-body > *{animation:chip-open .3s ease both}
+@media (max-width:520px){.fn.dec .br{grid-template-columns:1fr}}
 .cert-lightbox .lb-close{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer}
 .row{display:grid;grid-template-columns:62px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft)}
 .row:last-child{border-bottom:0}
@@ -1065,13 +1070,12 @@ button,input,textarea{font:inherit;color:inherit}
       </div>
       <h4 class="area-title reveal"><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chart"/></svg></span>ERP &amp; finance</h4>
       <div class="grid-3">
-        <article class="card p-card hover-lift reveal has-slides" data-slides="hrms">
-          <div class="card-media"><span class="media-badge"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-layers"/></svg>5 slides</span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZm9udC1mYW1pbHk9IidTZWdvZSBVSScsQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiPg0KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFCMkU0QiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBFMUEyQyIvPjwvbGluZWFyR3JhZGllbnQ+DQo8cmFkaWFsR3JhZGllbnQgaWQ9ImdsIiBjeD0iLjUiIGN5PSIuNSIgcj0iLjUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M3NDYzNCIgc3RvcC1vcGFjaXR5PSIuNDIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNzQ2MzQiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0dGVybiBpZD0iZHQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuMiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMDciLz48L3BhdHRlcm4+PC9kZWZzPg0KPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjYmcpIi8+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjZHQpIi8+PGNpcmNsZSBjeD0iNTYwIiBjeT0iMzEwIiByPSIxOTAiIGZpbGw9InVybCgjZ2wpIi8+DQo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNiA0MikiPg0KPHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyMTYiIHJ4PSIxMiIgZmlsbD0iI0Y1RjdGQSIvPg0KPHBhdGggZD0iTTAgMTJhMTIgMTIgMCAwIDEgMTItMTJoMzE2YTEyIDEyIDAgMCAxIDEyIDEydjE4aC0zNDB6IiBmaWxsPSIjRENFMkVBIi8+DQo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE1IiByPSI0IiBmaWxsPSIjRTA2MDRBIi8+PGNpcmNsZSBjeD0iMjkiIGN5PSIxNSIgcj0iNCIgZmlsbD0iI0YwQjM1QSIvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1RkI1N0EiLz4NCjx0ZXh0IHg9IjE3MCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzVGNkM4MiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjYwMCI+SHVtYW4gUmVzb3VyY2VzPC90ZXh0Pg0KPHJlY3QgeD0iMTYiIHk9IjQwIiB3aWR0aD0iMzA4IiBoZWlnaHQ9IjE2NCIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0RDRTJFQSIvPjx0ZXh0IHg9IjI4IiB5PSI2MCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjMTQyMzNBIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNzAwIj5FTVBMT1lFRVM8L3RleHQ+PHJlY3QgeD0iMjgiIHk9IjcyIiB3aWR0aD0iODgiIGhlaWdodD0iNTYiIHJ4PSI2IiBmaWxsPSIjRjVGN0ZBIiBzdHJva2U9IiNFOEVERjMiLz48Y2lyY2xlIGN4PSI0NiIgY3k9IjkyIiByPSIxMCIgZmlsbD0iI0UwNjA0QSIvPjxyZWN0IHg9IjYyIiB5PSI4NiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSI2MiIgeT0iOTYiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMzgiIHk9IjExMiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNEQ0UyRUEiLz48cmVjdCB4PSIxMjQiIHk9IjcyIiB3aWR0aD0iODgiIGhlaWdodD0iNTYiIHJ4PSI2IiBmaWxsPSIjRjVGN0ZBIiBzdHJva2U9IiNFOEVERjMiLz48Y2lyY2xlIGN4PSIxNDIiIGN5PSI5MiIgcj0iMTAiIGZpbGw9IiNFMDYwNEEiLz48cmVjdCB4PSIxNTgiIHk9Ijg2IiB3aWR0aD0iNDQiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iIzk0QTFCNiIvPjxyZWN0IHg9IjE1OCIgeT0iOTYiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMTM0IiB5PSIxMTIiIHdpZHRoPSI2OCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjRENFMkVBIi8+PHJlY3QgeD0iMjIwIiB5PSI3MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjU2IiByeD0iNiIgZmlsbD0iI0Y1RjdGQSIgc3Ryb2tlPSIjRThFREYzIi8+PGNpcmNsZSBjeD0iMjM4IiBjeT0iOTIiIHI9IjEwIiBmaWxsPSIjRTA2MDRBIi8+PHJlY3QgeD0iMjU0IiB5PSI4NiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIyNTQiIHk9Ijk2IiB3aWR0aD0iMzAiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iI0MzQ0REQiIvPjxyZWN0IHg9IjIzMCIgeT0iMTEyIiB3aWR0aD0iNjgiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iI0RDRTJFQSIvPjxyZWN0IHg9IjI4IiB5PSIxMzYiIHdpZHRoPSI4OCIgaGVpZ2h0PSI1NiIgcng9IjYiIGZpbGw9IiNGNUY3RkEiIHN0cm9rZT0iI0U4RURGMyIvPjxjaXJjbGUgY3g9IjQ2IiBjeT0iMTU2IiByPSIxMCIgZmlsbD0iIzVBNzI5OSIvPjxyZWN0IHg9IjYyIiB5PSIxNTAiIHdpZHRoPSI0NCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjOTRBMUI2Ii8+PHJlY3QgeD0iNjIiIHk9IjE2MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIzOCIgeT0iMTc2IiB3aWR0aD0iNjgiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iI0RDRTJFQSIvPjxyZWN0IHg9IjEyNCIgeT0iMTM2IiB3aWR0aD0iODgiIGhlaWdodD0iNTYiIHJ4PSI2IiBmaWxsPSIjRjVGN0ZBIiBzdHJva2U9IiNFOEVERjMiLz48Y2lyY2xlIGN4PSIxNDIiIGN5PSIxNTYiIHI9IjEwIiBmaWxsPSIjMTQyMzNBIi8+PHJlY3QgeD0iMTU4IiB5PSIxNTAiIHdpZHRoPSI0NCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjOTRBMUI2Ii8+PHJlY3QgeD0iMTU4IiB5PSIxNjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMTM0IiB5PSIxNzYiIHdpZHRoPSI2OCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjRENFMkVBIi8+PHJlY3QgeD0iMjIwIiB5PSIxMzYiIHdpZHRoPSI4OCIgaGVpZ2h0PSI1NiIgcng9IjYiIGZpbGw9IiNGNUY3RkEiIHN0cm9rZT0iI0U4RURGMyIvPjxjaXJjbGUgY3g9IjIzOCIgY3k9IjE1NiIgcj0iMTAiIGZpbGw9IiM1QTcyOTkiLz48cmVjdCB4PSIyNTQiIHk9IjE1MCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIyNTQiIHk9IjE2MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIyMzAiIHk9IjE3NiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNEQ0UyRUEiLz4NCjwvZz48Y2lyY2xlIGN4PSI0ODAiIGN5PSIxNTAiIHI9Ijc4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjE1Ii8+PGNpcmNsZSBjeD0iNDgwIiBjeT0iMTUwIiByPSI2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTA2MDRBIiBzdHJva2Utb3BhY2l0eT0iLjYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iMyA2Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDgwIDE1MCkgc2NhbGUoMS45KSI+PGNpcmNsZSBjeD0iOCIgY3k9Ii0xMCIgcj0iNyIgZmlsbD0iI0UwNjA0QSIvPjxwYXRoIGQ9Ik0tNCAxOGExMiAxMSAwIDAgMSAyNCAweiIgZmlsbD0iI0UwNjA0QSIvPjxjaXJjbGUgY3g9Ii02IiBjeT0iLTgiIHI9IjgiIGZpbGw9IiMxNDIzM0EiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNLTIxIDIwYTE1IDEzIDAgMCAxIDMwIDAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L2c+DQo8L3N2Zz4=" alt="Human Resources (HRMS) module screen illustration" width="600" height="300" loading="lazy" decoding="async"></div>
+        <article class="card p-card hover-lift reveal">
+          <div class="card-media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZm9udC1mYW1pbHk9IidTZWdvZSBVSScsQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiPg0KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFCMkU0QiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBFMUEyQyIvPjwvbGluZWFyR3JhZGllbnQ+DQo8cmFkaWFsR3JhZGllbnQgaWQ9ImdsIiBjeD0iLjUiIGN5PSIuNSIgcj0iLjUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M3NDYzNCIgc3RvcC1vcGFjaXR5PSIuNDIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNzQ2MzQiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0dGVybiBpZD0iZHQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuMiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMDciLz48L3BhdHRlcm4+PC9kZWZzPg0KPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjYmcpIi8+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjZHQpIi8+PGNpcmNsZSBjeD0iNTYwIiBjeT0iMzEwIiByPSIxOTAiIGZpbGw9InVybCgjZ2wpIi8+DQo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNiA0MikiPg0KPHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyMTYiIHJ4PSIxMiIgZmlsbD0iI0Y1RjdGQSIvPg0KPHBhdGggZD0iTTAgMTJhMTIgMTIgMCAwIDEgMTItMTJoMzE2YTEyIDEyIDAgMCAxIDEyIDEydjE4aC0zNDB6IiBmaWxsPSIjRENFMkVBIi8+DQo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE1IiByPSI0IiBmaWxsPSIjRTA2MDRBIi8+PGNpcmNsZSBjeD0iMjkiIGN5PSIxNSIgcj0iNCIgZmlsbD0iI0YwQjM1QSIvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1RkI1N0EiLz4NCjx0ZXh0IHg9IjE3MCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzVGNkM4MiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjYwMCI+SHVtYW4gUmVzb3VyY2VzPC90ZXh0Pg0KPHJlY3QgeD0iMTYiIHk9IjQwIiB3aWR0aD0iMzA4IiBoZWlnaHQ9IjE2NCIgcng9IjgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0RDRTJFQSIvPjx0ZXh0IHg9IjI4IiB5PSI2MCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjMTQyMzNBIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNzAwIj5FTVBMT1lFRVM8L3RleHQ+PHJlY3QgeD0iMjgiIHk9IjcyIiB3aWR0aD0iODgiIGhlaWdodD0iNTYiIHJ4PSI2IiBmaWxsPSIjRjVGN0ZBIiBzdHJva2U9IiNFOEVERjMiLz48Y2lyY2xlIGN4PSI0NiIgY3k9IjkyIiByPSIxMCIgZmlsbD0iI0UwNjA0QSIvPjxyZWN0IHg9IjYyIiB5PSI4NiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSI2MiIgeT0iOTYiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMzgiIHk9IjExMiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNEQ0UyRUEiLz48cmVjdCB4PSIxMjQiIHk9IjcyIiB3aWR0aD0iODgiIGhlaWdodD0iNTYiIHJ4PSI2IiBmaWxsPSIjRjVGN0ZBIiBzdHJva2U9IiNFOEVERjMiLz48Y2lyY2xlIGN4PSIxNDIiIGN5PSI5MiIgcj0iMTAiIGZpbGw9IiNFMDYwNEEiLz48cmVjdCB4PSIxNTgiIHk9Ijg2IiB3aWR0aD0iNDQiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iIzk0QTFCNiIvPjxyZWN0IHg9IjE1OCIgeT0iOTYiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMTM0IiB5PSIxMTIiIHdpZHRoPSI2OCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjRENFMkVBIi8+PHJlY3QgeD0iMjIwIiB5PSI3MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjU2IiByeD0iNiIgZmlsbD0iI0Y1RjdGQSIgc3Ryb2tlPSIjRThFREYzIi8+PGNpcmNsZSBjeD0iMjM4IiBjeT0iOTIiIHI9IjEwIiBmaWxsPSIjRTA2MDRBIi8+PHJlY3QgeD0iMjU0IiB5PSI4NiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIyNTQiIHk9Ijk2IiB3aWR0aD0iMzAiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iI0MzQ0REQiIvPjxyZWN0IHg9IjIzMCIgeT0iMTEyIiB3aWR0aD0iNjgiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iI0RDRTJFQSIvPjxyZWN0IHg9IjI4IiB5PSIxMzYiIHdpZHRoPSI4OCIgaGVpZ2h0PSI1NiIgcng9IjYiIGZpbGw9IiNGNUY3RkEiIHN0cm9rZT0iI0U4RURGMyIvPjxjaXJjbGUgY3g9IjQ2IiBjeT0iMTU2IiByPSIxMCIgZmlsbD0iIzVBNzI5OSIvPjxyZWN0IHg9IjYyIiB5PSIxNTAiIHdpZHRoPSI0NCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjOTRBMUI2Ii8+PHJlY3QgeD0iNjIiIHk9IjE2MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIzOCIgeT0iMTc2IiB3aWR0aD0iNjgiIGhlaWdodD0iNSIgcng9IjMuNSIgZmlsbD0iI0RDRTJFQSIvPjxyZWN0IHg9IjEyNCIgeT0iMTM2IiB3aWR0aD0iODgiIGhlaWdodD0iNTYiIHJ4PSI2IiBmaWxsPSIjRjVGN0ZBIiBzdHJva2U9IiNFOEVERjMiLz48Y2lyY2xlIGN4PSIxNDIiIGN5PSIxNTYiIHI9IjEwIiBmaWxsPSIjMTQyMzNBIi8+PHJlY3QgeD0iMTU4IiB5PSIxNTAiIHdpZHRoPSI0NCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjOTRBMUI2Ii8+PHJlY3QgeD0iMTU4IiB5PSIxNjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMTM0IiB5PSIxNzYiIHdpZHRoPSI2OCIgaGVpZ2h0PSI1IiByeD0iMy41IiBmaWxsPSIjRENFMkVBIi8+PHJlY3QgeD0iMjIwIiB5PSIxMzYiIHdpZHRoPSI4OCIgaGVpZ2h0PSI1NiIgcng9IjYiIGZpbGw9IiNGNUY3RkEiIHN0cm9rZT0iI0U4RURGMyIvPjxjaXJjbGUgY3g9IjIzOCIgY3k9IjE1NiIgcj0iMTAiIGZpbGw9IiM1QTcyOTkiLz48cmVjdCB4PSIyNTQiIHk9IjE1MCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIyNTQiIHk9IjE2MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIyMzAiIHk9IjE3NiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjUiIHJ4PSIzLjUiIGZpbGw9IiNEQ0UyRUEiLz4NCjwvZz48Y2lyY2xlIGN4PSI0ODAiIGN5PSIxNTAiIHI9Ijc4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjE1Ii8+PGNpcmNsZSBjeD0iNDgwIiBjeT0iMTUwIiByPSI2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTA2MDRBIiBzdHJva2Utb3BhY2l0eT0iLjYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iMyA2Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDgwIDE1MCkgc2NhbGUoMS45KSI+PGNpcmNsZSBjeD0iOCIgY3k9Ii0xMCIgcj0iNyIgZmlsbD0iI0UwNjA0QSIvPjxwYXRoIGQ9Ik0tNCAxOGExMiAxMSAwIDAgMSAyNCAweiIgZmlsbD0iI0UwNjA0QSIvPjxjaXJjbGUgY3g9Ii02IiBjeT0iLTgiIHI9IjgiIGZpbGw9IiMxNDIzM0EiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNLTIxIDIwYTE1IDEzIDAgMCAxIDMwIDAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L2c+DQo8L3N2Zz4=" alt="Human Resources (HRMS) module screen illustration" width="600" height="300" loading="lazy" decoding="async"></div>
           <span class="p-country"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-chart"/></svg>ERP &amp; finance</span>
           <h3>Human Resources (HRMS)</h3>
           <p>Employee records, attendance, leave and HR workflows.</p>
           <div class="tags"><span class="tag">Employees</span><span class="tag">Attendance</span><span class="tag">Leave</span></div>
-          <button class="slides-btn" type="button" data-slides-open="hrms">View HRMS slides<svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
         </article>
         <article class="card p-card hover-lift reveal">
           <div class="card-media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgZm9udC1mYW1pbHk9IidTZWdvZSBVSScsQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiPg0KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFCMkU0QiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBFMUEyQyIvPjwvbGluZWFyR3JhZGllbnQ+DQo8cmFkaWFsR3JhZGllbnQgaWQ9ImdsIiBjeD0iLjUiIGN5PSIuNSIgcj0iLjUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0M3NDYzNCIgc3RvcC1vcGFjaXR5PSIuNDIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNDNzQ2MzQiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0dGVybiBpZD0iZHQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuMiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMDciLz48L3BhdHRlcm4+PC9kZWZzPg0KPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjYmcpIi8+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9InVybCgjZHQpIi8+PGNpcmNsZSBjeD0iNTYwIiBjeT0iMzEwIiByPSIxOTAiIGZpbGw9InVybCgjZ2wpIi8+DQo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNiA0MikiPg0KPHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyMTYiIHJ4PSIxMiIgZmlsbD0iI0Y1RjdGQSIvPg0KPHBhdGggZD0iTTAgMTJhMTIgMTIgMCAwIDEgMTItMTJoMzE2YTEyIDEyIDAgMCAxIDEyIDEydjE4aC0zNDB6IiBmaWxsPSIjRENFMkVBIi8+DQo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE1IiByPSI0IiBmaWxsPSIjRTA2MDRBIi8+PGNpcmNsZSBjeD0iMjkiIGN5PSIxNSIgcj0iNCIgZmlsbD0iI0YwQjM1QSIvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1RkI1N0EiLz4NCjx0ZXh0IHg9IjE3MCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzVGNkM4MiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjYwMCI+UGF5cm9sbDwvdGV4dD4NCjxyZWN0IHg9IjE2IiB5PSI0MCIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxNjQiIHJ4PSI4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNEQ0UyRUEiLz48dGV4dCB4PSIyOCIgeT0iNjAiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iIzE0MjMzQSIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjcwMCI+UEFZU0xJUDwvdGV4dD48dGV4dCB4PSIzMTIiIHk9IjYwIiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjOTRBMUI2IiBmb250LXNpemU9IjkiIGZvbnQtd2VpZ2h0PSI3MDAiPlNlcCAyMDI2PC90ZXh0Pjx0ZXh0IHg9IjI4IiB5PSI4MiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjNUZCNTdBIiBmb250LXNpemU9IjkiIGZvbnQtd2VpZ2h0PSI3MDAiPkVhcm5pbmdzPC90ZXh0PjxyZWN0IHg9IjI4IiB5PSI5MiIgd2lkdGg9IjcwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIxMjgiIHk9IjkyIiB3aWR0aD0iMzAiIGhlaWdodD0iNiIgcng9IjMuNSIgZmlsbD0iIzk0QTFCNiIvPjxyZWN0IHg9IjI4IiB5PSIxMDgiIHdpZHRoPSI3MCIgaGVpZ2h0PSI2IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMTI4IiB5PSIxMDgiIHdpZHRoPSIzMCIgaGVpZ2h0PSI2IiByeD0iMy41IiBmaWxsPSIjOTRBMUI2Ii8+PHJlY3QgeD0iMjgiIHk9IjEyNCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIxMjgiIHk9IjEyNCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIyOCIgeT0iMTQwIiB3aWR0aD0iNzAiIGhlaWdodD0iNiIgcng9IjMuNSIgZmlsbD0iI0MzQ0REQiIvPjxyZWN0IHg9IjEyOCIgeT0iMTQwIiB3aWR0aD0iMzAiIGhlaWdodD0iNiIgcng9IjMuNSIgZmlsbD0iIzk0QTFCNiIvPjx0ZXh0IHg9IjE3MiIgeT0iODIiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iI0UwNjA0QSIgZm9udC1zaXplPSI5IiBmb250LXdlaWdodD0iNzAwIj5EZWR1Y3Rpb25zPC90ZXh0PjxyZWN0IHg9IjE3MiIgeT0iOTIiIHdpZHRoPSI3MCIgaGVpZ2h0PSI2IiByeD0iMy41IiBmaWxsPSIjQzNDRERCIi8+PHJlY3QgeD0iMjcyIiB5PSI5MiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIxNzIiIHk9IjEwOCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIyNzIiIHk9IjEwOCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIxNzIiIHk9IjEyNCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIyNzIiIHk9IjEyNCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIxNzIiIHk9IjE0MCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiNDM0NEREIiLz48cmVjdCB4PSIyNzIiIHk9IjE0MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIHJ4PSIzLjUiIGZpbGw9IiM5NEExQjYiLz48cmVjdCB4PSIyOCIgeT0iMTY0IiB3aWR0aD0iMjg0IiBoZWlnaHQ9IjI4IiByeD0iNiIgZmlsbD0iIzE0MjMzQSIvPjx0ZXh0IHg9IjQwIiB5PSIxODIiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iI2ZmZiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjcwMCI+TmV0IHBheTwvdGV4dD48cmVjdCB4PSIyMzAiIHk9IjE3NSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjciIHJ4PSIzLjUiIGZpbGw9IiNFMDYwNEEiLz4NCjwvZz48Y2lyY2xlIGN4PSI0ODAiIGN5PSIxNTAiIHI9Ijc4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjE1Ii8+PGNpcmNsZSBjeD0iNDgwIiBjeT0iMTUwIiByPSI2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTA2MDRBIiBzdHJva2Utb3BhY2l0eT0iLjYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iMyA2Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDgwIDE1MCkgc2NhbGUoMS45KSI+PHJlY3QgeD0iLTI1IiB5PSItMTUiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMCIgcng9IjQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIHI9IjgiIGZpbGw9IiNFMDYwNEEiLz48cGF0aCBkPSJNLTE3LTd2MTRNMTctN3YxNCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPg0KPC9zdmc+" alt="Payroll module screen illustration" width="600" height="300" loading="lazy" decoding="async"></div>
@@ -1307,21 +1311,12 @@ button,input,textarea{font:inherit;color:inherit}
   </div>
 </footer>
 
-<dialog class="slides" id="slidesDialog" aria-labelledby="slidesTitle">
+<dialog class="flow" id="flowDialog" aria-labelledby="flowTitle">
   <div class="sl-head">
-    <div><span class="sl-kicker">Module walkthrough</span><h3 id="slidesTitle">Slides</h3></div>
-    <span class="sl-count" id="slidesCount" aria-live="polite"></span>
-    <button class="sl-close" type="button" id="slidesClose" aria-label="Close slides"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <div><span class="sl-kicker">Process flow</span><h3 id="flowTitle">Flow</h3></div>
+    <button class="sl-close" type="button" id="flowClose" aria-label="Close flow chart"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
   </div>
-  <div class="sl-stage">
-    <img id="slidesImg" alt="" width="1200" height="700">
-    <button class="sl-nav prev" type="button" id="slidesPrev" aria-label="Previous slide"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-    <button class="sl-nav next" type="button" id="slidesNext" aria-label="Next slide"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-  </div>
-  <div class="sl-foot">
-    <div><strong id="slidesCap"></strong><p id="slidesText"></p></div>
-    <div class="sl-dots" id="slidesDots"></div>
-  </div>
+  <div class="flow-body" id="flowBody"></div>
 </dialog>
 
 <button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
@@ -1575,80 +1570,72 @@ button,input,textarea{font:inherit;color:inherit}
     certDialog.addEventListener('click', function (ev) { if (ev.target === certDialog && certDialog.close) certDialog.close(); });
   }
 
-  /* ---------- Module slides ----------
-     Add a module: put data-slides="key" on its card and add the key here.
-     Swap the SVGs for real screenshots by changing src. */
-  var SLIDES = {
-    hrms: {
-      title: 'Human Resources (HRMS)',
-      slides: [
-        { src: 'slides/hrms/01-dashboard.svg', title: 'HR dashboard', text: 'Headcount, attendance and leave KPIs with department-wise charts.' },
-        { src: 'slides/hrms/02-employees.svg', title: 'Employee directory', text: 'Interactive report with search, department and status filters.' },
-        { src: 'slides/hrms/03-employee-profile.svg', title: 'Employee profile', text: 'Tabbed master record: personal, job, salary and documents.' },
-        { src: 'slides/hrms/04-attendance.svg', title: 'Attendance', text: 'Monthly attendance grid synced with the biometric device.' },
-        { src: 'slides/hrms/05-leave.svg', title: 'Leave management', text: 'Leave application with balance check and a manager / HR approval workflow.' }
-      ]
+  /* ---------- Process flow chart for each project / module card ---------- */
+  var FLOWS = {"Hospital Management System (HMS)":[["s","Patient arrives"],["p","Registration","Reception","MR number and patient record created"],["p","Doctor consultation","Doctor","Diagnosis, notes and prescription"],["p","Orders","Doctor","Lab tests, radiology and medicines ordered"],["d","Admission needed?","Admit to a ward and allocate a bed","Continue as an OPD patient"],["p","Billing","Accounts","Consultation, services, bed and medicine charges"],["p","Payment & receipt","Cashier","Cash, card or insurance"],["e","Discharge / visit closed"]],"ZATCA Fatoora E-Invoice Posting":[["s","Sales invoice created"],["p","Validate invoice data","System","VAT numbers, amounts and mandatory fields"],["p","Generate UBL XML","PL/SQL","Invoice converted to the ZATCA XML format"],["p","Sign & hash","System","Digital signature, invoice hash and QR code"],["p","Submit to Fatoora API","REST API","Clearance (B2B) or reporting (B2C)"],["d","Accepted by ZATCA?","Store the cleared XML and QR on the invoice","Log the errors, correct and resubmit"],["p","Print / share invoice","Sales","Invoice with QR code sent to the customer"],["e","Invoice posted"]],"Canada Tax Slip Calculation":[["s","Tax year closed"],["p","Collect income data","Payroll","Salaries, benefits and deductions per employee"],["p","Apply tax rules","PL/SQL","Federal and provincial rates, CPP / QPP and EI"],["p","Calculate slip boxes","System","Amount for each box on the slip"],["d","Totals reconcile?","Continue to slip generation","Review employee data and recalculate"],["p","Generate slips","System","One slip per employee in the required format"],["p","Review & file","Finance","Final review and submission"],["e","Slips issued"]],"Pharmacy":[["s","Prescription received"],["p","Check stock","Pharmacist","Available batches and expiry dates"],["d","Medicine in stock?","Issue from the nearest-expiry batch","Raise a purchase request or suggest a substitute"],["p","Dispense & bill","Pharmacist","Quantity, price and discount"],["p","Payment","Cashier","Receipt printed"],["p","Stock update","System","Batch quantity reduced, reorder level checked"],["e","Sale completed"]],"Laboratory":[["s","Test ordered"],["p","Sample collection","Phlebotomist","Barcode label printed"],["p","Sample received in lab","Lab technician","Tracking status updated"],["p","Result entry","Lab technician","Values checked against normal ranges"],["d","Results verified?","Approve the report","Re-test or correct the entry"],["p","Report printed / shared","Lab","Sent to the doctor and patient"],["e","Test closed"]],"Radiology":[["s","Radiology order (X-ray, ultrasound, CT)"],["p","Schedule & payment","Reception","Slot booked and charges paid"],["p","Imaging performed","Technician","Study captured"],["p","Radiologist reporting","Radiologist","Findings and impression"],["d","Report approved?","Release the report","Edit and review again"],["p","Result delivery","Radiology","Report shared with the doctor and patient"],["e","Order closed"]],"Ophthalmology":[["s","Patient visit"],["p","Registration & history","Reception","Previous visits and complaints"],["p","Vision tests","Optometrist","Visual acuity, refraction and eye pressure"],["p","Doctor examination","Ophthalmologist","Diagnosis and treatment plan"],["d","Glasses needed?","Glasses prescription printed","Medicines or a procedure booked"],["p","Billing","Accounts","Consultation and test charges"],["e","Visit closed"]],"Fabric":[["s","Fabric received from supplier"],["p","Receiving entry","Store","Supplier, type, colour, rolls and meters"],["p","Quality check","QC","Width, shade and defects"],["d","Fabric accepted?","Add to stock","Return to the supplier"],["p","Stock by type & colour","System","Live balance per item"],["p","Issue to production","Store","Against a production order"],["e","Stock updated"]],"Grey":[["s","Grey fabric inward"],["p","Inward entry","Store","Weaver / supplier, lot and meters"],["p","Meter-wise stock","System","Stock by quality and lot"],["p","Dispatch for processing","Store","Sent to the dyeing / printing unit"],["p","Receive processed fabric","Store","Received meters compared with sent meters"],["d","Shortage within limit?","Close the lot","Raise a claim with the processor"],["e","Lot closed"]],"Cutting":[["s","Production order"],["p","Cutting plan","Planner","Sizes, ratios and quantities"],["p","Lay & ply details","Cutting master","Fabric lays, plies and markers"],["p","Fabric issued","Store","Against the cutting plan"],["p","Cutting & bundling","Cutting","Pieces counted and bundled"],["d","Output matches plan?","Send bundles to stitching","Record wastage or recut"],["e","Cutting closed"]],"Stitching":[["s","Bundles received"],["p","Assign to line","Supervisor","Line, style and daily target"],["p","Hourly production entry","Line","Pieces completed"],["d","Target achieved?","Continue production","Flag the line for supervisor action"],["p","Quality check","QC","Defects and rework"],["p","Daily output report","System","Line-wise efficiency"],["e","Pieces sent to finishing"]],"Human Resources (HRMS)":[["s","New hire"],["p","Employee record","HR","Personal, job and document details"],["p","Daily attendance","System","Biometric or manual attendance"],["p","Leave application","Employee","Leave type, dates and reason"],["d","Manager approves?","Forward to HR","Request rejected, employee notified"],["p","HR approval","HR","Leave balance updated"],["p","Monthly attendance summary","System","Sent to payroll"],["e","Records ready for payroll"]],"Payroll":[["s","Month end"],["p","Import attendance","System","Days present, leave and overtime"],["p","Calculate earnings","PL/SQL","Basic salary and allowances"],["p","Apply deductions","PL/SQL","Tax, loans, advances and absences"],["d","Payroll verified?","Approve the payroll","Correct and recalculate"],["p","Post to accounts","System","Salary voucher created"],["p","Payslips & bank transfer","HR / Finance","Payslips issued to employees"],["e","Salaries paid"]],"Accounts":[["s","Business transaction"],["p","Voucher entry","Accountant","Payment, receipt or journal voucher"],["d","Voucher approved?","Post the voucher","Return for correction"],["p","Post to general ledger","System","Debit and credit accounts updated"],["p","Trial balance","System","Balances checked"],["p","Financial reports","Finance","Profit & loss, balance sheet and ledgers"],["e","Period closed"]],"Inventory":[["s","Item required"],["p","Item & store setup","Store","Codes, units and reorder levels"],["p","Stock in","Store","Purchases and returns received"],["p","Stock out","Store","Issues to departments"],["d","Below reorder level?","Purchase requisition raised","Continue normal issues"],["p","Stock reports","System","Balance, movement and valuation"],["e","Stock reconciled"]],"Cashflow":[["s","Cash transaction"],["p","Record cash in / out","Cashier","Receipts and payments"],["p","Categorise","System","Sales, expenses, loans and others"],["p","Daily cash position","System","Opening, in, out and closing balance"],["d","Matches physical cash?","Close the day","Investigate the difference"],["p","Cash flow reports","Finance","Daily, monthly and forecast"],["e","Day closed"]],"Admin":[["s","New user"],["p","Create user","Admin","Login, branch and profile"],["p","Assign roles","Admin","Admin, manager, operator and others"],["p","Set permissions","Admin","Pages, menus and actions per role"],["p","User signs in","User","Authentication"],["d","Authorised for the page?","Access granted","Access denied and logged"],["e","Audit trail recorded"]],"Document Management":[["s","Document received"],["p","Upload","User","File with category and tags"],["p","Metadata & indexing","System","Title, department and dates"],["p","Access rights","Admin","Who can view or edit"],["p","Search & retrieve","User","By keyword, category or date"],["d","New version needed?","Upload a new version, keep the history","Keep the current version"],["e","Document archived"]],"Correspondence":[["s","Letter received or to be sent"],["p","Register letter","Front desk","Inward or outward number"],["p","Route to department","Admin","Assigned to an officer"],["p","Action & reply","Officer","Reply drafted and attached"],["d","Reply approved?","Dispatch the letter","Revise the reply"],["p","Tracking","System","Status and dates recorded"],["e","Letter closed"]],"Bug / Tracking":[["s","Bug reported"],["p","Log bug","Tester / user","Steps, screenshots and severity"],["p","Assign","Team lead","Developer and priority"],["p","Fix","Developer","Code change and notes"],["p","Test fix","Tester","Retest on the test server"],["d","Fixed?","Close the bug","Reopen and reassign"],["e","Bug closed"]],"Point of Sale (POS)":[["s","Customer at counter"],["p","Scan / add items","Cashier","Price and stock check"],["p","Apply discounts","System","Promotions and tax"],["p","Payment","Cashier","Cash, card or split payment"],["d","Payment successful?","Print the receipt","Retry or change the method"],["p","Stock & sales update","System","Inventory reduced, sales posted"],["e","Sale completed"]],"Ticketing":[["s","Customer raises a ticket"],["p","Log ticket","Support","Category, priority and details"],["p","Assign agent","System","Based on category and workload"],["p","Work on ticket","Agent","Updates and customer replies"],["d","Resolved within SLA?","Close the ticket","Escalate to the next level"],["p","Customer confirmation","Customer","Feedback captured"],["e","Ticket closed"]]};
+  (function () {
+    var dlg = document.getElementById('flowDialog');
+    var body = document.getElementById('flowBody');
+    if (!dlg || !body) return;
+    var opener = null;
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
     }
-  };
-  var slDialog = document.getElementById('slidesDialog');
-  if (slDialog) {
-    var slImg = document.getElementById('slidesImg');
-    var slDots = document.getElementById('slidesDots');
-    var slSet = null, slIndex = 0, slOpener = null;
-    var showSlide = function (i) {
-      var list = slSet.slides;
-      slIndex = (i + list.length) % list.length;
-      var s = list[slIndex];
-      slImg.src = s.src;
-      slImg.alt = slSet.title + ': ' + s.title;
-      document.getElementById('slidesCap').textContent = s.title;
-      document.getElementById('slidesText').textContent = s.text;
-      document.getElementById('slidesCount').textContent = (slIndex + 1) + ' / ' + list.length;
-      Array.prototype.forEach.call(slDots.children, function (d, k) { d.setAttribute('aria-current', k === slIndex ? 'true' : 'false'); });
-      new Image().src = list[(slIndex + 1) % list.length].src; /* preload next */
-    };
-    var openSlides = function (key) {
-      slSet = SLIDES[key];
-      if (!slSet) return;
-      slOpener = document.activeElement;
-      document.getElementById('slidesTitle').textContent = slSet.title;
-      slDots.innerHTML = '';
-      slSet.slides.forEach(function (s, k) {
-        var d = document.createElement('button');
-        d.type = 'button';
-        d.setAttribute('aria-label', 'Slide ' + (k + 1) + ': ' + s.title);
-        d.addEventListener('click', function () { showSlide(k); });
-        slDots.appendChild(d);
+    function render(steps) {
+      body.innerHTML = '';
+      steps.forEach(function (st, i) {
+        if (i) body.appendChild(el('div', 'fa'));
+        var n;
+        if (st[0] === 's' || st[0] === 'e') {
+          n = el('div', 'fn term' + (st[0] === 'e' ? ' end' : ''), st[1]);
+        } else if (st[0] === 'd') {
+          n = el('div', 'fn dec');
+          n.appendChild(el('strong', '', st[1]));
+          var br = el('div', 'br');
+          var y = el('span', 'yes'); y.appendChild(el('b', '', 'Yes')); y.appendChild(document.createTextNode(st[2]));
+          var no = el('span', 'no'); no.appendChild(el('b', '', 'No')); no.appendChild(document.createTextNode(st[3]));
+          br.appendChild(y); br.appendChild(no); n.appendChild(br);
+        } else {
+          n = el('div', 'fn step');
+          n.appendChild(el('span', 'who', st[2]));
+          n.appendChild(el('strong', '', st[1]));
+          n.appendChild(el('p', '', st[3]));
+        }
+        n.style.animationDelay = (i * 40) + 'ms';
+        body.appendChild(n);
       });
-      showSlide(0);
-      if (typeof slDialog.showModal === 'function') slDialog.showModal(); else slDialog.setAttribute('open', '');
-    };
-    var closeSlides = function () { if (slDialog.close) slDialog.close(); else slDialog.removeAttribute('open'); };
-    slDialog.addEventListener('close', function () { if (slOpener && slOpener.focus) slOpener.focus(); });
-    each('[data-slides]', function (cardEl) {
-      cardEl.addEventListener('click', function (ev) {
+    }
+    function openFlow(title) {
+      var steps = FLOWS[title];
+      if (!steps) return;
+      opener = document.activeElement;
+      document.getElementById('flowTitle').textContent = title;
+      render(steps);
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      dlg.scrollTop = 0;
+    }
+    function closeFlow() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+    document.getElementById('flowClose').addEventListener('click', closeFlow);
+    dlg.addEventListener('click', function (ev) { if (ev.target === dlg) closeFlow(); });
+    dlg.addEventListener('close', function () { if (opener && opener.focus) opener.focus(); });
+    each('#projects .p-card', function (card) {
+      var h = card.querySelector('h3');
+      var title = h ? h.textContent.trim() : '';
+      if (!FLOWS[title]) return;
+      card.classList.add('has-flow');
+      var btn = el('button', 'flow-btn', 'View process flow');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'View process flow for ' + title);
+      btn.addEventListener('click', function (ev) { ev.stopPropagation(); openFlow(title); });
+      card.appendChild(btn);
+      card.addEventListener('click', function (ev) {
         if (ev.target.closest('a, button')) return;
-        openSlides(cardEl.getAttribute('data-slides'));
+        openFlow(title);
       });
     });
-    each('[data-slides-open]', function (b) { b.addEventListener('click', function () { openSlides(b.getAttribute('data-slides-open')); }); });
-    document.getElementById('slidesPrev').addEventListener('click', function () { showSlide(slIndex - 1); });
-    document.getElementById('slidesNext').addEventListener('click', function () { showSlide(slIndex + 1); });
-    document.getElementById('slidesClose').addEventListener('click', closeSlides);
-    slDialog.addEventListener('click', function (ev) { if (ev.target === slDialog) closeSlides(); });
-    slDialog.addEventListener('keydown', function (ev) {
-      if (ev.key === 'ArrowRight') { ev.preventDefault(); showSlide(slIndex + 1); }
-      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); showSlide(slIndex - 1); }
-    });
-    var touchX = null;
-    slImg.addEventListener('touchstart', function (ev) { touchX = ev.touches[0].clientX; }, { passive: true });
-    slImg.addEventListener('touchend', function (ev) {
-      if (touchX === null) return;
-      var dx = ev.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 40) showSlide(slIndex + (dx < 0 ? 1 : -1));
-      touchX = null;
-    });
-  }
+  })();
 
   /* ---------- Skill explanations: click a chip to open its details below ---------- */
   var SKILL_INFO = {"Oracle Database 10g":"Oracle release that introduced grid computing, automatic memory and storage management, and Data Pump.",
