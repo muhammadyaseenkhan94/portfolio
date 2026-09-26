@@ -281,6 +281,23 @@ button,input,textarea{font:inherit;color:inherit}
 .x-card h3{margin:18px 0 12px;font-size:1.12rem}
 
 /* ---------- Experience ---------- */
+.career{padding:18px 22px 14px}
+.gantt{display:grid;grid-template-columns:170px minmax(0,1fr);gap:0 14px;margin-top:14px}
+.g-labels{display:flex;flex-direction:column}
+.g-labels span{display:flex;align-items:center;gap:8px;height:30px;font-size:.84rem;font-weight:600;color:var(--ink);white-space:nowrap}
+.g-labels i{width:9px;height:9px;border-radius:3px;flex:none}
+.g-plot{position:relative;padding-bottom:24px}
+.g-grid{position:absolute;inset:0 0 0 0}
+.g-tick{position:absolute;top:0;bottom:20px;width:1px;background:var(--line-soft)}
+.g-tick::after{content:attr(data-year);position:absolute;bottom:-20px;left:0;transform:translateX(-50%);font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.g-row{position:relative;height:30px}
+.g-bar{position:absolute;top:6px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;min-width:26px;overflow:hidden}
+.g-bar em{font-style:normal;font-family:var(--mono);font-size:.68rem;font-weight:500;color:#fff;white-space:nowrap}
+.g-bar.s1,.g-labels i.s1{background:var(--navy-3)}
+.g-bar.s2,.g-labels i.s2{background:var(--navy-4)}
+.g-bar.s3,.g-labels i.s3{background:var(--coral)}
+.g-bar.s3{box-shadow:0 0 0 3px var(--coral-soft)}
+@media (max-width:640px){.gantt{grid-template-columns:104px minmax(0,1fr);gap:0 8px}.g-labels span{font-size:.72rem;white-space:normal;line-height:1.15}.g-tick::after{font-size:.62rem}}
 .career{padding:22px 24px}
 .career-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
 .career-top h3{font-size:1rem}
@@ -809,15 +826,14 @@ button,input,textarea{font:inherit;color:inherit}
         <div class="career-top">
           <h3>Career at a glance</h3>
         </div>
-        <div class="cb-track" role="img" aria-label="Career timeline: Masood Textile Mills, then Albarka Fabrics, then BZSoftech">
-          <span class="cb-seg s1" data-seg="masood" style="flex:1795 1 0"></span>
-          <span class="cb-seg s2" data-seg="albarka" style="flex:336 1 0"></span>
-          <span class="cb-seg s3" data-seg="bzsoftech" style="flex:693 1 0"></span>
-        </div>
-        <div class="cb-legend">
-          <span><i style="background:var(--navy-3)"></i><b>Masood Textile Mills</b> <em data-legend="masood">2019 - 2023</em></span>
-          <span><i style="background:var(--navy-4)"></i><b>Albarka Fabrics</b> <em data-legend="albarka">2023 - 2024</em></span>
-          <span><i style="background:var(--coral)"></i><b>BZSoftech</b> <em data-legend="bzsoftech">2024 - Present</em></span>
+        <div class="gantt" role="img" aria-label="Career timeline: Masood Textile Mills 2019 to 2023, Albarka Fabrics 2023 to 2024, BZSoftech 2024 to present">
+          <div class="g-labels" aria-hidden="true"><span><i class="s1"></i>Masood Textile Mills</span><span><i class="s2"></i>Albarka Fabrics</span><span><i class="s3"></i>BZSoftech</span></div>
+          <div class="g-plot" aria-hidden="true">
+            <div class="g-grid" id="gGrid"></div>
+            <div class="g-row"><span class="g-bar s1" data-seg="masood" title="Masood Textile Mills"><em data-legend="masood">4y 11m</em></span></div>
+            <div class="g-row"><span class="g-bar s2" data-seg="albarka" title="Albarka Fabrics"><em data-legend="albarka">11m</em></span></div>
+            <div class="g-row"><span class="g-bar s3" data-seg="bzsoftech" title="BZSoftech"><em data-legend="bzsoftech">1y 10m</em></span></div>
+          </div>
         </div>
       </div>
 
@@ -1290,7 +1306,13 @@ button,input,textarea{font:inherit;color:inherit}
   function monthLabel(d) { return MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
 
   var today = startOfToday();
-  var periods = [];
+  var periods = [], bars = [];
+  function shortSpan(p) {
+    var out = [];
+    if (p.y) out.push(p.y + 'y');
+    if (p.m) out.push(p.m + 'm');
+    return out.length ? out.join(' ') : p.d + 'd';
+  }
   each('[data-job][data-start]', function (job) {
     var id = job.getAttribute('data-job');
     var start = parseDate(job.getAttribute('data-start'));
@@ -1305,11 +1327,32 @@ button,input,textarea{font:inherit;color:inherit}
     if (dur) dur.textContent = formatSpan(ymd(start, end));
     var dates = job.querySelector('[data-dates]');
     if (dates) dates.textContent = monthLabel(start) + ' - ' + (current ? 'Present' : monthLabel(lastDay));
-    var seg = document.querySelector('[data-seg="' + id + '"]');
-    if (seg) seg.style.flexGrow = String(Math.max(dayDiff(start, end), 1));
     var legend = document.querySelector('[data-legend="' + id + '"]');
-    if (legend) legend.textContent = start.getFullYear() + ' - ' + (current ? 'Present' : lastDay.getFullYear());
+    if (legend) legend.textContent = shortSpan(ymd(start, end));
+    bars.push({ id: id, start: start, end: end });
   });
+
+  /* Career graph: bars placed on a year axis */
+  var gGrid = document.getElementById('gGrid');
+  if (gGrid && bars.length) {
+    var y0 = Math.min.apply(null, bars.map(function (b) { return b.start.getFullYear(); }));
+    var y1 = Math.max.apply(null, bars.map(function (b) { return b.end.getFullYear(); })) + 1;
+    var a0 = new Date(y0, 0, 1), span = dayDiff(a0, new Date(y1, 0, 1));
+    var pct = function (d) { return (dayDiff(a0, d) / span * 100).toFixed(2) + '%'; };
+    for (var yr = y0; yr <= y1; yr++) {
+      var tk = document.createElement('span');
+      tk.className = 'g-tick';
+      tk.style.left = pct(new Date(yr, 0, 1));
+      tk.setAttribute('data-year', yr);
+      gGrid.appendChild(tk);
+    }
+    bars.forEach(function (b) {
+      var el = document.querySelector('.g-bar[data-seg="' + b.id + '"]');
+      if (!el) return;
+      el.style.left = pct(b.start);
+      el.style.width = (dayDiff(b.start, b.end) / span * 100).toFixed(2) + '%';
+    });
+  }
 
   if (periods.length) {
     /* Merge overlapping periods so every working day is counted once */
