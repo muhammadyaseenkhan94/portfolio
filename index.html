@@ -371,6 +371,29 @@ button,input,textarea{font:inherit;color:inherit}
 .count{font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--muted);background:var(--chip);border:1px solid var(--line-soft);padding:3px 8px;border-radius:999px;white-space:nowrap}
 .block-gap{margin-top:52px}
 
+/* Compact project cards */
+#projects .p-card{padding:20px 20px 18px}
+#projects .p-card .card-media{margin:-20px -20px 16px}
+#projects .p-card h3{margin:10px 0 6px;font-size:1.05rem}
+#projects .p-card p{font-size:.88rem;line-height:1.55;color:var(--muted)}
+#projects .p-card .tags{margin-top:12px;gap:6px}
+#projects .p-card .tag{padding:2px 9px;font-size:.72rem}
+/* Module cards: 4 per row, no repeated area label */
+#projects .area-title + .grid-3{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+#projects .area-title + .grid-3 .p-card{padding:14px 16px 16px;border-top-width:2px}
+#projects .area-title + .grid-3 .card-media{margin:-14px -16px 12px;aspect-ratio:16/9}
+#projects .area-title + .grid-3 .p-country{display:none}
+#projects .area-title + .grid-3 h3{margin:0 0 4px;font-size:.96rem}
+#projects .area-title + .grid-3 p{font-size:.83rem;line-height:1.5}
+#projects .area-title + .grid-3 .tags{margin-top:10px;gap:5px}
+#projects .area-title + .grid-3 .tag{font-size:.68rem;padding:1px 8px}
+#projects .area-title + .grid-3 .slides-btn{margin-top:10px;padding:5px 10px;font-size:.76rem}
+#projects .area-title + .grid-3 .media-badge{top:8px;right:8px;padding:3px 8px;font-size:.68rem}
+#projects .area-title{margin:30px 0 14px}
+@media (max-width:1080px){#projects .area-title + .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){#projects .area-title + .grid-3{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media (max-width:460px){#projects .area-title + .grid-3{grid-template-columns:1fr}}
+
 /* ---------- Skills ---------- */
 .s-card{padding:24px}
 .s-card .m-head{margin-bottom:14px}
