@@ -420,6 +420,13 @@ button,input,textarea{font:inherit;color:inherit}
 #skills .chip-sets{display:flex;flex-direction:column;gap:12px}
 #skills .chip-set{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 #skills .chip-set:last-child{padding-bottom:0;border-bottom:0}
+#skills .chip.has-info{cursor:pointer;transition:border-color .2s ease,color .2s ease,background-color .2s ease}
+#skills .chip.has-info:hover{border-color:var(--coral-line);color:var(--ink)}
+#skills .chip.active{border-color:var(--coral);color:var(--coral);background:var(--coral-soft)}
+#skills .chip-info{flex-basis:100%;margin-top:4px;padding:10px 14px;border-left:3px solid var(--coral);background:var(--surface-2);border-radius:0 8px 8px 0;animation:chip-open .25s ease}
+#skills .chip-info strong{display:block;color:var(--ink);font-size:.88rem;font-weight:600}
+#skills .chip-info p{margin-top:3px;font-size:.84rem;line-height:1.55;color:var(--text)}
+@keyframes chip-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 #skills .chip-label{flex-basis:100%;font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
 #skills .sub-title{margin-bottom:16px}
 @media (max-width:760px){#skills .s-card{grid-template-columns:1fr;padding:16px 18px}#skills .s-note{grid-column:auto}}
@@ -1152,7 +1159,7 @@ button,input,textarea{font:inherit;color:inherit}
       <div class="section-head reveal">
         <span class="eyebrow">Toolbox</span>
         <h2 class="section-title" id="skills-title">Technical skills</h2>
-        <p class="section-intro">Databases, languages, tools and platforms behind my work, plus in-depth Oracle APEX feature expertise.</p>
+        <p class="section-intro">Databases, languages, tools and platforms behind my work, plus in-depth Oracle APEX feature expertise. Click any item to see what it does.</p>
       </div>
       <div class="grid-3">
         <article class="card s-card reveal">
@@ -1642,6 +1649,238 @@ button,input,textarea{font:inherit;color:inherit}
       touchX = null;
     });
   }
+
+  /* ---------- Skill explanations: click a chip to open its details below ---------- */
+  var SKILL_INFO = {"Oracle Database 10g":"Oracle release that introduced grid computing, automatic memory and storage management, and Data Pump.",
+    "Oracle Database 11g":"Release that added result caching, virtual columns, compound triggers and PIVOT / UNPIVOT; widely used under ERP systems.",
+    "Oracle 12c":"First multitenant release (container and pluggable databases), with identity columns, FETCH FIRST row limiting and JSON support.",
+    "Oracle 19c":"Long-term support release and the stable choice for production, with automatic indexing and better JSON handling.",
+    "Oracle 23ai":"Latest long-term release with AI Vector Search, JSON Relational Duality, SQL domains and a native BOOLEAN type.",
+    "Enterprise Edition":"Full-featured Oracle edition with partitioning, advanced security, parallel execution and high-availability options for large workloads.",
+    "Tables":"Store data in rows and columns; the basic building block of every application.",
+    "Views":"Saved queries that act like virtual tables, used to hide complex joins and control what users can see.",
+    "Materialized Views":"Views whose results are physically stored and refreshed on a schedule, used to speed up heavy reports and summaries.",
+    "Indexes (B-tree, Bitmap, Function-based)":"Structures that make lookups fast: B-tree for selective columns, bitmap for low-cardinality columns in reporting, and function-based for searches on expressions such as UPPER(name).",
+    "Sequences":"Generate unique numbers, typically for primary keys and document numbers.",
+    "Synonyms":"Alternative names for objects, so applications can use tables from other schemas without a prefix.",
+    "Database Links":"Let one database query or update tables in another database as if they were local.",
+    "Global Temporary Tables":"Tables whose rows are private to a session or transaction, used for intermediate results in reports and batch jobs.",
+    "Partitioned Tables":"Large tables split into partitions (for example by month) so queries and maintenance touch only the data they need.",
+    "Object Types":"User-defined types with attributes and methods, used for structured data and table functions.",
+    "Primary Key":"Uniquely identifies each row and can never be null.",
+    "Foreign Key":"Links a child row to its parent row and prevents orphan records.",
+    "Unique":"Ensures no two rows share the same value, such as an employee CNIC or email.",
+    "Check":"Enforces a rule on a column, such as quantity > 0 or status within a fixed list.",
+    "Not Null":"Makes a column mandatory.",
+    "Default Values":"Fill a column automatically when no value is given, such as the current date or ACTIVE.",
+    "Users & Schemas":"Creating database accounts and the schemas that own application objects.",
+    "Roles & Privileges":"Granting and revoking system and object privileges, grouped into roles, so each user gets only the access they need.",
+    "Tablespaces":"Logical storage areas that hold tables and indexes and map to data files on disk.",
+    "Data Dictionary Views":"Views such as USER_TABLES, ALL_OBJECTS and DBA_USERS that describe the database itself, used for analysis and scripting.",
+    "Data Pump Export / Import":"The expdp and impdp utilities for moving schemas and data between databases and taking logical backups.",
+    "SQL*Loader":"Loads data from flat files such as CSV into tables quickly, using a control file for mapping and validation.",
+    "DDL":"Data Definition Language: CREATE, ALTER, DROP and TRUNCATE for defining database objects.",
+    "DML":"Data Manipulation Language: INSERT, UPDATE, DELETE and SELECT for working with data.",
+    "DCL":"Data Control Language: GRANT and REVOKE for access rights.",
+    "TCL":"Transaction Control Language: COMMIT, ROLLBACK and SAVEPOINT for keeping data consistent.",
+    "MERGE":"Inserts or updates rows in one statement depending on whether they already exist; ideal for syncing data.",
+    "Joins (Inner, Outer, Self, Cross)":"Combine rows from several tables: inner for matching rows, outer to keep unmatched rows, self to relate a table to itself, cross for every combination.",
+    "Subqueries":"A query inside another query, used for filters and calculated values.",
+    "Correlated Subqueries":"Subqueries that run once for each outer row and reference its columns, for row-by-row comparisons.",
+    "Set Operators":"UNION, UNION ALL, INTERSECT and MINUS for combining or comparing result sets.",
+    "WITH Clause (CTE)":"Names a subquery at the top of a statement so complex queries are easier to read and reuse.",
+    "Hierarchical Queries (CONNECT BY)":"Walk parent-child data such as a chart of accounts, an org chart or a bill of materials.",
+    "PIVOT / UNPIVOT":"Turn rows into columns (for example months across the top) and back again.",
+    "Single-row Functions":"Work on each row: string, number and null-handling functions such as SUBSTR, ROUND and NVL.",
+    "Aggregate Functions":"SUM, COUNT, AVG, MIN and MAX to summarise groups of rows.",
+    "GROUP BY, ROLLUP & CUBE":"Group rows for totals; ROLLUP and CUBE add subtotals and grand totals in the same query.",
+    "Analytic Functions (ROW_NUMBER, RANK, LAG, LEAD)":"Calculate across related rows without collapsing them: rankings, running totals and comparing a row with the previous or next one.",
+    "CASE & DECODE":"Conditional logic inside SQL that returns different values based on conditions.",
+    "Date & Conversion Functions":"TO_DATE, TO_CHAR, ADD_MONTHS, MONTHS_BETWEEN and TRUNC for dates, plus conversions between text, numbers and dates.",
+    "Regular Expressions":"REGEXP_LIKE, REGEXP_SUBSTR and REGEXP_REPLACE for pattern-based validation and text extraction.",
+    "JSON_TABLE & JSON Functions":"Read JSON documents as relational rows, and build or query JSON with JSON_VALUE, JSON_OBJECT and related functions.",
+    "Explain Plan":"Shows how Oracle will execute a query (access paths, join methods, cost); the starting point for tuning.",
+    "Optimizer Hints":"Instructions such as INDEX or PARALLEL that guide the optimizer when it picks a poor plan.",
+    "Index Tuning":"Choosing the right columns and index types, and dropping unused indexes, to speed up queries without slowing writes.",
+    "Query Rewriting":"Restructuring SQL (removing needless joins, avoiding functions on indexed columns, using EXISTS) to get the same result faster.",
+    "Anonymous Blocks":"Unnamed PL/SQL blocks run once, for scripts, testing and one-off data fixes.",
+    "Stored Procedures":"Named PL/SQL programs stored in the database that perform actions such as posting a voucher or processing payroll.",
+    "Functions":"Named programs that return a value and can be used inside SQL, for calculations such as tax or balance.",
+    "Packages (Spec & Body)":"Group related procedures, functions and variables: the specification is the public interface and the body holds the code.",
+    "Table / Pipelined Functions":"Functions that return rows so they can be queried like a table; pipelined versions stream rows as they are produced.",
+    "Triggers (Row, Statement, INSTEAD OF, Compound)":"Code that runs automatically on INSERT, UPDATE or DELETE: row-level for each row, statement-level once per statement, INSTEAD OF on views, and compound triggers that combine timing points.",
+    "%TYPE & %ROWTYPE":"Declare variables that automatically match a column or row structure, so code keeps working when tables change.",
+    "Records":"Composite variables that hold a full row or a custom set of fields.",
+    "Associative Arrays":"Key-value collections indexed by number or string, used as fast in-memory lookups.",
+    "Nested Tables":"Unbounded collections that can be stored in columns or queried with SQL through TABLE().",
+    "VARRAYs":"Ordered collections with a fixed maximum size.",
+    "Explicit & Implicit Cursors":"Implicit cursors are created by Oracle for single statements; explicit cursors are declared to process query results row by row.",
+    "REF Cursors":"Cursor variables that can be opened for different queries and returned to APEX, reports or other programs.",
+    "Cursor FOR Loops":"The simplest way to loop through query results, with automatic open, fetch and close.",
+    "IF / CASE":"Conditional branching in PL/SQL.",
+    "Loops":"Basic LOOP, WHILE and FOR loops for repeating logic.",
+    "Exception Handling":"Catching errors in the EXCEPTION section so the program can log, roll back or show a clear message.",
+    "User-defined Exceptions":"Custom named errors for business rules, such as insufficient leave balance.",
+    "RAISE_APPLICATION_ERROR":"Raises a custom error number and message that APEX and Forms show to the user.",
+    "Autonomous Transactions":"Independent transactions inside a procedure, typically for error logging that must be saved even if the main work rolls back.",
+    "Bulk Collect":"Fetches many rows into a collection in one step, cutting context switches between SQL and PL/SQL.",
+    "FORALL":"Sends many INSERT, UPDATE or DELETE statements to SQL in one batch for high-volume processing.",
+    "Dynamic SQL (EXECUTE IMMEDIATE, DBMS_SQL)":"Builds and runs SQL at runtime, for flexible searches, dynamic reports and DDL.",
+    "PL/SQL Tuning":"Profiling code, reducing row-by-row processing and using bulk operations and caching to make programs faster.",
+    "DBMS_OUTPUT":"Prints debug messages from PL/SQL during development.",
+    "DBMS_SCHEDULER":"Creates and manages scheduled jobs such as nightly postings, reminders and report generation.",
+    "DBMS_LOB":"Reads and writes large objects (CLOB, BLOB) such as documents, images and long text.",
+    "DBMS_CRYPTO":"Encrypts, decrypts and hashes data such as passwords and sensitive fields.",
+    "UTL_FILE":"Reads and writes text files on the database server for data exchange with other systems.",
+    "UTL_HTTP":"Calls web pages and APIs over HTTP directly from PL/SQL.",
+    "Data & Control Blocks":"Data blocks are tied to tables for querying and saving; control blocks hold buttons and non-database items.",
+    "Items":"Text items, lists, checkboxes, radio groups and display items that make up a form screen.",
+    "Canvases & Windows":"Canvases (content, stacked, tab) are the surfaces items sit on; windows display them.",
+    "Form Triggers (WHEN-, PRE-, POST-, KEY-)":"Event code that runs on user actions and database events, such as WHEN-BUTTON-PRESSED, PRE-INSERT, POST-QUERY and KEY-COMMIT.",
+    "LOVs & Record Groups":"Pop-up lists of values backed by queries (record groups) that help users pick valid codes.",
+    "Alerts":"Modal message boxes for confirmations, warnings and errors.",
+    "Program Units":"Procedures, functions and packages written inside a form for reusable logic.",
+    "Libraries (PLL)":"Shared PL/SQL libraries attached to many forms so common code is written once.",
+    "Menus":"Custom menu modules that give users navigation and role-based access to forms.",
+    "Master-Detail Relations":"Link two blocks so detail rows (for example invoice lines) follow the selected master record (the invoice).",
+    "Parameters":"Values passed between forms, and to reports when calling them.",
+    "Data Model & Queries":"The queries, groups and links that define what data a report fetches.",
+    "Groups & Data Links":"Break data into levels (master, detail) and connect queries into a hierarchy.",
+    "Formula, Summary & Placeholder Columns":"Calculated fields, totals and counts, and variables filled by PL/SQL while the report runs.",
+    "Tabular, Group-Above & Matrix Layouts":"Common report styles: simple lists, grouped reports with headers, and cross-tab matrices.",
+    "Parameter Forms":"Screens where users enter filters such as a date range or department before running a report.",
+    "Report Triggers":"Before-report, after-report and between-pages code for validation, setup and custom formatting.",
+    "PDF & Excel Output":"Generating reports as PDF for printing and as spreadsheets for further analysis.",
+    "JavaScript":"The programming language of the browser, used in APEX for dynamic behaviour, custom validations and interactive pages.",
+    "jQuery":"JavaScript library bundled with APEX for selecting elements, handling events and making AJAX calls with less code.",
+    "HTML5":"The markup language that structures web pages, used in APEX templates and custom regions.",
+    "CSS3":"The styling language for layout, colours and responsive design.",
+    "JSON":"Lightweight data format used by REST APIs and APEX AJAX calls.",
+    "XML":"Structured data format used by SOAP web services, e-invoicing standards and data exchange.",
+    "AJAX":"Loading or saving data in the background without reloading the page.",
+    "RESTful APIs":"Web services that expose resources over HTTP URLs; the standard way applications exchange data today.",
+    "ORDS Modules, Templates & Handlers":"How Oracle REST Data Services organises APIs: a module groups services, a template defines the URL, and a handler holds the SQL or PL/SQL for each HTTP method.",
+    "GET / POST / PUT / DELETE":"HTTP methods to read, create, update and delete data through an API.",
+    "JSON Request & Response":"Sending and receiving data as JSON bodies when calling or building APIs.",
+    "OAuth 2.0 & Token Authentication":"Securing APIs with access tokens instead of sending passwords with every request.",
+    "Basic Authentication":"Simple API security using a username and password in the request header.",
+    "Third-Party API Integration":"Connecting Oracle applications to external services such as payment gateways, SMS providers and government e-invoicing portals.",
+    "API Testing with Postman":"Sending test requests, inspecting responses and debugging APIs in Postman before wiring them into the application.",
+    "Oracle APEX 24.1+":"Oracle's low-code platform for building secure, data-driven web applications directly on the Oracle Database.",
+    "APEX Cloud":"The Oracle APEX Application Development service on Oracle Cloud: a fully managed environment for hosting APEX apps.",
+    "Oracle Developer Suite":"Oracle's toolset containing Forms Builder, Reports Builder and related tools for building Forms and Reports applications.",
+    "Forms Builder 6i / 10g / 11g / 12c":"The IDE for designing Oracle Forms screens, blocks, triggers and program units.",
+    "Reports Builder 6i / 10g / 11g / 12c":"The IDE for designing Oracle Reports data models and layouts.",
+    "SQL Developer":"Oracle's free IDE for writing SQL and PL/SQL, browsing objects, debugging and exporting data.",
+    "SQL Developer Data Modeler":"Tool for designing ER diagrams and generating DDL from logical and physical models.",
+    "TOAD":"Popular database IDE for SQL and PL/SQL development, schema comparison and performance analysis.",
+    "SQL*Plus":"Oracle's command-line tool for running SQL, PL/SQL and scripts.",
+    "iSQL*Plus":"Browser-based version of SQL*Plus included with older Oracle releases.",
+    "Interactive Reports":"Reports where users can search, filter, sort, group, chart and save their own views without developer help.",
+    "Interactive Grids":"Spreadsheet-like editable grids for fast data entry and master-detail editing.",
+    "Classic Reports":"Simple, fully template-controlled reports for fixed layouts.",
+    "Forms":"Pages for creating and editing a single record, with automatic row processing.",
+    "Master-Detail Forms":"A header record and its lines on one page, such as an order and its items.",
+    "Cards":"Show records as visual cards with titles, badges, icons and actions.",
+    "Charts":"Bar, line, pie and other charts built on SQL queries using Oracle JET.",
+    "Calendar":"Shows date-based data such as leave, appointments or schedules in month, week and day views.",
+    "Maps":"Plot locations and regions on interactive maps from spatial or latitude / longitude data.",
+    "Trees":"Display hierarchical data such as an org chart or chart of accounts as an expandable tree.",
+    "Faceted Search":"Filter panels with a count next to each value, so users narrow down results quickly.",
+    "Smart Filters":"A single search bar with suggestion chips; a compact alternative to faceted search.",
+    "Modal Dialogs":"Pages that open on top of the current page for a quick create or edit without losing context.",
+    "Page Items":"Fields on a page (text, select list, date picker) whose values are held in session state.",
+    "Application Items":"Non-visible variables shared across all pages of an application, such as the user's branch.",
+    "Dynamic Actions":"Declarative client-side behaviour: show, hide, refresh, set values or run PL/SQL when something happens on the page.",
+    "Validations":"Rules checked before saving so users get clear errors, such as required fields or valid date ranges.",
+    "Computations":"Set item values automatically at a chosen point, for example defaulting today's date.",
+    "Processes":"Server-side logic that runs on page load or submit: saving rows, calling PL/SQL or sending mail.",
+    "Branches":"Decide which page the user goes to after a submit.",
+    "Server-side Conditions":"Show or run a component only when a condition is true, such as a role or an item value.",
+    "Session State":"How APEX keeps item values for each user session between pages and requests.",
+    "Substitution Strings":"Placeholders such as &APP_USER. that APEX replaces with values at runtime.",
+    "Universal Theme":"APEX's responsive, accessible default theme used by modern applications.",
+    "Theme Roller":"Visual tool for changing the colours and styles of the Universal Theme without writing CSS.",
+    "Templates & Template Options":"Control how pages, regions, reports and buttons are rendered, with options to switch styles declaratively.",
+    "Shared Components":"Reusable application-level parts: lists, LOVs, authorization schemes, templates, email templates and more.",
+    "LOVs":"Lists of values that feed select lists, popups and checkboxes from a query or a static list.",
+    "Navigation Menus":"The side or top menu that lets users move through the application.",
+    "Breadcrumbs":"A trail showing where the user is in the application, with a quick way back.",
+    "Plugins":"Reusable custom components (items, regions, dynamic actions) that extend APEX.",
+    "Custom CSS & JavaScript":"Extra styling and scripting at page or application level to go beyond built-in features.",
+    "Progressive Web Apps (PWA)":"Make an APEX app installable on phones and desktops with its own icon and full-screen experience.",
+    "Multilingual Apps":"Translate an application into several languages, such as English, Urdu or Arabic.",
+    "APEX Collections":"Temporary session-based tables for holding data, like a shopping cart or a wizard's steps, before saving.",
+    "AJAX Callbacks":"Server-side PL/SQL called from JavaScript to fetch or save data without submitting the page.",
+    "APEX JavaScript APIs":"The apex.* namespace (apex.item, apex.server, apex.message) for working with pages in JavaScript.",
+    "Data Load Definitions":"Let users upload CSV, Excel, XML or JSON files and map their columns into tables.",
+    "File Upload & BLOB Storage":"Uploading documents and images and storing them in database BLOB columns.",
+    "PDF & Excel Reports":"Downloading reports as PDF or spreadsheet files for printing and sharing.",
+    "Authentication Schemes":"How users log in: APEX accounts, database accounts, LDAP, social sign-in or a custom user table.",
+    "Authorization Schemes":"Rules that decide whether a user can see a page, region, button or column.",
+    "Role-Based Access Control":"Assigning users to roles such as Admin or Manager and granting access by role.",
+    "Session State Protection":"Checksums on URLs and items that stop users from tampering with values.",
+    "Page & Item Level Security":"Restricting individual pages and fields, including read-only or hidden items by role.",
+    "Web Credentials":"Securely stored usernames, passwords or tokens for calling external APIs.",
+    "Oracle Wallet & Network ACLs":"Wallets store SSL certificates for HTTPS calls; network ACLs control which external hosts the database may contact.",
+    "APEX_WEB_SERVICE":"PL/SQL package for calling REST and SOAP web services from the database.",
+    "APEX_JSON":"PL/SQL package for parsing and generating JSON.",
+    "REST Data Sources":"Connect reports and forms declaratively to external REST APIs as if they were tables.",
+    "Approval Workflows":"Multi-step approvals, such as leave or purchase requests, using the APEX Approvals and Workflow components.",
+    "APEX_MAIL Notifications":"Sending emails, with templates and attachments, from APEX applications.",
+    "Automations":"Declarative scheduled or query-based actions in APEX, such as reminders for overdue tasks.",
+    "Scheduler Jobs":"Database jobs scheduled with DBMS_SCHEDULER for recurring background work.",
+    "Background Page Processing":"Running long page processes in the background so the user can keep working.",
+    "Deployment & Export / Import":"Moving applications between development, test and production environments.",
+    "Supporting Objects":"Scripts packaged with an APEX app that install its tables, data and other objects automatically.",
+    "Debugging":"Using APEX debug mode, logs and browser tools to find and fix problems."};
+  (function () {
+    var skills = document.getElementById('skills');
+    if (!skills) return;
+    var panel = null, activeChip = null, n = 0;
+    function describe(name) {
+      if (SKILL_INFO[name]) return SKILL_INFO[name];
+      if (/^Windows /.test(name)) return 'Microsoft ' + name + ', used as the development environment for Oracle tools and applications.';
+      return '';
+    }
+    function close() {
+      if (panel) panel.parentNode.removeChild(panel);
+      if (activeChip) { activeChip.classList.remove('active'); activeChip.setAttribute('aria-expanded', 'false'); }
+      panel = null; activeChip = null;
+    }
+    function open(chip) {
+      var same = chip === activeChip;
+      close();
+      if (same) return;
+      var name = chip.textContent.trim();
+      var text = describe(name);
+      if (!text) return;
+      panel = document.createElement('div');
+      panel.className = 'chip-info';
+      panel.id = chip.getAttribute('aria-controls');
+      panel.setAttribute('role', 'region');
+      panel.innerHTML = '<strong></strong><p></p>';
+      panel.querySelector('strong').textContent = name;
+      panel.querySelector('p').textContent = text;
+      chip.parentNode.appendChild(panel);
+      chip.classList.add('active');
+      chip.setAttribute('aria-expanded', 'true');
+      activeChip = chip;
+    }
+    Array.prototype.forEach.call(skills.querySelectorAll('.chip'), function (chip) {
+      if (!describe(chip.textContent.trim())) return;
+      chip.setAttribute('role', 'button');
+      chip.setAttribute('tabindex', '0');
+      chip.setAttribute('aria-expanded', 'false');
+      chip.setAttribute('aria-controls', 'skill-info-' + (++n));
+      chip.classList.add('has-info');
+      chip.addEventListener('click', function () { open(chip); });
+      chip.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(chip); }
+        else if (ev.key === 'Escape') { close(); }
+      });
+    });
+  })();
 
   /* ---------- Footer year ---------- */
   var yearEl = document.getElementById('year');
