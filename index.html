@@ -432,11 +432,11 @@ button,input,textarea{font:inherit;color:inherit}
 @keyframes chip-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 #skills .chip-label{flex-basis:100%;font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
 #skills .sub-title{margin-bottom:16px}
-/* Oracle APEX expertise: plain rows, no outer box */
-#skills .grid-2{background:none;border:0;border-radius:0;box-shadow:none}
-#skills .grid-2 .s-card{padding-left:0;padding-right:0}
-#skills .grid-2 .s-card:hover{background:transparent}
-@media (max-width:760px){#skills .s-card{grid-template-columns:1fr;padding:16px 18px}#skills .s-note{grid-column:auto}}
+/* Skills: plain rows, no outer box */
+#skills .grid-3,#skills .grid-2{background:none;border:0;border-radius:0;box-shadow:none}
+#skills .s-card{padding-left:0;padding-right:0}
+#skills .s-card:hover{background:transparent}
+@media (max-width:760px){#skills .s-card{grid-template-columns:1fr;padding:16px 0}#skills .s-note{grid-column:auto}}
 
 /* ---------- Credentials ---------- */
 .cred-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:start}
