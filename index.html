@@ -555,6 +555,13 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
 .cert-kind{font-size:.86rem}
 .cert-feature h3{margin-top:12px;font-size:1.1rem}
 .cert-feature p{margin-top:4px;font-size:.86rem}
+/* Certification shown as plain text, no box */
+#credentials .cert-feature{background:none;border:0;border-radius:0;box-shadow:none;padding:0;color:var(--text)}
+#credentials .cert-feature::before,#credentials .cert-feature::after,#credentials .cert-top .icon-tile{display:none}
+#credentials .cert-meta{color:var(--coral)}
+#credentials .cert-kind{color:var(--ink)}
+#credentials .cert-feature h3{margin-top:6px;color:var(--ink)}
+#credentials .cert-feature p{color:var(--muted)}
 
 /* ---------- Interests and references ---------- */
 .more-card{padding:26px}
