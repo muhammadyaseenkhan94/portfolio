@@ -299,6 +299,14 @@ button,input,textarea{font:inherit;color:inherit}
 .x-card::after{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
 .x-card:hover::after{transform:scaleX(1)}
 .x-card h3{margin:18px 0 12px;font-size:1.12rem}
+#expertise .grid-3{column-gap:52px;row-gap:8px}
+#expertise .x-card{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-items:center;align-content:start;padding:28px 0 30px;background:none;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;overflow:visible}
+#expertise .x-card:hover{transform:none;box-shadow:none}
+#expertise .x-card::after{top:-1px;height:2px}
+#expertise .x-card h3{margin:0;font-size:1.15rem;line-height:1.35}
+#expertise .x-card .icon-tile{transition:background-color .25s ease,color .25s ease}
+#expertise .x-card:hover .icon-tile{background:var(--coral-btn);color:#fff}
+#expertise .x-card .bullets{grid-column:1/-1;margin-top:16px}
 
 /* ---------- Experience ---------- */
 .career{padding:18px 22px 14px}
@@ -2040,15 +2048,13 @@ body{top:0!important;position:static!important}
       var h = card.querySelector('h3');
       var title = h ? h.textContent.trim() : '';
       if (!EXPERTISE[title]) return;
-      card.classList.add('has-flow');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'Read more about ' + title);
-      card.appendChild(el('span', 'x-more', 'Read details →'));
-      card.addEventListener('click', function () { openDetail(title); });
-      card.addEventListener('keydown', function (ev) {
-        if (ev.target === card && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); openDetail(title); }
-      });
+      // The heading itself is the link, styled like the hero title links
+      var link = el('button', 'row-link', title);
+      link.type = 'button';
+      link.setAttribute('aria-label', 'Read more about ' + title);
+      link.addEventListener('click', function () { openDetail(title); });
+      h.textContent = '';
+      h.appendChild(link);
     });
     each('#credentials .row', function (row) {
       var yr = row.querySelector('.row-year'), t = row.querySelector('.row-title');
