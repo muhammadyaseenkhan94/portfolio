@@ -108,6 +108,7 @@ button,input,textarea{font:inherit;color:inherit}
 .site-header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .25s ease,background-color .25s ease}
 .site-header.scrolled{background:hsl(var(--bh,216) 49% 15% / .94);box-shadow:0 10px 30px -12px rgba(0,0,0,.45);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px)}
 .header-inner{display:flex;align-items:center;gap:20px;height:var(--header-h)}
+.site-header .header-inner{max-width:calc(1360px + var(--gutter)*2)}
 .brand{display:flex;align-items:center;gap:12px;color:#fff;min-width:0}
 .brand-mark{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:linear-gradient(140deg,hsl(var(--bh,216) 47% 26%),hsl(var(--bh,216) 49% 15%));border:1px solid rgba(255,255,255,.16);font-weight:700;font-size:.95rem;letter-spacing:.03em;flex:none}
 .brand-mark::after{content:"";position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background:var(--coral-light);border:2px solid var(--navy)}
@@ -124,6 +125,11 @@ button,input,textarea{font:inherit;color:inherit}
 .nav-link.active{color:#fff}
 .nav-link.active::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;border-radius:2px;background:var(--coral-light)}
 .header-actions{display:flex;align-items:center;gap:10px}
+.cv-btn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 15px;border-radius:10px;background:var(--coral-btn);border:1px solid var(--coral-btn);color:#fff;font-size:.86rem;font-weight:600;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(var(--accent-rgb),.9);transition:background-color .2s ease,transform .2s ease}
+.cv-btn:hover{background:var(--coral-btn-hover);transform:translateY(-1px)}
+.cv-btn:hover .icon{animation:cv-bob .6s ease}
+@keyframes cv-bob{50%{transform:translateY(2px)}}
+@media (max-width:560px){.cv-btn{width:40px;padding:0;justify-content:center}.cv-btn span{display:none}}
 .theme-toggle .i-sun{display:none}
 .theme-toggle[data-mode="dark"] .i-sun{display:block}
 .theme-toggle[data-mode="dark"] .i-moon{display:none}
@@ -657,7 +663,7 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
 .anim .reveal.in{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
-@media (max-width:1240px){
+@media (max-width:1380px){
   .nav-toggle{display:inline-grid}
   .nav{position:fixed;top:var(--header-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:10px var(--gutter) 18px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 24px 40px -20px rgba(0,0,0,.6);display:none}
   .nav.open{display:flex}
@@ -798,6 +804,7 @@ body{top:0!important;position:static!important}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9v11a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9"/></symbol>
   <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
   <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
@@ -859,6 +866,7 @@ body{top:0!important;position:static!important}
       <a class="nav-link" href="#credentials"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-award"/></svg><span>Credentials</span></a>
     </nav>
     <div class="header-actions">
+      <a class="cv-btn" href="Muhammad-Yaseen-Khan-CV.pdf" download="Muhammad-Yaseen-Khan-CV.pdf" aria-label="Download CV (PDF)" title="Download CV (PDF)"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-download"/></svg><span>Download CV</span></a>
       <div class="accent-picker lang-picker notranslate" translate="no">
         <button class="icon-btn" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langPop" aria-label="Choose language" title="Language"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></button>
         <div class="accent-pop lang-pop" id="langPop" hidden>
