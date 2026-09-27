@@ -558,6 +558,9 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
 .row.has-flow:hover .x-more{text-decoration:underline}
 .row-year{font-family:var(--mono);font-weight:500;color:var(--coral);font-size:.92rem;padding-top:1px}
 .row-title{color:var(--ink);font-weight:600;font-size:.98rem;line-height:1.4}
+.row-link{padding:0;border:0;border-bottom:1px dashed rgba(var(--accent-rgb),.55);background:none;font:inherit;color:var(--coral);text-align:left;cursor:pointer;transition:border-color .2s ease,color .2s ease}
+.row-link:hover{border-bottom-style:solid;border-bottom-color:currentColor}
+.row-link:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:2px}
 .row-sub{margin-top:2px;color:var(--muted);font-size:.9rem;line-height:1.45}
 .list-title{display:flex;align-items:center;gap:12px;padding:18px 0 6px}
 .list-title h3{font-size:1.08rem}
@@ -1974,16 +1977,13 @@ body{top:0!important;position:static!important}
       if (!yr || !t) return;
       var title = t.textContent.trim(), d = TRAINING[yr.textContent.trim() + '|' + title];
       if (!d) return;
-      row.classList.add('has-flow');
-      row.setAttribute('tabindex', '0');
-      row.setAttribute('role', 'button');
-      row.setAttribute('aria-label', 'Read details for ' + title);
-      row.querySelector('.row-sub').parentNode.appendChild(el('span', 'x-more', d.kind ? 'View details →' : 'View course details →'));
-      function go() { openDetail(title, d, d.kind || 'Training & course', d.meta); }
-      row.addEventListener('click', go);
-      row.addEventListener('keydown', function (ev) {
-        if (ev.target === row && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); go(); }
-      });
+      // The title itself is the link, styled like the hero title links
+      var link = el('button', 'row-link', title);
+      link.type = 'button';
+      link.setAttribute('aria-label', 'Read details for ' + title);
+      link.addEventListener('click', function () { openDetail(title, d, d.kind || 'Training & course', d.meta); });
+      t.textContent = '';
+      t.appendChild(link);
     });
     each('#projects .p-card', function (card) {
       var h = card.querySelector('h3');
