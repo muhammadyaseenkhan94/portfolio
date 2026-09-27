@@ -389,6 +389,15 @@ button,input,textarea{font:inherit;color:inherit}
 .job .tags{margin-top:12px;gap:6px}
 .job .tag{padding:2px 9px;font-size:.72rem}
 @media (max-width:640px){.job-card{padding:16px 16px}.job::before{left:-26px;top:20px}}
+/* Experience entries without boxes */
+.job .job-card{background:none;border:0;border-radius:0;box-shadow:none;padding:0 0 26px}
+.job .job-card.hover-lift:hover{transform:none;box-shadow:none}
+.job:not(:last-child) .job-card{border-bottom:1px dashed var(--line)}
+.job{margin-top:26px}
+.job::before{top:5px}
+.job .job-title{transition:color .2s ease}
+.job:hover .job-title{color:var(--coral)}
+@media (max-width:640px){.job .job-card{padding:0 0 20px}.job::before{top:4px}.job{margin-top:20px}}
 
 /* ---------- Projects ---------- */
 .p-card{position:relative;padding:26px;border-top:3px solid var(--coral)}
