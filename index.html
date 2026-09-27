@@ -436,6 +436,11 @@ button,input,textarea{font:inherit;color:inherit}
 #skills .grid-3,#skills .grid-2{background:none;border:0;border-radius:0;box-shadow:none}
 #skills .s-card{padding-left:0;padding-right:0}
 #skills .s-card:hover{background:transparent}
+/* Skill items as plain text links, not buttons */
+#skills .chips,#skills .chip-set{gap:6px 20px}
+#skills .chip{padding:1px 0;border:0;border-bottom:1px dashed var(--line);border-radius:0;background:none;color:var(--text);font-size:.88rem;font-weight:500}
+#skills .chip.has-info:hover{color:var(--coral);border-bottom-color:var(--coral-line);background:none}
+#skills .chip.active{color:var(--coral);border-bottom:1px solid var(--coral);background:none}
 @media (max-width:760px){#skills .s-card{grid-template-columns:1fr;padding:16px 0}#skills .s-note{grid-column:auto}}
 
 /* ---------- Credentials ---------- */
