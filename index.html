@@ -641,6 +641,21 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 4px var(--coral-soft)}
 .form-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
 .form-note{font-size:.82rem;color:var(--muted)}
+.msg-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.msg-intro .section-intro{margin-top:14px}
+.msg-points{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px}
+.msg-points li{display:flex;align-items:center;gap:14px}
+.msg-points small{display:block;font-size:.76rem;color:var(--muted)}
+.msg-points a,.msg-points span:not(.icon-tile){color:var(--ink);font-weight:600;overflow-wrap:anywhere}
+.msg-points a:hover{color:var(--coral)}
+#msgForm{box-shadow:var(--shadow-lg)}
+.msg-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#d93025}
+.form-note.ok{color:#1e8e3e;font-weight:600}
+.form-note.err{color:#d93025;font-weight:600}
+#msgSend[disabled]{opacity:.7;cursor:progress}
+@media (max-width:900px){.msg-grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:560px){.form-row{grid-template-columns:1fr;gap:0}}
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--navy-deep);color:rgba(255,255,255,.66);padding:30px 0;font-size:.9rem}
@@ -1445,6 +1460,39 @@ body{top:0!important;position:static!important}
           <p>Professional references from <strong>BZSoftech</strong>, <strong>Albarka Fabrics</strong> and <strong>Masood Textile Mills</strong> are available upon request. Contact me by email or LinkedIn for detailed reference letters.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT FORM ===================== -->
+  <section class="section alt" id="message" aria-labelledby="message-title">
+    <div class="container msg-grid">
+      <div class="msg-intro reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-title" id="message-title">Have a project in mind? Let&rsquo;s talk.</h2>
+        <p class="section-intro">Send a message about an Oracle APEX application, a PL/SQL task, Forms &amp; Reports work or a full-time role. It comes straight to my inbox and I usually reply within 24 hours.</p>
+        <ul class="msg-points">
+          <li><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg></span><div><small>Email</small><a href="mailto:muhammadyaseenkhan94@gmail.com">muhammadyaseenkhan94@gmail.com</a></div></li>
+          <li><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Phone / WhatsApp</small><a href="https://wa.me/923027001918" target="_blank" rel="noopener">+92 302 7001918</a></div></li>
+          <li><span class="icon-tile sm"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Location</small><span>Sheikhupura, Punjab, Pakistan</span></div></li>
+        </ul>
+      </div>
+      <form class="form-card reveal" id="msgForm" action="https://formsubmit.co/muhammadyaseenkhan94@gmail.com" method="POST" novalidate>
+        <h3>Send me a message</h3>
+        <p>All fields are required.</p>
+        <input type="hidden" name="_subject" value="New message from your portfolio website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" class="msg-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-row">
+          <div class="field"><label for="msgName">Your name</label><input id="msgName" name="name" type="text" autocomplete="name" maxlength="80" required placeholder="e.g. Ahmed Raza"></div>
+          <div class="field"><label for="msgEmail">Your email</label><input id="msgEmail" name="email" type="email" autocomplete="email" maxlength="120" required placeholder="you@company.com"></div>
+        </div>
+        <div class="field"><label for="msgText">Message</label><textarea id="msgText" name="message" maxlength="3000" required placeholder="Tell me about your project, timeline and budget&hellip;"></textarea></div>
+        <div class="form-actions">
+          <p class="form-note" id="msgStatus" role="status" aria-live="polite">Your details are only used to reply to you.</p>
+          <button class="btn btn-primary" type="submit" id="msgSend"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-send"/></svg><span>Send message</span></button>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -2390,6 +2438,46 @@ body{top:0!important;position:static!important}
       else if (ev.key === 'End') { ev.preventDefault(); show(set.items.length - 1); }
     });
     g.addEventListener('close', function () { if (obs) obs.disconnect(); doc.classList.remove('modal-open'); if (back && back.focus) back.focus(); });
+  })();
+
+  /* ---------- Contact form (sent by FormSubmit to my inbox) ---------- */
+  (function () {
+    var form = document.getElementById('msgForm');
+    if (!form || !window.fetch) return;
+    var status = document.getElementById('msgStatus'), btn = document.getElementById('msgSend');
+    var label = btn.querySelector('span');
+    function say(msg, cls) { status.textContent = msg; status.className = 'form-note' + (cls ? ' ' + cls : ''); }
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var bad = null;
+      ['msgName', 'msgEmail', 'msgText'].forEach(function (id) {
+        var f = document.getElementById(id), ok = f.value.trim() !== '' && f.checkValidity();
+        f.setAttribute('aria-invalid', ok ? 'false' : 'true');
+        if (!ok && !bad) bad = f;
+      });
+      if (bad) { say(bad.id === 'msgEmail' && bad.value.trim() ? 'Please enter a valid email address.' : 'Please fill in all fields.', 'err'); bad.focus(); return; }
+      if (form.elements._honey.value) return;
+      var data = {};
+      Array.prototype.forEach.call(form.elements, function (f) { if (f.name) data[f.name] = f.value.trim(); });
+      data._replyto = data.email;
+      btn.disabled = true; label.textContent = 'Sending…'; say('Sending your message…');
+      fetch('https://formsubmit.co/ajax/muhammadyaseenkhan94@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) { return r.json(); }).then(function (res) {
+        if (res && String(res.success) === 'true') {
+          form.reset();
+          say('Thank you! Your message has been sent. I will reply soon.', 'ok');
+          toast('Message sent');
+        } else {
+          say((res && res.message) || 'Sorry, the message could not be sent. Please email me directly.', 'err');
+        }
+      }).catch(function () {
+        say('Sorry, the message could not be sent. Please email me directly.', 'err');
+      }).then(function () { btn.disabled = false; label.textContent = 'Send message'; });
+    });
+    form.addEventListener('input', function (ev) { if (ev.target.getAttribute('aria-invalid') === 'true') ev.target.setAttribute('aria-invalid', 'false'); });
   })();
 
   /* ---------- Footer year ---------- */
