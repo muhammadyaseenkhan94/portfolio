@@ -30,7 +30,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-<script>(function(){var d=document.documentElement;var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(!rm&&'IntersectionObserver' in window){d.classList.add('anim');setTimeout(function(){if(!window.__revealReady)d.classList.remove('anim');},3000);}})();</script>
+<script>window.__setAccent=function(h){var d=document.documentElement,n=parseInt(h.slice(1),16);if(!/^#[0-9a-f]{6}$/i.test(h))return false;var c=[n>>16&255,n>>8&255,n&255];function m(t,a){return c.map(function(v){return Math.round(v+(t-v)*a);}).join(',');}d.style.setProperty('--accent-rgb',c.join(','));d.style.setProperty('--accent-hover-rgb',m(0,.13));d.style.setProperty('--accent-dark-rgb',m(0,.07));d.style.setProperty('--accent-light-rgb',m(255,.38));var r=c[0]/255,g=c[1]/255,b=c[2]/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),dl=mx-mn,hu=0;if(dl){hu=mx===r?((g-b)/dl)%6:mx===g?(b-r)/dl+2:(r-g)/dl+4;hu=Math.round(hu*60+360)%360;}if(h.toLowerCase()==='#c74634'||dl<.08)d.style.removeProperty('--bh');else d.style.setProperty('--bh',hu);return true;};try{var a=localStorage.getItem('accent');if(a)window.__setAccent(a);}catch(e){}</script>
+<script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);}catch(e){}var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(!rm&&'IntersectionObserver' in window){d.classList.add('anim');setTimeout(function(){if(!window.__revealReady)d.classList.remove('anim');},3000);}})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Muhammad Yaseen Khan", "jobTitle": "Oracle APEX Developer", "description": "Oracle APEX Cloud Developer Certified Professional with 7+ years in Oracle APEX, SQL, PL/SQL, Forms & Reports, ORDS REST APIs and ERP systems.", "url": "https://muhammadyaseenkhan94.github.io/portfolio/", "image": "https://muhammadyaseenkhan94.github.io/portfolio/113479.PNG", "email": "mailto:muhammadyaseenkhan94@gmail.com", "telephone": "+92 302 7001918", "address": {"@type": "PostalAddress", "addressLocality": "Sheikhupura", "addressRegion": "Punjab", "addressCountry": "PK"}, "nationality": {"@type": "Country", "name": "Pakistan"}, "worksFor": {"@type": "Organization", "name": "BZSoftech"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Allama Iqbal Open University"}, "knowsLanguage": ["Urdu", "English"], "knowsAbout": ["Oracle APEX", "PL/SQL", "SQL", "Oracle Database", "Oracle Forms", "Oracle Reports", "ORDS", "REST APIs", "ERP", "ZATCA e-invoicing"], "hasCredential": {"@type": "EducationalOccupationalCredential", "name": "Oracle APEX Cloud Developer Certified Professional", "credentialCategory": "certification", "recognizedBy": {"@type": "Organization", "name": "Oracle University"}}, "sameAs": ["https://www.linkedin.com/in/muhammadyaseenkhan94", "https://github.com/muhammadyaseenkhan94"]}</script>
 <style>
 /* ==========================================================
@@ -109,6 +110,12 @@ button,input,textarea{font:inherit;color:inherit}
 .btn-sm{padding:9px 14px;font-size:.88rem;border-radius:9px}
 .icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;transition:background-color .2s ease,border-color .2s ease}
 .icon-btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+/* Header controls as plain icons, no boxes */
+.header-actions .icon-btn{border-color:transparent;background:none;border-radius:50%;color:rgba(255,255,255,.8);transition:color .2s ease,transform .2s ease}
+.header-actions .icon-btn:hover,.header-actions .icon-btn[aria-expanded="true"]{background:none;border-color:transparent;color:var(--coral-light);transform:scale(1.1)}
+.header-actions .icon-btn .icon{width:21px;height:21px}
+.header-actions .icon-btn:focus-visible{outline:2px solid var(--coral-light);outline-offset:1px}
+.header-actions{gap:2px}
 
 /* ---------- Header ---------- */
 .site-header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06);transition:box-shadow .25s ease,background-color .25s ease}
@@ -746,7 +753,7 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
 .anim .reveal.in{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
-@media (max-width:1120px){
+@media (max-width:1180px){
   .nav-toggle{display:inline-grid}
   .nav{position:fixed;top:var(--header-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:10px var(--gutter) 18px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 24px 40px -20px rgba(0,0,0,.6);display:none}
   .nav.open{display:flex}
@@ -958,6 +965,24 @@ body{top:0!important;position:static!important}
       <a class="nav-link" href="#credentials"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-award"/></svg><span>Credentials</span></a>
     </nav>
     <div class="header-actions">
+      <div class="accent-picker lang-picker notranslate" translate="no">
+        <button class="icon-btn" id="langToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langPop" aria-label="Choose language" title="Language"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></button>
+        <div class="accent-pop lang-pop" id="langPop" hidden>
+          <p>Language</p>
+          <ul class="lang-list"><li><button type="button" data-lang="en" aria-pressed="false">English</button></li><li><button type="button" data-lang="ur" aria-pressed="false">اردو</button></li><li><button type="button" data-lang="ar" aria-pressed="false">العربية</button></li><li><button type="button" data-lang="hi" aria-pressed="false">हिन्दी</button></li><li><button type="button" data-lang="fa" aria-pressed="false">فارسی</button></li><li><button type="button" data-lang="bn" aria-pressed="false">বাংলা</button></li><li><button type="button" data-lang="tr" aria-pressed="false">Türkçe</button></li><li><button type="button" data-lang="fr" aria-pressed="false">Français</button></li><li><button type="button" data-lang="de" aria-pressed="false">Deutsch</button></li><li><button type="button" data-lang="es" aria-pressed="false">Español</button></li><li><button type="button" data-lang="pt" aria-pressed="false">Português</button></li><li><button type="button" data-lang="it" aria-pressed="false">Italiano</button></li><li><button type="button" data-lang="nl" aria-pressed="false">Nederlands</button></li><li><button type="button" data-lang="ru" aria-pressed="false">Русский</button></li><li><button type="button" data-lang="zh-CN" aria-pressed="false">中文</button></li><li><button type="button" data-lang="ja" aria-pressed="false">日本語</button></li><li><button type="button" data-lang="ko" aria-pressed="false">한국어</button></li><li><button type="button" data-lang="id" aria-pressed="false">Bahasa Indonesia</button></li><li><button type="button" data-lang="ms" aria-pressed="false">Bahasa Melayu</button></li></ul>
+        </div>
+      </div>
+      <div class="accent-picker">
+        <button class="icon-btn" id="accentToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="accentPop" aria-label="Choose colour" title="Choose colour"><span class="accent-dot"></span></button>
+        <div class="accent-pop" id="accentPop" hidden>
+          <p>Theme colour</p>
+          <div class="swatches"><button class="swatch" type="button" data-accent="#C74634" style="background:#C74634" aria-label="Coral" title="Coral" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#2563EB" style="background:#2563EB" aria-label="Blue" title="Blue" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#4F46E5" style="background:#4F46E5" aria-label="Indigo" title="Indigo" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#7C3AED" style="background:#7C3AED" aria-label="Purple" title="Purple" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#DB2777" style="background:#DB2777" aria-label="Pink" title="Pink" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#0D9488" style="background:#0D9488" aria-label="Teal" title="Teal" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#0891B2" style="background:#0891B2" aria-label="Cyan" title="Cyan" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#16A34A" style="background:#16A34A" aria-label="Green" title="Green" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#EA580C" style="background:#EA580C" aria-label="Orange" title="Orange" aria-pressed="false"></button><button class="swatch" type="button" data-accent="#D97706" style="background:#D97706" aria-label="Amber" title="Amber" aria-pressed="false"></button></div>
+          <label class="custom-color">Custom colour<input type="color" id="accentCustom" value="#C74634"></label>
+        </div>
+      </div>
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Dark theme">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
       <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Open menu">
         <svg class="icon i-menu" aria-hidden="true"><use href="#i-menu"/></svg><svg class="icon i-close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
@@ -1750,6 +1775,126 @@ body{top:0!important;position:static!important}
     each('[data-total-exp]', function (el) { el.textContent = formatSpan(total); });
     each('[data-total-years]', function (el) { el.textContent = String(total.y); });
   }
+
+  /* ---------- Theme toggle (remembers the choice) ---------- */
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  /* ---------- Language picker: Google Translate driven by the googtrans cookie ---------- */
+  (function () {
+    var toggle = document.getElementById('langToggle');
+    var pop = document.getElementById('langPop');
+    if (!toggle || !pop) return;
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=\/[^\/]*\/([^;]+)/);
+    var current = m ? decodeURIComponent(m[1]) : 'en';
+    Array.prototype.forEach.call(pop.querySelectorAll('[data-lang]'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === current ? 'true' : 'false');
+    });
+    if (current !== 'en') loadTranslate();
+    function loadTranslate() {
+      if (document.getElementById('gtScript')) return;
+      var holder = document.createElement('div');
+      holder.id = 'google_translate_element';
+      document.body.appendChild(holder);
+      window.googleTranslateElementInit = function () {
+        new window.google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+      };
+      var sc = document.createElement('script');
+      sc.id = 'gtScript';
+      sc.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(sc);
+    }
+    function setCookie(value, expire) {
+      var host = location.hostname;
+      var tail = expire ? '; expires=Thu, 01 Jan 1970 00:00:00 GMT' : '';
+      document.cookie = 'googtrans=' + value + '; path=/' + tail;
+      document.cookie = 'googtrans=' + value + '; path=/; domain=' + host + tail;
+      document.cookie = 'googtrans=' + value + '; path=/; domain=.' + host + tail;
+    }
+    function choose(code) {
+      if (code === current) { setOpen(false); return; }
+      if (code === 'en') setCookie('', true);
+      else setCookie('/en/' + code, false);
+      location.reload();
+    }
+    function setOpen(open) {
+      pop.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      var ap = document.getElementById('accentPop');
+      if (ap) ap.hidden = true;
+      setOpen(pop.hidden);
+    });
+    pop.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      var b = ev.target.closest('[data-lang]');
+      if (b) choose(b.getAttribute('data-lang'));
+    });
+    document.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !pop.hidden) { setOpen(false); toggle.focus(); } });
+  })();
+
+  /* ---------- Accent colour picker ---------- */
+  (function () {
+    var toggle = document.getElementById('accentToggle');
+    var pop = document.getElementById('accentPop');
+    var custom = document.getElementById('accentCustom');
+    if (!toggle || !pop || !window.__setAccent) return;
+    var swatches = pop.querySelectorAll('.swatch');
+    var current = '#C74634';
+    try { current = localStorage.getItem('accent') || current; } catch (err) { /* storage unavailable */ }
+    function mark(hex) {
+      Array.prototype.forEach.call(swatches, function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-accent').toLowerCase() === hex.toLowerCase() ? 'true' : 'false');
+      });
+      if (custom) custom.value = hex;
+    }
+    function pick(hex) {
+      if (!window.__setAccent(hex)) return;
+      try { localStorage.setItem('accent', hex); } catch (err) { /* storage unavailable */ }
+      mark(hex);
+    }
+    function setOpen(open) {
+      pop.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    mark(current);
+    toggle.addEventListener('click', function (ev) { ev.stopPropagation(); var lp = document.getElementById('langPop'); if (lp) lp.hidden = true; setOpen(pop.hidden); });
+    pop.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      var b = ev.target.closest('.swatch');
+      if (b) pick(b.getAttribute('data-accent'));
+    });
+    if (custom) custom.addEventListener('input', function () { pick(custom.value); });
+    document.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !pop.hidden) { setOpen(false); toggle.focus(); } });
+  })();
+
+  var themeBtn = document.getElementById('themeToggle');
+  function effectiveTheme() {
+    var t = doc.getAttribute('data-theme');
+    return t ? t : (mq && mq.matches ? 'dark' : 'light');
+  }
+  function paintTheme() {
+    if (!themeBtn) return;
+    var dark = effectiveTheme() === 'dark';
+    themeBtn.setAttribute('data-mode', dark ? 'dark' : 'light');
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    themeBtn.setAttribute('title', dark ? 'Light theme' : 'Dark theme');
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+      doc.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (err) { /* storage unavailable */ }
+      paintTheme();
+    });
+  }
+  if (mq) {
+    if (mq.addEventListener) mq.addEventListener('change', paintTheme);
+    else if (mq.addListener) mq.addListener(paintTheme);
+  }
+  paintTheme();
 
   /* ---------- Mobile navigation ---------- */
   var nav = document.getElementById('siteNav');
