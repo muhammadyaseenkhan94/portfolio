@@ -1680,6 +1680,22 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
         ["SQL topics covered", ["Relational database concepts, tables, rows and columns", "Data types and table design", "Constraints: primary key, foreign key, unique, check and not null", "SELECT with WHERE, ORDER BY and single-row functions", "Joins, GROUP BY, HAVING and aggregate functions", "DDL, DML, DCL and TCL: CREATE, INSERT, UPDATE, DELETE, COMMIT and ROLLBACK", "Views, sequences, indexes and synonyms", "Users, roles and privileges"], ""],
         ["PL/SQL topics covered", ["PL/SQL block structure and variables", "IF, CASE and loops", "Cursors and cursor FOR loops", "Procedures and functions", "Basic triggers", "Exception handling"], ""],
         ["Skills gained", ["Designing normalised tables with proper keys", "Writing correct SQL queries and reports", "Writing first PL/SQL procedures and triggers"], ""]
+      ]},
+      "2017|Bachelor": {"kind": "Education", "meta": "Allama Iqbal Open University (AIOU), Islamabad · 2017", "intro": "A two-year Bachelor degree completed through Allama Iqbal Open University, Pakistan's largest public university and a pioneer of distance education in Asia. Studying through the open-learning system built the self-discipline and independent study habits that carried into professional Oracle training and work.", "sections": [
+        ["Degree details", ["Qualification||Bachelor (two-year graduation)", "University||Allama Iqbal Open University (AIOU)", "Location||Sector H-8, Islamabad, Pakistan", "Completed||2017", "Duration||2 years", "Study mode||Distance learning: study material, assignments, tutorial meetings and final examinations", "Recognition||Public sector university chartered by the Government of Pakistan and recognised by the Higher Education Commission (HEC)"], "defs"],
+        ["How the programme works", ["Printed and online course books supplied by the university for every subject", "Tutor-marked assignments for every course during each semester", "Tutorial meetings at regional study centres", "Final written examination for every course at the end of the semester", "Result based on combined assignment and examination marks"], ""],
+        ["About the university", ["Established in 1974 in Islamabad as the Peoples Open University, renamed Allama Iqbal Open University in 1977", "One of the largest universities in the world by enrolment, with over a million students", "Regional campuses and study centres across Pakistan"], ""],
+        ["What it built", ["Self-directed learning and time management alongside other commitments", "Written communication in English and Urdu", "The graduate-level foundation for professional Oracle training from 2017 onwards"], ""]
+      ]},
+      "2015|Intermediate": {"kind": "Education", "meta": "Allama Iqbal Open University (AIOU), Islamabad · 2015", "intro": "The Higher Secondary School Certificate (HSSC), grades 11 and 12, completed through Allama Iqbal Open University. It is the qualification required for admission to Bachelor-level study in Pakistan.", "sections": [
+        ["Qualification details", ["Qualification||Intermediate / Higher Secondary School Certificate (HSSC)", "Grades||11th and 12th (Part I and Part II)", "Institution||Allama Iqbal Open University (AIOU)", "Location||Islamabad, Pakistan", "Completed||2015", "Duration||2 years", "Study mode||Distance learning with assignments and final examinations"], "defs"],
+        ["Programme structure", ["Compulsory subjects: English, Urdu, Islamic Studies and Pakistan Studies", "Elective subjects studied alongside the compulsory ones", "Assignments during the semester and final written examinations", "Equivalent to the intermediate certificate awarded by the education boards"], ""],
+        ["What it built", ["Eligibility for Bachelor-level study", "Independent study habits through open learning", "Stronger English reading and writing skills"], ""]
+      ]},
+      "2012|Matriculation": {"kind": "Education", "meta": "BISE Lahore · 2012", "intro": "The Secondary School Certificate (SSC), grades 9 and 10, examined and awarded by the Board of Intermediate & Secondary Education, Lahore. It is the first public board qualification in Pakistan's school system.", "sections": [
+        ["Qualification details", ["Qualification||Matriculation / Secondary School Certificate (SSC)", "Grades||9th and 10th (Part I and Part II)", "Board||Board of Intermediate & Secondary Education (BISE), Lahore", "Province||Punjab, Pakistan", "Completed||2012", "Duration||2 years", "Examination||Annual board examinations for both parts"], "defs"],
+        ["Programme structure", ["Compulsory subjects: English, Urdu, Islamiat and Pakistan Studies", "Mathematics and group subjects of the chosen stream", "Centrally set and marked board examinations", "Results announced by the board with a marks certificate"], ""],
+        ["About the board", ["Established in 1954, one of the oldest examination boards in Pakistan", "Conducts SSC and HSSC examinations for Lahore and surrounding districts", "Certificates recognised across Pakistan and by the Inter Board Committee of Chairmen (IBCC)"], ""]
       ]}
     };
     function openDetail(title, d, kicker, meta) {
@@ -1738,9 +1754,9 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
       row.classList.add('has-flow');
       row.setAttribute('tabindex', '0');
       row.setAttribute('role', 'button');
-      row.setAttribute('aria-label', 'Read course details for ' + title);
-      row.querySelector('.row-sub').parentNode.appendChild(el('span', 'x-more', 'View course details →'));
-      function go() { openDetail(title, d, 'Training & course', d.meta); }
+      row.setAttribute('aria-label', 'Read details for ' + title);
+      row.querySelector('.row-sub').parentNode.appendChild(el('span', 'x-more', d.kind ? 'View details →' : 'View course details →'));
+      function go() { openDetail(title, d, d.kind || 'Training & course', d.meta); }
       row.addEventListener('click', go);
       row.addEventListener('keydown', function (ev) {
         if (ev.target === row && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); go(); }
