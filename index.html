@@ -113,10 +113,14 @@ button,input,textarea{font:inherit;color:inherit}
 .brand-mark::after{content:"";position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background:var(--coral-light);border:2px solid var(--navy)}
 .brand-text{display:flex;flex-direction:column;line-height:1.2;min-width:0}
 .brand-name{font-weight:600;font-size:.98rem;white-space:nowrap}
+.brand-name,.brand-role{overflow:hidden;text-overflow:ellipsis}
 .brand-role{font-size:.76rem;color:rgba(255,255,255,.6);white-space:nowrap}
 .nav{margin-left:auto;display:flex;align-items:center;gap:2px}
-.nav-link{position:relative;padding:8px 11px;border-radius:8px;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.76);transition:color .2s ease,background-color .2s ease}
+.nav-link{position:relative;display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.76);transition:color .2s ease,background-color .2s ease}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-link .icon{opacity:.7;transition:opacity .2s ease,color .2s ease}
+.nav-link:hover .icon{opacity:1}
+.nav-link.active .icon{opacity:1;color:var(--coral-light)}
 .nav-link.active{color:#fff}
 .nav-link.active::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;border-radius:2px;background:var(--coral-light)}
 .header-actions{display:flex;align-items:center;gap:10px}
@@ -653,7 +657,7 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
 .anim .reveal.in{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
-@media (max-width:1080px){
+@media (max-width:1240px){
   .nav-toggle{display:inline-grid}
   .nav{position:fixed;top:var(--header-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:10px var(--gutter) 18px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 24px 40px -20px rgba(0,0,0,.6);display:none}
   .nav.open{display:flex}
@@ -661,6 +665,8 @@ html.modal-open,html:has(dialog[open]){overflow:hidden}
   .nav-link.active{background:rgba(255,255,255,.06)}
   .nav-link.active::after{left:0;right:auto;top:10px;bottom:10px;width:3px;height:auto}
   .header-actions{margin-left:auto}
+}
+@media (max-width:1080px){
   .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:900px){
@@ -790,6 +796,8 @@ body{top:0!important;position:static!important}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9v11a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></symbol>
   <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
@@ -842,12 +850,13 @@ body{top:0!important;position:static!important}
       <span class="brand-text"><span class="brand-name notranslate" translate="no">Muhammad Yaseen Khan</span><span class="brand-role">Oracle APEX Developer</span></span>
     </a>
     <nav class="nav" id="siteNav" aria-label="Main">
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#expertise">Expertise</a>
-      <a class="nav-link" href="#experience">Experience</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#skills">Skills</a>
-      <a class="nav-link" href="#credentials">Credentials</a>
+      <a class="nav-link" href="#home"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+      <a class="nav-link" href="#about"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-profile"/></svg><span>About</span></a>
+      <a class="nav-link" href="#expertise"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-bulb"/></svg><span>Expertise</span></a>
+      <a class="nav-link" href="#experience"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-briefcase"/></svg><span>Experience</span></a>
+      <a class="nav-link" href="#projects"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-layers"/></svg><span>Projects</span></a>
+      <a class="nav-link" href="#skills"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-code"/></svg><span>Skills</span></a>
+      <a class="nav-link" href="#credentials"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-award"/></svg><span>Credentials</span></a>
     </nav>
     <div class="header-actions">
       <div class="accent-picker lang-picker notranslate" translate="no">
@@ -1744,7 +1753,7 @@ body{top:0!important;position:static!important}
   }
   if ('IntersectionObserver' in window) {
     var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id === 'home' ? '' : en.target.id); });
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id === 'contact' ? 'home' : en.target.id); });
     }, { rootMargin: '-45% 0px -50% 0px' });
     ['home', 'about', 'expertise', 'experience', 'projects', 'skills', 'credentials', 'contact'].forEach(function (id) {
       var el = document.getElementById(id);
