@@ -331,6 +331,27 @@ button,input,textarea{font:inherit;color:inherit}
 .career-top h3{font-size:1rem}
 .career-top p{font-size:.92rem;color:var(--muted)}
 .career-top p strong{color:var(--ink)}
+/* Career graph as lines instead of boxed bars */
+.card.career{background:none;border:0;border-radius:0;box-shadow:none;padding:0 18px 8px 0}
+.career .g-labels span{height:46px}
+.career .g-row{height:46px}
+.career .g-row::before{content:"";position:absolute;left:0;right:0;top:calc(50% + 6px);border-top:1px dashed var(--line)}
+.career .g-plot{padding-bottom:26px}
+.career .g-plot::after{content:"";position:absolute;left:0;right:0;bottom:20px;height:1px;background:var(--line)}
+.career .g-tick{bottom:20px;background:none;border-left:1px dotted var(--line-soft)}
+.career .g-tick::before{content:"";position:absolute;left:-1px;bottom:-4px;width:1px;height:8px;background:var(--line)}
+.career .g-bar{top:calc(50% + 4px);height:4px;border-radius:999px;background:currentColor;box-shadow:none;overflow:visible;min-width:10px;transform-origin:left center;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.career .g-bar::before,.career .g-bar::after{content:"";position:absolute;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--surface);border:3px solid currentColor;box-sizing:border-box}
+.career .g-bar::before{left:-6px}
+.career .g-bar::after{right:-6px}
+.career .g-bar.s1{color:var(--navy-3)}
+.career .g-bar.s2{color:var(--navy-4)}
+.career .g-bar.s3{color:var(--coral)}
+.career .g-bar.s3::after{background:var(--coral);animation:g-live 2s ease-out infinite}
+.career .g-bar em{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);color:var(--ink);font-size:.72rem;font-weight:600}
+.anim .career:not(.in) .g-bar{transform:scaleX(0)}
+@keyframes g-live{0%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),.55)}80%,100%{box-shadow:0 0 0 9px rgba(var(--accent-rgb),0)}}
+@media (prefers-reduced-motion:reduce){.career .g-bar.s3::after{animation:none}}
 .cb-track{display:flex;gap:3px;height:14px;margin-top:14px;border-radius:999px;overflow:hidden;background:var(--chip)}
 .cb-seg{height:100%;min-width:6px}
 .cb-seg.s1{background:var(--navy-3)}
