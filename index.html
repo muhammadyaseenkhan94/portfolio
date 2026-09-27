@@ -445,6 +445,17 @@ button,input,textarea{font:inherit;color:inherit}
 #projects .area-title .icon-tile.sm{width:30px;height:30px;border-radius:8px}
 @media (max-width:900px){#projects .area-title + .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:640px){#projects .area-title + .grid-3{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+/* Projects and modules without boxes: picture, then text */
+#projects .p-card,#projects .area-title + .grid-3 .p-card{background:none;border:0;border-radius:0;box-shadow:none;padding:0;overflow:visible}
+#projects .p-card > :not(.card-media),#projects .area-title + .grid-3 .p-card > :not(.card-media){margin-left:0;margin-right:0}
+#projects .p-card .card-media,#projects .area-title + .grid-3 .p-card .card-media{margin:0 0 12px;border:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:12px;box-shadow:0 14px 30px -22px rgba(0,0,0,.6);transition:border-color .25s ease,box-shadow .25s ease}
+#projects .hover-lift:hover{transform:none;box-shadow:none}
+#projects .p-card:hover .card-media{border-color:var(--coral-line);box-shadow:0 20px 36px -22px rgba(0,0,0,.7)}
+#projects .p-card h3{transition:color .2s ease}
+#projects .p-card:hover h3{color:var(--coral)}
+#projects .grid-3{column-gap:28px;row-gap:30px}
+#projects .area-title + .grid-3{column-gap:20px;row-gap:24px}
+@media (max-width:640px){#projects .area-title + .grid-3{column-gap:14px;row-gap:20px}}
 
 /* ---------- Skills ---------- */
 .s-card{padding:24px}
